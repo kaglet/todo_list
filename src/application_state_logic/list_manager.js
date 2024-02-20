@@ -1,7 +1,7 @@
 import createList from "./create_list";
 
 // Allows user capabilities of interacting with task creation and management functionality
-let taskManager = function() {
+let listManager = function() {
     let lists = []; 
     
     // Method clear about what it does, not more
@@ -32,4 +32,4 @@ let taskManager = function() {
 
 // We can access that list and it's methods
 
-export default taskManager;
+export default listManager;
