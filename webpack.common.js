@@ -5,7 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/application_state_logic/task_manager.js',
   },
   plugins: [
     new MiniCssExtractPlugin(),
