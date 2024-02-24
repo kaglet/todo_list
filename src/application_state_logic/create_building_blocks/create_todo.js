@@ -20,7 +20,7 @@ createTodo.proto = {
     },
     getSubtasks() {
         // return todo list
-        return this.subtasks();
+        return this.subtasks;
     },
     setPriority(priority) {
         this.priority = priority;

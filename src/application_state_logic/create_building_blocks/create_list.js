@@ -19,10 +19,12 @@ createList.proto = {
     removeTodo(index) {
         this.todos.splice(index, 1);
     },
-    get todos() {
-        // return todo list
-        return this.todos();
-    }
+    getTodos() {
+        return this.todos;
+    },
+    getTodo(index) {
+        return this.todos[index];
+    },
 };
 
 export default createList;

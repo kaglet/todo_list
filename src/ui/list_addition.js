@@ -1,20 +1,10 @@
 import createList from "../application_state_logic/create_list";
-import listManager from "../application_state_logic/list_manager";
+import listManager from "../application_state_logic/all_lists_manager/lists_manager";
 
 let listAdditionController = function () {
     let nameInput = document.querySelector('input.list.name');
     let quickAddButton = document.querySelector('button.list.quick.add');
     let customAddButton = document.querySelector('button.list.custom.add');
-    let showCustomizerButton = document.querySelector('button.list.customizer.show');
-    let closeCustomizerButton = document.querySelector('button.list.customizer.close');
-
-    const showCustomizerPane = () => {
-        // TODO: Create and show dialog with all the inputs and options (basic for now)
-    }; 
-
-    const hideCustomizerPane = () => {
-        // TODO: Close dialog modal and wipe form inputs
-    };
 
     const addQuickList = () => {
         let name = nameInput.textContent;
