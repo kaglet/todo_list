@@ -6,6 +6,8 @@ let listAdditionController = function() {
     const addQuickList = () => {
         let name = nameInput.textContent;
         if (name.trim() === "") return;
+
+        // TODO: Create list with title
         let list = createList();
         list.setName(name);
         listManager.addList(list);
