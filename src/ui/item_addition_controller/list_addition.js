@@ -1,7 +1,4 @@
-import createList from "../application_state_logic/create_list";
-import listManager from "../application_state_logic/all_lists_manager/lists_manager";
-
-let listAdditionController = function () {
+let listAdditionController = function() {
     let nameInput = document.querySelector('input.list.name');
     let quickAddButton = document.querySelector('button.list.quick.add');
     let customAddButton = document.querySelector('button.list.custom.add');
@@ -33,5 +30,3 @@ let listAdditionController = function () {
     showCustomizerButton.addEventListener('click', showCustomizerPane);
     closeCustomizerButton.addEventListener('click', hideCustomizerPane);
 }();
-
-export default listAdditionController;
