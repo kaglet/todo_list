@@ -1,5 +1,7 @@
 import createList from '../../application_state_logic/create_building_blocks/create_list.js';
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 
+// Manages addition functionality of new list instances 
 let listAdditionController = function() {
     let nameInput = document.querySelector('');
 
@@ -13,8 +15,6 @@ let listAdditionController = function() {
         let pane = document.createElement('dialog');
         pane.classList.add('pane', 'list', 'addition');
         let container = document.querySelector('body');
-
-        pane.append(closeAddPaneButton);
 
         container.append(pane);
         pane.classList.add('hidden');

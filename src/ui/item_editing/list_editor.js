@@ -1,3 +1,6 @@
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+
+// Manages edit functionality of existing list instances
 let listEditController = function() {
     let showEditorButton = document.querySelector('');
     let closeEditorButton = document.querySelector('');
@@ -6,8 +9,6 @@ let listEditController = function() {
         let pane = document.createElement('dialog');
         pane.classList.add('pane', 'list', 'editor');
         let container = document.querySelector('body');
-
-        pane.append(closeEditorButton);
 
         container.append(pane);
         pane.classList.add('hidden');

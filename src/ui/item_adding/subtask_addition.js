@@ -1,5 +1,7 @@
 import createSubtask from "../../application_state_logic/create_building_blocks/create_subtask";
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 
+// Manages addition functionality of new subtask instances 
 let subtaskAdditionController = function() {
     let addButton = document.querySelector('');
 

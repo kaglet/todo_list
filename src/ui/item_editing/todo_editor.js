@@ -1,3 +1,6 @@
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+
+// Manages edit functionality of existing todo instances
 let todoEditController = function() {
     let showEditorButton = document.querySelector('');
     let closeEditorButton = document.querySelector('');
@@ -8,6 +11,7 @@ let todoEditController = function() {
         let container = document.querySelector('body');
 
         container.append(pane);
+        pane.classList.add('hidden');
 
         return pane;
     };

@@ -1,6 +1,7 @@
 import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 
-// TODO: Update DOM as well in this addition controllers
+// Manages addition functionality of new todo instances 
 let todoAdditionController = function() {
     let nameInput = document.querySelector('');
 
@@ -14,8 +15,6 @@ let todoAdditionController = function() {
         let pane = document.createElement('dialog');
         pane.classList.add('pane', 'list', 'addition');
         let container = document.querySelector('body');
-
-        pane.append(closeAddPaneButton);
 
         container.append(pane);
         pane.classList.add('hidden');
