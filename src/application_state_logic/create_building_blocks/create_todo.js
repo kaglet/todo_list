@@ -1,5 +1,6 @@
-let createTodo = function() {
+let createTodo = function(name) {
     let todo = Object.create(createTodo.proto);
+    todo.setName(name);
     this.subtasks = [];
 
     return todo;

@@ -1,6 +1,6 @@
-let createList = function() {
+let createList = function(name) {
     let list = Object.create(createList.proto);
-    list.setName("Default List");
+    list.setName(name);
     list.todos = [];
 
     return list;

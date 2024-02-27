@@ -1,9 +1,67 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 var __webpack_exports__ = {};
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-alert('Hello');
+
+;// CONCATENATED MODULE: ./src/ui/layout_component_outlines/footer.js
+let createFooter = function() {
+    let body = document.querySelector('body');
+
+    let footer = document.createElement('footer');
+    footer.textContent = 'Footer';
+
+    body.append(footer);
+};
+
+/* harmony default export */ const footer = (createFooter);
+;// CONCATENATED MODULE: ./src/ui/layout_component_outlines/header.js
+let createHeader = function() {
+    let body = document.querySelector('body');
+
+    let header = document.createElement('header');
+    header.textContent = 'Header';
+
+    body.append(header);
+};
+
+/* harmony default export */ const header = (createHeader);
+;// CONCATENATED MODULE: ./src/ui/layout_component_outlines/sidebar.js
+let createSidebar = function() {
+    let body = document.querySelector('body');
+
+    let sidebar = document.createElement('section');
+    sidebar.classList.add('sidebar');
+    sidebar.textContent = 'Sidebar';
+
+    body.append(sidebar);
+};
+
+/* harmony default export */ const sidebar = (createSidebar);
+;// CONCATENATED MODULE: ./src/ui/layout_component_outlines/todo_pane.js
+let createTodoPane = function() {
+    let body = document.querySelector('body');
+
+    let todoPane = document.createElement('section');
+    todoPane.classList.add('todo', 'pane');
+    todoPane.textContent = 'To do';
+
+    body.append(todoPane);
+};
+
+/* harmony default export */ const todo_pane = (createTodoPane);
+;// CONCATENATED MODULE: ./src/index.js
+
+
+
+
+
+
+let init = function() {
+    header();
+    sidebar();
+    todo_pane();
+    footer();
+};
+
+init();
 /******/ })()
 ;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmJ1bmRsZS5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFBLGUiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly90b2RvX2xpc3QvLi9zcmMvaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiYWxlcnQoJ0hlbGxvJyk7Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9

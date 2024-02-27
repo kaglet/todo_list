@@ -1,7 +1,8 @@
 import createTodo from "./createTodo";
 
-let createSubtask = function() {
+let createSubtask = function(name) {
     let subtask = Object.create(createSubtask.proto);
+    subtask.setName(name);
 
     return subtask;
 };
