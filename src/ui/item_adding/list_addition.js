@@ -1,12 +1,28 @@
 import createList from '../../application_state_logic/create_building_blocks/create_list.js';
-import listCustomizerController from '../customizer_panes/list_customizer_pane.js';
 
 let listAdditionController = function() {
-    let nameInput = document.querySelector('input.list.name');
-    let quickAddButton = document.querySelector('button.list.quick.add'); // TODO: call a get quick add button from where its created in DOM for maintainability
-    let customAddButton = document.querySelector('button.list.custom.add');
-    let showCustomizerButton = document.querySelector('.show.customizer');
-    let closeCustomizerButton = document.querySelector('.close.customizer');
+    let nameInput = document.querySelector('');
+
+    let quickAddButton = document.querySelector(''); // TODO: call a get quick add button from where its created in DOM for maintainability
+    let saveButton = document.querySelector('');
+    
+    let showAddPaneButton = document.querySelector('');
+    let closeAddPaneButton = document.querySelector('');
+
+    const createAddPane = () => {
+        let pane = document.createElement('dialog');
+        pane.classList.add('pane', 'list', 'addition');
+        let container = document.querySelector('body');
+
+        pane.append(closeAddPaneButton);
+
+        container.append(pane);
+        pane.classList.add('hidden');
+
+        return pane;
+    };
+
+    let pane = createAddPane();
 
     const addQuickList = () => {
         let name = nameInput.textContent;
@@ -17,23 +33,31 @@ let listAdditionController = function() {
         listManager.addList(list);
     };
 
-    const getCustomDetails = () => {
-        // TODO: Get custom details from DOM
+    const getFormDetails = () => {
         let name;
         return { name };
     };
 
     const addCustomList = () => {
-        let { name } = getCustomDetails();
+        let { name } = getFormDetails();
         let list = createList();
         list.setName(name);
         listManager.addList(list);
     };
 
+    const showAdditionPane = () => {
+        pane.classList.remove('hidden');
+    };
+
+    const hideAdditionPane = () => {
+        pane.classList.add('hidden');
+    };
+
     quickAddButton.addEventListener('click', addQuickList);
-    customAddButton.addEventListener('click', addCustomList);
-    showCustomizerButton.addEventListener('click', () => listCustomizerController.showCustomizerPane());
-    closeCustomizerButton.addEventListener('click', () => listCustomizerController.hideCustomizerPane());
+    saveButton.addEventListener('click', addCustomList);
+
+    showAddPaneButton.addEventListener('click', showAdditionPane);
+    closeAddPaneButton.addEventListener('click', hideAdditionPane);
 }();
 
 // TODO: Simply show created list details (with given name for quick add if there is a staged list) during addition
