@@ -60,6 +60,8 @@ let listAdditionController = function() {
     closeAddPaneButton.addEventListener('click', hideAdditionPane);
 }();
 
+export default listAdditionController;
+
 // TODO: Simply show created list details (with given name for quick add if there is a staged list) during addition
 // There is no way to access edits with customizer pane with this controller
 // Call quick add todo with a default name on list creation (or rather not just don't use a name if its not given)

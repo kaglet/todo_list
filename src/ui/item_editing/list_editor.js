@@ -31,3 +31,5 @@ let listEditController = function() {
     showEditorButton.addEventListener('click', showEditPane);
     closeEditorButton.addEventListener('click', hideEditPane);
 }();
+
+export default listEditController;

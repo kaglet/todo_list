@@ -15,3 +15,5 @@ let subtaskAdditionController = function() {
 
     addButton.addEventListener('click', addSubtask);
 }();
+
+export default subtaskAdditionController;

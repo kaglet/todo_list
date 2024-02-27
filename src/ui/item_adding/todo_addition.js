@@ -65,4 +65,6 @@ let todoAdditionController = function() {
     closeAddPaneButton.addEventListener('click', hideAdditionPane);
 }();
 
+export default todoAdditionController;
+
 // TODO: Not yet added to selected todo, and not yet added to UI, just created in isolation.
