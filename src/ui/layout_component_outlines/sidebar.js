@@ -3,7 +3,6 @@ let createSidebar = function() {
 
     let sidebar = document.createElement('section');
     sidebar.classList.add('sidebar');
-    sidebar.textContent = 'Sidebar';
 
     let menuIcon = document.createElement('div');
     menuIcon.classList.add('icon', 'menu');
@@ -21,13 +20,14 @@ let createSidebar = function() {
 
     buttonWrapper.append(quickAddBtn, customAddBtn);
 
-    let listsWrapper = document.createElement('div');
+    let listsDisplay = document.createElement('div');
+    listsDisplay.classList.add('lists', 'display');
     let allListOption = document.createElement('button');
     allListOption.textContent = 'All';
 
-    listsWrapper.append(allListOption);
+    listsDisplay.append(allListOption);
 
-    sidebar.append(menuIcon, nameInput, buttonWrapper, listsWrapper);
+    sidebar.append(menuIcon, nameInput, buttonWrapper, listsDisplay);
 
     body.append(sidebar);
 };
