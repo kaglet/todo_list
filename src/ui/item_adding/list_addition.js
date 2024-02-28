@@ -42,7 +42,7 @@ let listAdditionController = function() {
         let { name } = getFormDetails();
         let list = createList();
         list.setName(name);
-        listManager.addList(list);
+        listsManager.addList(list);
     };
 
     const showAdditionPane = () => {
