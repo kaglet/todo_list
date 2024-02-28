@@ -5,6 +5,7 @@ let createTodoPane = function() {
     todoPane.classList.add('todo', 'pane');
 
     let headingsWrapper = document.createElement('div');
+    headingsWrapper.classList.add('headings', 'wrapper');
     let listHeading = document.createElement('h2');
     // TODO: Get currently selected list heading/name instead of placeholder
     listHeading.textContent = 'ALL';
@@ -20,6 +21,7 @@ let createTodoPane = function() {
     nameInput.setAttribute('placeholder', 'Example Name');
 
     let todoAdditionWrapper = document.createElement('div');
+    todoAdditionWrapper.classList.add('todo', 'addition', 'wrapper');
     todoAdditionWrapper.append(nameInput, quickAddBtn, customAddBtn);
 
     let todosDisplay = document.createElement('div');

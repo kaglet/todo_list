@@ -15,10 +15,10 @@ let createSidebar = function() {
     let nameInput = document.createElement('input');
     nameInput.setAttribute('placeholder', 'Example Name');
 
-    let buttonWrapper = document.createElement('div');
-    buttonWrapper.classList.add('wrapper');
+    let addListOptionsWrapper = document.createElement('div');
+    addListOptionsWrapper.classList.add('wrapper', 'add', 'list');
 
-    buttonWrapper.append(quickAddBtn, customAddBtn);
+    addListOptionsWrapper.append(nameInput, quickAddBtn, customAddBtn);
 
     let listsDisplay = document.createElement('div');
     listsDisplay.classList.add('lists', 'display');
@@ -27,7 +27,7 @@ let createSidebar = function() {
 
     listsDisplay.append(allListOption);
 
-    sidebar.append(menuIcon, nameInput, buttonWrapper, listsDisplay);
+    sidebar.append(menuIcon, addListOptionsWrapper, listsDisplay);
 
     body.append(sidebar);
 };
