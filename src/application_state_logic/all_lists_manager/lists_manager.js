@@ -1,7 +1,5 @@
 let listsManager = function() {
     let lists = []; 
-
-    console.log('Lists manager prints');
     
     const addList = (list) => {
         lists.append(list);

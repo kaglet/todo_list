@@ -30,6 +30,6 @@ let createSidebar = function() {
     sidebar.append(menuIcon, addListOptionsWrapper, listsDisplay);
 
     body.append(sidebar);
-};
+}();
 
 export default createSidebar;

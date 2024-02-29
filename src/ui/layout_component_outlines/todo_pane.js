@@ -29,6 +29,6 @@ let createTodoPane = function() {
     todoPane.append(headingsWrapper, todoAdditionWrapper, todosDisplay);
 
     body.append(todoPane);
-};
+}();
 
 export default createTodoPane;

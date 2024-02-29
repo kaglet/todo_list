@@ -18,6 +18,6 @@ let createFooter = function() {
     
     footer.append(selfCredit);
     body.append(footer);
-};
+}();
 
 export default createFooter;

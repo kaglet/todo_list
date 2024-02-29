@@ -7,6 +7,6 @@ let createHeader = function() {
     header.append(pageTitle);
 
     body.append(header);
-};
+}();
 
 export default createHeader;
