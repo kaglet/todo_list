@@ -21,11 +21,11 @@ let listEditController = function() {
     let closeAddPaneButton;
 
     const showAdditionPane = () => {
-        pane.classList.remove('hidden');
+        pane.showModal();
     };
 
     const hideAdditionPane = () => {
-        pane.classList.add('hidden');
+        pane.close();
     };
 
     const createAddPane = () => {

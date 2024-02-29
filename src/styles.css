@@ -89,11 +89,38 @@ input {
 
 /* PANE DIALOG STYLING START */
 
+dialog::backdrop {
+    background-color: #2c6bbde6;
+}
+
+dialog {
+    font-weight: 800;
+    padding: 2.5rem;
+    min-height: 34rem;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #0c1c33; */
+}
+
+dialog h2 {
+    text-align: center;
+    margin-bottom: 2.1rem;
+    font-size: 3.2rem;
+}
+
+dialog input {
+    color: white;
+    border: none;
+    padding: 0.8rem 0.4rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
 /* PANE DIALOG STYLING END */
 
-.pane.list.addition:not(.hidden) {
-    width: 500px;
-    height: 500px;
+/* .pane.list.addition {
     background-color: black;
     display: block;
-} 
+}  */
