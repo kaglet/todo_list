@@ -86,3 +86,14 @@ input {
     background-color: rgb(189, 189, 189);
     color: white;
 }
+
+/* PANE DIALOG STYLING START */
+
+/* PANE DIALOG STYLING END */
+
+.pane.list.addition:not(.hidden) {
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    display: block;
+} 
