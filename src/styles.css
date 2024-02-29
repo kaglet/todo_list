@@ -57,7 +57,7 @@ header {
     grid-column: 1 / span 2;
 }
 
-h2 {
+h2, h1 {
     text-align: center;
 }
 
@@ -119,8 +119,3 @@ dialog input {
 }
 
 /* PANE DIALOG STYLING END */
-
-/* .pane.list.addition {
-    background-color: black;
-    display: block;
-}  */
