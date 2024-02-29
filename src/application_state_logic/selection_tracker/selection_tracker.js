@@ -1,3 +1,6 @@
+/* TODO: For selection tracker on click if the target is that and has an index, save it, 
+It can handle an on click listeners for this then get the selected item in the application state. */
+
 let selectionTracker = function() {
     let selectedList, selectedTodo, selectedSubtask;
 

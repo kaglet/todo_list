@@ -1,23 +1,39 @@
 import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+import createTodoPane from '../layout_component_outlines/todo_pane.js';
 
 // Manages addition functionality of new todo instances 
 let todoAdditionController = function() {
-    let nameInput = document.querySelector('');
+    let nameInput = createTodoPane.getNameInput();
 
-    let quickAddButton = document.querySelector('');
-    let saveButton = document.querySelector('');
+    let quickAddButton = createTodoPane.getQuickAddButton();
+    let saveButton;
 
-    let showAddPaneButton = document.querySelector('');
-    let closeAddPaneButton = document.querySelector('');
+    let customAddButton = createTodoPane.getCustomAddButton();
+    let closeAddPaneButton;
+
+    const showAdditionPane = () => {
+        pane.classList.remove('hidden');
+    };
+
+    const hideAdditionPane = () => {
+        pane.classList.add('hidden');
+    };
 
     const createAddPane = () => {
         let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'list', 'addition');
+        pane.classList.add('pane', 'todo', 'addition');
         let container = document.querySelector('body');
 
         container.append(pane);
         pane.classList.add('hidden');
+
+        closeAddPaneButton = document.createElement('button');
+        saveButton = document.createElement('button');
+        saveButton.classList.add('.todo.save');
+
+        customAddButton.addEventListener('click', showAdditionPane);
+        closeAddPaneButton.addEventListener('click', hideAdditionPane);
 
         return pane;
     };
@@ -50,19 +66,8 @@ let todoAdditionController = function() {
         // TODO: Next, store created todo in selected list
     };
 
-    const showAdditionPane = () => {
-        pane.classList.remove('hidden');
-    };
-
-    const hideAdditionPane = () => {
-        pane.classList.add('hidden');
-    };
-
     quickAddButton.addEventListener('click', addQuickTodo);
     saveButton.addEventListener('click', addCustomTodo);
-
-    showAddPaneButton.addEventListener('click', showAdditionPane);
-    closeAddPaneButton.addEventListener('click', hideAdditionPane);
 }();
 
 export default todoAdditionController;
