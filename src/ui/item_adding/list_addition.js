@@ -1,6 +1,7 @@
 import createList from '../../application_state_logic/create_building_blocks/create_list.js';
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import createSidebar from '../layout_component_outlines/sidebar.js';
+import listCustomizer from '../item_customizers/list_customizer.js';
 
 // TODO: Merge edit and add new list instance as motivated below
 // An edit controller controls new instance or current instance editing, each same pane should allow editing on itself. Each input will anyway and editing of the same instance on click of enter for example. 
@@ -15,49 +16,7 @@ let listEditController = function() {
     let nameInput = createSidebar.getNameInput();
 
     let quickAddButton = createSidebar.getQuickAddButton(); // TODO: call a get quick add button from where its created in DOM for maintainability
-    let saveButton;
-    
     let customAddButton = createSidebar.getCustomAddButton();
-    let closeAddPaneButton;
-
-    const showAdditionPane = () => {
-        pane.showModal();
-    };
-
-    const hideAdditionPane = () => {
-        pane.close();
-    };
-
-    const createAddPane = () => {
-        let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'list', 'addition');
-        let container = document.querySelector('body');
-
-        container.append(pane);
-        pane.classList.add('hidden');
-
-        // Components are tied to creation of pane and are not able to be referenced before its creation
-        closeAddPaneButton = document.createElement('button');
-        closeAddPaneButton.classList.add('list', 'close');
-        closeAddPaneButton.textContent = "X";
-        saveButton = document.createElement('button');
-        saveButton.classList.add('list', 'save');
-        saveButton.textContent = 'Save';
-
-        customAddButton.addEventListener('click', showAdditionPane);
-        closeAddPaneButton.addEventListener('click', hideAdditionPane);
-
-        // TODO: Add components, event listeners, and functionality to dialog pane
-
-        pane.append(closeAddPaneButton, saveButton);
-
-        // TODO: pane can give getters and setter methods as well since these elements are created inside this component just like the footer etc.
-        // Same way it will be done for footer, header modules and them. On creation of them they give off other services they can take on.
-
-        return pane;
-    };
-
-    let pane = createAddPane();
 
     const addQuickList = () => {
         let name = nameInput.textContent;
@@ -69,7 +28,8 @@ let listEditController = function() {
     };
 
     const getFormDetails = () => {
-        let name;
+        let name; // extract from form expected (if shared then share) and add these details for saving, we'll make the responsibility of the pane itself to get its details and then deconstruct them here
+        // whether the pane happens to be shared with other things doesn't matter so much to this module. It only cares about deconstructed results expected from pane.
         return { name };
     };
 
@@ -81,7 +41,9 @@ let listEditController = function() {
     };
 
     quickAddButton.addEventListener('click', addQuickList);
-    saveButton.addEventListener('click', addCustomList);
+    customAddButton.addEventListener('click', listCustomizer.showAdditionPane());
+
+    return { addCustomList };
 }();
 
 export default listEditController;
