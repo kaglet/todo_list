@@ -10,13 +10,28 @@ import listCustomizer from '../item_customizers/list_customizer.js';
 // I actually haven't thought how an edit controller will work over an addition controller
 // But now I realize they should be one and the same thing technically. Just with different alternate methods called when entering the input details from the form (to add a new instance or edit a current instance)
 
-
 // Manages addition functionality of new list instances 
-let listEditController = function() {
+let listAddController = function() {
     let nameInput = createSidebar.getNameInput();
 
     let quickAddButton = createSidebar.getQuickAddButton(); // TODO: call a get quick add button from where its created in DOM for maintainability
     let customAddButton = createSidebar.getCustomAddButton();
+
+    const completeCustomizerPaneFunctionality = () => {
+        let addCustomizer = listCustomizer.createCustomizerPane();
+
+        let saveButton = document.createElement('button');
+        saveButton.classList.add('list', 'save');
+        saveButton.textContent = 'Save Edit';
+
+        saveButton.addEventListener('click', () => listAddController.addCustomList()); // use listEditController.editList(); for edit existing list on save
+    
+        addCustomizer.append(saveButton);
+
+        return addCustomizer;
+    }
+
+    let addCustomizerPane = completeCustomizerPaneFunctionality();
 
     const addQuickList = () => {
         let name = nameInput.textContent;
@@ -28,7 +43,7 @@ let listEditController = function() {
     };
 
     const getFormDetails = () => {
-        let name; // extract from form expected (if shared then share) and add these details for saving, we'll make the responsibility of the pane itself to get its details and then deconstruct them here
+        let name; // TODO: extract from form expected (if shared then share) and add these details for saving, we'll make the responsibility of the pane itself to get its details and then deconstruct them here
         // whether the pane happens to be shared with other things doesn't matter so much to this module. It only cares about deconstructed results expected from pane.
         return { name };
     };
@@ -41,12 +56,12 @@ let listEditController = function() {
     };
 
     quickAddButton.addEventListener('click', addQuickList);
-    customAddButton.addEventListener('click', listCustomizer.showAdditionPane());
+    customAddButton.addEventListener('click', listCustomizer.showCustomizerPane(addCustomizerPane));
 
     return { addCustomList };
 }();
 
-export default listEditController;
+export default listAddController;
 
 // TODO: Simply show created list details (with given name for quick add if there is a staged list) during addition
 // There is no way to access edits with customizer pane with this controller
