@@ -21,9 +21,10 @@ let listAddController = function() {
         let addCustomizer = listCustomizer.createCustomizerPane();
 
         let saveButton = document.createElement('button');
-        saveButton.classList.add('list', 'save');
-        saveButton.textContent = 'Save Edit';
+        saveButton.classList.add('list', 'add');
+        saveButton.textContent = 'Add';
 
+        // The extension includes completing the save functionality being filled in not just attached.
         saveButton.addEventListener('click', () => listAddController.addCustomList()); // use listEditController.editList(); for edit existing list on save
     
         addCustomizer.append(saveButton);
