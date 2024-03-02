@@ -13,16 +13,13 @@ let listCustomizer = function() {
         let pane = document.createElement('dialog');
         pane.classList.add('pane', 'list', 'addition');
         let container = document.querySelector('body');
-
         container.append(pane);
         pane.close();
         
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');
         closeAddPaneButton.textContent = "X";
-
         closeAddPaneButton.addEventListener('click', () => hideCustomizerPane(pane));
-        // TODO: Add components, event listeners, and functionality to dialog pane
         pane.append(closeAddPaneButton);
 
         let form = document.createElement('form');
@@ -72,12 +69,8 @@ let listCustomizer = function() {
 
         }
 
-        const combineLabelToInput = function(label, input) {
-            label.setAttribute('for', input.getAttribute(id));
-            let wrapper = document.createElement('div');
-            wrapper.classList.add('wrapper');
-
-            return wrapper.append(label, input);
+        const giveLabelToInput = function(label, input) {
+           label.setAttribute('for', input.getAttribute(id));
         };
 
         let nameInput = createNameInput();
@@ -92,14 +85,15 @@ let listCustomizer = function() {
         let priorityLabel = document.createElement('label');
         priorityLabel.textContent = "Enter priority: ";
 
-        let nameWrapper = combineLabelToInput(nameLabel, nameInput);
-        nameWrapper.classList.add('name');
-        let priorityWrapper = combineLabelToInput(priorityLabel, priorityInput);
-        priorityWrapper.classList.add('priority');
-        let scheduleDateWrapper = combineLabelToInput(scheduleDateLabel, scheduleDateInput);
-        scheduleDateWrapper.classList.add('schedule-date');
+        giveLabelToInput(nameLabel, nameInput);
+        giveLabelToInput(priorityLabel, priorityInput);
+        giveLabelToInput(scheduleDateLabel, scheduleDateInput);
         
-        pane.append(nameWrapper, priorityWrapper, scheduleDateWrapper);
+        form.append(nameLabel, nameInput, scheduleDateLabel, scheduleDateInput, priorityLabel, priorityInput);
+
+        const getFormInputValues = function() {
+
+        };
 
         // TODO: pane can give getters and setter methods as well since these elements are created inside this component just like the footer etc.
         // Same way it will be done for footer, header modules and them. On creation of them they give off other services they can take on.
