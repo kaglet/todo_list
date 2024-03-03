@@ -1,8 +1,10 @@
+import createList from "../create_building_blocks/create_list";
+
 let listsManager = function() {
     let lists = []; 
     
     const addList = (list) => {
-        lists.append(list);
+        lists.push(list);
     };
 
     const removeList = (index) => {
@@ -16,6 +18,14 @@ let listsManager = function() {
     const getList = (index) => {
         return lists[index];
     };
+
+    const createAllList = () => {
+        let list = createList("All");
+
+        return list;
+    };
+
+    addList(createAllList());
 
     return { addList, removeList, getLists, getList };
 }();

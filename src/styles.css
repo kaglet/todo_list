@@ -20,7 +20,7 @@ body {
     ;
 }
 
-body > :nth-child(n):not(.sidebar) {
+body > :nth-child(n):not(.sidebar, dialog) {
     padding: 1rem;
 }
 
@@ -71,7 +71,7 @@ h2, h1 {
     gap: 1.5rem;
 }
 
-button, input {
+button, input, select {
     padding: 0.7rem;
     appearance: none;
     border: none;
@@ -82,7 +82,7 @@ button {
     color: palevioletred;
 }
 
-input {
+input, select {
     background-color: rgb(189, 189, 189);
     color: white;
 }
@@ -94,14 +94,34 @@ dialog::backdrop {
 }
 
 dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     font-weight: 800;
     padding: 2.5rem;
-    min-height: 34rem;
     width: 500px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* background-color: #0c1c33; */
+}
+
+dialog form {
+    display: grid;
+    align-items: center;
+    gap: 1rem;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+}
+
+dialog button.close {
+    margin-left: auto;
+}
+
+dialog button.add {
+    margin: 0 auto;
+    width: 50%;
 }
 
 dialog h2 {
@@ -110,8 +130,7 @@ dialog h2 {
     font-size: 3.2rem;
 }
 
-dialog input {
-    color: white;
+dialog input, dialog select {
     border: none;
     padding: 0.8rem 0.4rem;
     font-size: 1.3rem;

@@ -1,3 +1,4 @@
+import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import createSidebar from "../layout_component_outlines/sidebar";
 
 let listCustomizer = function() {
@@ -47,9 +48,13 @@ let listCustomizer = function() {
             let mediumPriorityOption = document.createElement('option');
             let lowPriorityOption = document.createElement('option');
 
-            lowPriorityOption.setAttribute('value', 'Low');
-            mediumPriorityOption.setAttribute('value', 'Medium');
-            highPriorityOption.setAttribute('value', 'High');
+            lowPriorityOption.setAttribute('value', 'low');
+            mediumPriorityOption.setAttribute('value', 'medium');
+            highPriorityOption.setAttribute('value', 'high');
+
+            lowPriorityOption.textContent = 'Low';
+            mediumPriorityOption.textContent = 'Medium';
+            highPriorityOption.textContent = 'High';
 
             priorityInput.append(lowPriorityOption, mediumPriorityOption, highPriorityOption);
 
@@ -66,11 +71,25 @@ let listCustomizer = function() {
         };
 
         const createListInput = function() {
+            let listSelectInput = document.createElement('select');
+            listSelectInput.setAttribute('type', 'select');
+            listSelectInput.setAttribute('name', 'priorities');      
+            let listSelectID =   'list-select';
+            listSelectInput.setAttribute('id', listSelectID);
 
+            // TODO: Create options based on all lists in list manager
+            listsManager.getLists().forEach(list => {
+                let listOption = document.createElement('option');
+                listOption.value = list.getName();
+                listOption.textContent = list.getName();
+                listSelectInput.append(listOption);
+            });
+
+            return listSelectInput;
         }
 
         const giveLabelToInput = function(label, input) {
-           label.setAttribute('for', input.getAttribute(id));
+           label.setAttribute('for', input.getAttribute('id'));
         };
 
         let nameInput = createNameInput();
@@ -83,16 +102,21 @@ let listCustomizer = function() {
 
         let priorityInput = createPriorityInput();
         let priorityLabel = document.createElement('label');
-        priorityLabel.textContent = "Enter priority: ";
+        priorityLabel.textContent = "Choose priority: ";
+
+        let chooseListInput = createListInput();
+        let chooseListLabel = document.createElement('label');
+        chooseListLabel.textContent = "Choose list: ";
 
         giveLabelToInput(nameLabel, nameInput);
         giveLabelToInput(priorityLabel, priorityInput);
         giveLabelToInput(scheduleDateLabel, scheduleDateInput);
+        giveLabelToInput(chooseListLabel, chooseListInput);
         
-        form.append(nameLabel, nameInput, scheduleDateLabel, scheduleDateInput, priorityLabel, priorityInput);
+        form.append(nameLabel, nameInput, scheduleDateLabel, scheduleDateInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput);
 
-        const getFormInputValues = function() {
-
+        const getFormInputs = function() {
+            return { nameInput , scheduleDateLabel, priorityLabel, priorityInput };
         };
 
         // TODO: pane can give getters and setter methods as well since these elements are created inside this component just like the footer etc.
