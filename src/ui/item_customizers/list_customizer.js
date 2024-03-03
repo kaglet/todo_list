@@ -10,12 +10,9 @@ let listCustomizer = function() {
         pane.close();
     };
 
-    const createCustomizerPane = (type) => {
+    const createCustomizerPane = () => {
         let pane = document.createElement('dialog');
         pane.classList.add('pane', 'list', 'addition');
-        let container = document.querySelector('body');
-        container.append(pane);
-        pane.close();
         
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');
