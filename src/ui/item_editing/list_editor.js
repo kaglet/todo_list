@@ -7,6 +7,20 @@ import listsManager from '../../application_state_logic/all_lists_manager/lists_
 let listEditController = function() {
     let showEditorButton = document.querySelector('button.list.edit');
 
+    // TODO: create edit pane and on click of button allow edit
+
+    
+
+    let fillForm = () => {
+
+    };
+
+    let editList = (list) => {
+
+    };
+
+    let getCustomizerPane = () => editCustomizerPane;
+
     showEditorButton.addEventListener('click', showEditPane);
 }();
 

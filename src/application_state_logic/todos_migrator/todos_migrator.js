@@ -2,7 +2,11 @@
 // Perhaps copy array of one list and append to all. That is simple.
 
 let todosMigrator = function() {
+    const migrateListTodos = (list) => {
 
+    };
+
+    return { migrateListTodos };
 }();
 
 export default todosMigrator;
