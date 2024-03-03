@@ -28,6 +28,7 @@ let listAddController = function() {
     let listAddCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');
     container.append(listAddCustomizerPane);
+    listCustomizer.hideCustomizerPane(listAddCustomizerPane);
 
     const addQuickList = () => {
         let name = nameInput.textContent;

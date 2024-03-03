@@ -4,10 +4,12 @@ import createSidebar from "../layout_component_outlines/sidebar";
 let listCustomizer = function() {
     const showCustomizerPane = (pane) => {
         pane.showModal();
+        pane.classList.remove('hidden');        
     };
 
     const hideCustomizerPane = (pane) => {
         pane.close();
+        pane.classList.add('hidden');
     };
 
     const createCustomizerPane = () => {
