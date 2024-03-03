@@ -32,10 +32,9 @@ let listAddController = function() {
         return addCustomizer;
     }
 
-    let addCustomizerPane = completeCustomizerPaneFunctionality();
+    let listAddCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');
-    container.append(addCustomizerPane);
-    addCustomizerPane.close();
+    container.append(listAddCustomizerPane);
 
     const addQuickList = () => {
         let name = nameInput.textContent;
@@ -60,7 +59,7 @@ let listAddController = function() {
     };
 
     quickAddButton.addEventListener('click', addQuickList);
-    customAddButton.addEventListener('click', listCustomizer.showCustomizerPane(addCustomizerPane));
+    customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
 
     return { addCustomList };
 }();

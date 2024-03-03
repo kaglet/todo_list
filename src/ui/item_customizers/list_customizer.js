@@ -30,6 +30,7 @@ let listCustomizer = function() {
             let nameInput = document.createElement('input');
             nameInput.textContent = name;
             nameInput.placeholder = 'Example List Name';
+            nameInput.setAttribute('id', 'name');
 
             return nameInput;
         };
@@ -58,15 +59,6 @@ let listCustomizer = function() {
             return priorityInput;
         };
 
-        const createScheduleDateInput = function() {
-            let scheduleDate = document.createElement('input');
-            scheduleDate.setAttribute('type', 'date');
-            let scheduleDateID = 'schedule-date';
-            scheduleDate.setAttribute('id', scheduleDateID);
-
-            return scheduleDate;
-        };
-
         const createListInput = function() {
             let listSelectInput = document.createElement('select');
             listSelectInput.setAttribute('type', 'select');
@@ -93,10 +85,6 @@ let listCustomizer = function() {
         let nameLabel = document.createElement('label');
         nameLabel.textContent = "Enter list name: ";
 
-        let scheduleDateInput = createScheduleDateInput();
-        let scheduleDateLabel = document.createElement('label');
-        scheduleDateLabel.textContent = 'Set schedule date: '; 
-
         let priorityInput = createPriorityInput();
         let priorityLabel = document.createElement('label');
         priorityLabel.textContent = "Choose priority: ";
@@ -107,10 +95,10 @@ let listCustomizer = function() {
 
         giveLabelToInput(nameLabel, nameInput);
         giveLabelToInput(priorityLabel, priorityInput);
-        giveLabelToInput(scheduleDateLabel, scheduleDateInput);
         giveLabelToInput(chooseListLabel, chooseListInput);
         
-        form.append(nameLabel, nameInput, scheduleDateLabel, scheduleDateInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput);
+        form.append(nameLabel, nameInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput);
+        form.method = "dialog";
 
         const getFormInputs = function() {
             return { nameInput , scheduleDateLabel, priorityLabel, priorityInput };
