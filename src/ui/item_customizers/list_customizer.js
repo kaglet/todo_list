@@ -101,18 +101,20 @@ let listCustomizer = function() {
         
         form.append(nameLabel, nameInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput);
         form.method = "dialog";
-
-        const getFormInputs = function() {
-            return { nameInput , scheduleDateLabel, priorityLabel, priorityInput };
-        };
-
         // TODO: pane can give getters and setter methods as well since these elements are created inside this component just like the footer etc.
         // Same way it will be done for footer, header modules and them. On creation of them they give off other services they can take on.
 
         return pane;
     };
 
-    return { hideCustomizerPane, showCustomizerPane, createCustomizerPane };
+    // Belong to factory
+    const getFormInputs = function(pane) {
+        let name = pane.querySelector('#name').value;
+
+        return { name };
+    };
+
+    return { hideCustomizerPane, showCustomizerPane, createCustomizerPane, getFormInputs };
 }();
 
 export default listCustomizer;

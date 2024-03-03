@@ -18,7 +18,10 @@ let listAddController = function() {
         saveButton.textContent = 'Add';
 
         // The extension includes completing the save functionality being filled in not just attached.
-        saveButton.addEventListener('click', () => listAddController.addCustomList()); // TODO: use listEditController.editList(); for edit existing list on save
+        saveButton.addEventListener('click', () => {
+            listAddController.addCustomList();
+            listCustomizer.hideCustomizerPane(addCustomizer);
+        }); // TODO: use listEditController.editList(); for edit existing list on save
     
         addCustomizer.append(saveButton);
 
@@ -31,25 +34,20 @@ let listAddController = function() {
     listCustomizer.hideCustomizerPane(listAddCustomizerPane);
 
     const addQuickList = () => {
-        let name = nameInput.textContent;
+        let name = nameInput.value;
         if (name.trim() === "") return;
 
         let list = createList(name);
         // Store list after creating 
         listsManager.addList(list);
-    };
-
-    const getFormDetails = () => {
-        let name; // TODO: extract from form expected (if shared then share) and add these details for saving, we'll make the responsibility of the pane itself to get its details and then deconstruct them here
-        // whether the pane happens to be shared with other things doesn't matter so much to this module. It only cares about deconstructed results expected from pane.
-        return { name };
+        console.log(listsManager.getLists());
     };
 
     const addCustomList = () => {
-        let { name } = getFormDetails();
-        let list = createList();
-        list.setName(name);
+        let { name } = listCustomizer.getFormInputs(listAddCustomizerPane);
+        let list = createList(name);
         listsManager.addList(list);
+        console.log(listsManager.getLists());
     };
 
     quickAddButton.addEventListener('click', addQuickList);
