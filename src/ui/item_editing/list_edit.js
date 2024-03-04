@@ -18,33 +18,33 @@ let listEditController = function() {
         saveButton.addEventListener('click', () => {
             editList();
             listCustomizer.hideCustomizerPane(addCustomizer);
-        }); // TODO: use listEditController.editList(); for edit existing list on save
+        });
     
         addCustomizer.append(saveButton);
 
         return addCustomizer;
     }
 
-    let listAddCustomizerPane = completeCustomizerPaneFunctionality();
+    let listEditCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');
-    container.append(listAddCustomizerPane);
-    listCustomizer.hideCustomizerPane(listAddCustomizerPane);
+    container.append(listEditCustomizerPane);
+    listCustomizer.hideCustomizerPane(listEditCustomizerPane);
 
     let fillForm = (list) => {
-        let { nameInput } = listCustomizer.getFormInputs();
+        let { nameInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
 
         nameInput.value = list.getName();
     };
 
-    let editList = (index) => {
-        let { nameInput } = listCustomizer.getFormInputs();
+    let editList = () => {
+        let { nameInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
         let selectedListIndex = selectionTracker.getSelectedList();
         let listToEdit = listsManager.getList(selectedListIndex);
         listToEdit.setName(nameInput.value);
         console.log(listsManager.getLists());
     };
 
-    let getCustomizerPane = () => editCustomizerPane;
+    let getCustomizerPane = () => listEditCustomizerPane;
 
     return { fillForm, getCustomizerPane, editList }
 }();

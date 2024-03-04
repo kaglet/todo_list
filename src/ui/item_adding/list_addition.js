@@ -38,7 +38,7 @@ let listAddController = function() {
     const addQuickList = () => {
         let name = nameInput.value;
         if (name.trim() === "") return;
-
+        
         let list = createList(name);
         // Store list after creating 
         listsManager.addList(list);
@@ -53,6 +53,10 @@ let listAddController = function() {
     };
 
     quickAddButton.addEventListener('click', () => {
+        // TODO: Use a get name input method on the sidebar not this singular reference here unless it is only needed here
+        let name = nameInput.value;
+        if (name.trim() === "") return;
+
         addQuickList();
         selectiveListsUpdater.addListDisplay();
     });
