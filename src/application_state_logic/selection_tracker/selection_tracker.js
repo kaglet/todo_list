@@ -2,15 +2,15 @@
 It can handle an on click listeners for this then get the selected item in the application state. */
 
 let selectionTracker = function() {
-    let selectedList, selectedTodo, selectedSubtask;
+    let selectedListIndex, selectedTodoIndex, selectedSubtaskIndex;
 
-    const setSelectedList = (index) => selectedList = index;
-    const setSelectedTodo = (index) => selectedTodo = index;
-    const setSelectedSubtask = (index) => selectedSubtask = index;
+    const setSelectedList = (index) => selectedListIndex = index;
+    const setSelectedTodo = (index) => selectedTodoIndex = index;
+    const setSelectedSubtask = (index) => selectedSubtaskIndex = index;
 
-    const getSelectedList = () => selectedList;
-    const getSelectedTodo = () => selectedTodo;
-    const getSelectedSubtask = () => selectedSubtask;
+    const getSelectedList = () => selectedListIndex;
+    const getSelectedTodo = () => selectedTodoIndex;
+    const getSelectedSubtask = () => selectedSubtaskIndex;
 
     return { setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask };
 }();

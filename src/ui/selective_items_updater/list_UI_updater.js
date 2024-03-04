@@ -4,6 +4,7 @@ import listsManager from "../../application_state_logic/all_lists_manager/lists_
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
 import listEditController from "../item_editing/list_editor";
 import listCustomizer from "../item_customizers/list_customizer";
+import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 
 let selectiveListsUpdater = function() {
     // Append new list to end of lists with newly added list in logical application state or maybe I do not want to keep track of that
@@ -25,9 +26,11 @@ let selectiveListsUpdater = function() {
         deleteButton.textContent = "Delete";
 
         editButton.addEventListener('click', () => {
-            /* show dialog, and populate form */
+            let listDisplayID = listDisplay.getAttribute('data-id');
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
-            listEditController;
+            // For edit set selected list in UI, for use later
+            selectionTracker.setSelectedList(listDisplayID);
+            listEditController.fillForm(listsManager.getList(listDisplayID));
         });
         deleteButton.addEventListener('click', () => {
             let listDisplayID = listDisplay.getAttribute('data-id');

@@ -109,7 +109,7 @@ let listCustomizer = function() {
 
     // Belong to factory
     const getFormInputs = function(pane) {
-        let name = pane.querySelector('#name').value;
+        let name = pane.querySelector('#name');
 
         return { name };
     };
