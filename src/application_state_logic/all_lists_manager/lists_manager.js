@@ -1,4 +1,4 @@
-import createList from "../create_building_blocks/create_list";
+import createList from "../create_building_blocks/create_list.js";
 
 let listsManager = function() {
     let lists = []; 
@@ -26,6 +26,7 @@ let listsManager = function() {
     };
 
     addList(createAllList());
+    
 
     return { addList, removeList, getLists, getList };
 }();

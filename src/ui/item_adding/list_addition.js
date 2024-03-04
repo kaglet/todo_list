@@ -38,7 +38,7 @@ let listAddController = function() {
     const addQuickList = () => {
         let name = nameInput.value;
         if (name.trim() === "") return;
-        
+
         let list = createList(name);
         // Store list after creating 
         listsManager.addList(list);
@@ -60,7 +60,12 @@ let listAddController = function() {
         addQuickList();
         selectiveListsUpdater.addListDisplay();
     });
+
     customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
+
+    // Add initial list "All" into UI 
+    // TODO: Do logical addition here explicitly as well
+    selectiveListsUpdater.addListDisplay();
 
     return { addCustomList };
 }();
