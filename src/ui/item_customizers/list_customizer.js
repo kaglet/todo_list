@@ -109,9 +109,9 @@ let listCustomizer = function() {
 
     // Belong to factory
     const getFormInputs = function(pane) {
-        let name = pane.querySelector('#name');
+        let nameInput = pane.querySelector('#name');
 
-        return { name };
+        return { nameInput };
     };
 
     return { hideCustomizerPane, showCustomizerPane, createCustomizerPane, getFormInputs };

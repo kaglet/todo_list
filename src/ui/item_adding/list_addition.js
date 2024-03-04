@@ -46,13 +46,16 @@ let listAddController = function() {
     };
 
     const addCustomList = () => {
-        let { name } = listCustomizer.getFormInputs(listAddCustomizerPane);
-        let list = createList(name);
+        let { nameInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
+        let list = createList(nameInput.value);
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };
 
-    quickAddButton.addEventListener('click', addQuickList);
+    quickAddButton.addEventListener('click', () => {
+        addQuickList();
+        selectiveListsUpdater.addListDisplay();
+    });
     customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
 
     return { addCustomList };

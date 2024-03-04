@@ -29,11 +29,7 @@ let createSidebar = function() {
 
     let listsDisplay = document.createElement('div');
     listsDisplay.classList.add('lists', 'display');
-    let allListOption = document.createElement('button');
-    allListOption.textContent = 'All';
-
-    listsDisplay.append(allListOption);
-
+    
     sidebar.append(menuIcon, addListOptionsWrapper, listsDisplay);
 
     body.append(sidebar);

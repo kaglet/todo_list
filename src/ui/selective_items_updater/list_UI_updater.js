@@ -2,7 +2,7 @@
 
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
-import listEditController from "../item_editing/list_editor";
+import listEditController from "../item_editing/list_edit";
 import listCustomizer from "../item_customizers/list_customizer";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 
@@ -12,7 +12,7 @@ let selectiveListsUpdater = function() {
     const addListDisplay = () => {
         let wrapper = document.createElement('div');
 
-        let newListIndex = listsManager.getLists().length;
+        let newListIndex = listsManager.getLists().length - 1;
         let newList = listsManager.getList(newListIndex);
 
         let listDisplay = document.createElement('button');

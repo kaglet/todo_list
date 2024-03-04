@@ -7,10 +7,6 @@ import listCustomizer from '../item_customizers/list_customizer.js';
 
 // Manages edit functionality of existing list instances
 let listEditController = function() {
-    let showEditorButton = document.querySelector('button.list.edit');
-
-    // TODO: create edit pane and on click of button allow edit
-
     const completeCustomizerPaneFunctionality = () => {
         let addCustomizer = listCustomizer.createCustomizerPane();
 
@@ -41,18 +37,16 @@ let listEditController = function() {
     };
 
     let editList = (index) => {
-        let { name } = listCustomizer.getFormInputs();
+        let { nameInput } = listCustomizer.getFormInputs();
         let selectedListIndex = selectionTracker.getSelectedList();
         let listToEdit = listsManager.getList(selectedListIndex);
-        listToEdit.setName(name);
+        listToEdit.setName(nameInput.value);
         console.log(listsManager.getLists());
     };
 
     let getCustomizerPane = () => editCustomizerPane;
 
-    showEditorButton.addEventListener('click', showEditPane);
-
-    return { fillForm }
+    return { fillForm, getCustomizerPane, editList }
 }();
 
 export default listEditController;
