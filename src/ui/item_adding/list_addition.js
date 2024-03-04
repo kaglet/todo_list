@@ -2,6 +2,7 @@ import createList from '../../application_state_logic/create_building_blocks/cre
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import createSidebar from '../layout_component_outlines/sidebar.js';
 import listCustomizer from '../item_customizers/list_customizer.js';
+import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
 
 // Manages addition functionality of new list instances 
 let listAddController = function() {
@@ -21,6 +22,7 @@ let listAddController = function() {
         saveButton.addEventListener('click', () => {
             listAddController.addCustomList();
             listCustomizer.hideCustomizerPane(addCustomizer);
+            selectiveListsUpdater.addListDisplay();
         }); // TODO: use listEditController.editList(); for edit existing list on save
     
         addCustomizer.append(saveButton);
