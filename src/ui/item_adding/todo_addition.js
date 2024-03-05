@@ -1,4 +1,3 @@
-import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import createTodoPane from '../layout_component_outlines/todo_pane.js';
 import todoCustomizer from '../item_customizers/todo_customizer.js';
 import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
@@ -47,10 +46,10 @@ let todoAddController = function() {
 
     const addCustomTodo = () => {
         let {  nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
-        let todo = createList(nameInput.value);
+        let todo = createTodo(nameInput.value);
         todo.setScheduleDate(dateInput.value);
         todo.setPriority(priorityInput.value);
-        todo.setList(listInput.value);
+        // todo.setList(listInput.value);
         selectionTracker.getSelectedList().addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
     };

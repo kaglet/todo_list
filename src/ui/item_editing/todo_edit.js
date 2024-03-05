@@ -31,9 +31,13 @@ let todoEditController = function() {
     todoCustomizer.hideCustomizerPane(todoEditCustomizerPane);
 
     let fillForm = (todo) => {
-        let { nameInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
+        let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
 
         nameInput.value = todo.getName();
+        dateInput.value = todo.getScheduleDate();
+        priorityInput.value = todo.getPriority();
+        
+        // TODO: Set first option of list input
     };
 
     let editTodo = () => {
@@ -43,8 +47,6 @@ let todoEditController = function() {
         todoToEdit.setName(nameInput.value);
         todoToEdit.setScheduleDate(dateInput.value);
         todoToEdit.setPriority(priorityInput.value);
-        // todoToEdit.setList(listInput.value);
-        // TODO: Set other edited properties of todo
 
         console.log(selectionTracker.getSelectedList().getTodos());
     };
