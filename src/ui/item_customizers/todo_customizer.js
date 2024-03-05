@@ -113,7 +113,7 @@ let todoCustomizer = function () {
         giveLabelToInput(chooseListLabel, chooseListInput);
         giveLabelToInput(scheduleDateLabel, scheduleDateInput);
 
-        form.append(nameLabel, nameInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput);
+        form.append(nameLabel, nameInput, priorityLabel, priorityInput, chooseListLabel, chooseListInput, scheduleDateLabel, scheduleDateInput);
         form.method = "dialog";
 
         return pane;

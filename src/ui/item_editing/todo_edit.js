@@ -15,7 +15,7 @@ let todoEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editTodo();
-            let selectedTodoIndex = selectionTracker.getSelectedTodo();
+            let selectedTodoIndex = selectionTracker.getSelectedTodoIndex();
             selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex);
             todoCustomizer.hideCustomizerPane(editCustomizer);
         });
@@ -38,12 +38,15 @@ let todoEditController = function() {
 
     let editTodo = () => {
         let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
-        let selectedTodoIndex = selectionTracker.getSelectedTodo();
-        let todoToEdit = getListOfTodo().getTodo(selectedTodoIndex);
+        let selectedTodoIndex = selectionTracker.getSelectedTodoIndex();
+        let todoToEdit = selectionTracker.getSelectedList().getTodo(selectedTodoIndex);
         todoToEdit.setName(nameInput.value);
+        todoToEdit.setScheduleDate(dateInput.value);
+        todoToEdit.setPriority(priorityInput.value);
+        // todoToEdit.setList(listInput.value);
         // TODO: Set other edited properties of todo
 
-        console.log(getListOfTodo().getTodos());
+        console.log(selectionTracker.getSelectedList().getTodos());
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;
