@@ -1,5 +1,4 @@
 // add/remove
-
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
 import listEditController from "../item_editing/list_edit";
@@ -32,14 +31,13 @@ let selectiveListsUpdater = function() {
             let listDisplayID = listItem.getAttribute('data-id');
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
             // For edit set selected list in UI, for use later
-            selectionTracker.setSelectedList(listDisplayID);
+            selectionTracker.setSelectedTodo(listDisplayID);
             listEditController.fillForm(listsManager.getList(listDisplayID));
         });
         deleteButton.addEventListener('click', () => {
             let listDisplayID = listItem.getAttribute('data-id');
             removeListDisplay(listDisplayID);
             listsManager.removeList(listDisplayID);
-            todosMigrator.migrateListTodos(newList);
         });
 
         wrapper.append(listItem, editButton, deleteButton);

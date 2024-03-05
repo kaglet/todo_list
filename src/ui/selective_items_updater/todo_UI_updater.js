@@ -1,26 +1,31 @@
 // add/remove
-
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
-import listEditController from "../item_editing/list_edit";
-import listCustomizer from "../item_customizers/list_customizer";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
+import todoCustomizer from "../item_customizers/todo_customizer";
+import todoEditController from "../item_editing/todo_edit";
 
 let selectiveTodoUpdater = function() {
-    let listsDisplay = document.querySelector('.lists.display');
+    let todosDisplay = document.querySelector('.todos.display');
     
-    // Append new list to end of lists with newly added list in logical application state or maybe I do not want to keep track of that
-    // This not only adds lists but adds functionality that allows it to call delete, and so I feel this should be separated
-    const addListDisplay = () => {
+    const getListOfTodo = () => {
+        let selectedListIndex = selectionTracker.getSelectedList();
+        let selectedList = listsManager.getList(selectedListIndex);
+
+        return selectedList;
+    };
+
+    const addTodoDisplay = () => {
         let wrapper = document.createElement('div');
 
-        let newListIndex = listsManager.getLists().length - 1;
-        let newList = listsManager.getList(newListIndex);
+        let listOfTodo = selectionTracker.getSelectedList();
+        let newTodoIndex = listOfTodo.getTodos().length - 1;
+        let newTodo = listOfTodo.getTodo(newTodoIndex);
 
-        let listItem = document.createElement('button');
-        listItem.textContent = newList.getName();
-        listItem.setAttribute('data-id', newListIndex);
-        listItem.classList.add('list', 'item');
+        let todoItem = document.createElement('button');
+        todoItem.textContent = newTodo.getName();
+        todoItem.setAttribute('data-id', newTodoIndex);
+        todoItem.classList.add('todo', 'item');
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
@@ -29,46 +34,45 @@ let selectiveTodoUpdater = function() {
         deleteButton.textContent = "Delete";
 
         editButton.addEventListener('click', () => {
-            let listDisplayID = listItem.getAttribute('data-id');
-            listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
-            // For edit set selected list in UI, for use later
-            selectionTracker.setSelectedList(listDisplayID);
-            listEditController.fillForm(listsManager.getList(listDisplayID));
+            let todoDisplayID = todoItem.getAttribute('data-id');
+            todoCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
+            // For completing edit set selected list in UI, for use later
+            selectionTracker.setSelectedTodo(todoDisplayID);
+            todoEditController.fillForm(getListOfTodo().getTodo(todoDisplayID));
         });
         deleteButton.addEventListener('click', () => {
-            let listDisplayID = listItem.getAttribute('data-id');
-            removeListDisplay(listDisplayID);
-            listsManager.removeList(listDisplayID);
-            todosMigrator.migrateListTodos(newList);
+            let todoDisplayID = todoItem.getAttribute('data-id');
+            removeTodoDisplay(todoDisplayID);
+            getListOfTodo().removeTodo(todoDisplayID);
         });
 
-        wrapper.append(listItem, editButton, deleteButton);
-        wrapper.classList.add('list', 'display', 'wrapper');
-        listsDisplay.append(wrapper);
+        wrapper.append(todoItem, editButton, deleteButton);
+        wrapper.classList.add('todo', 'display', 'wrapper');
+        todosDisplay.append(wrapper);
     };
 
     // Remove list display at selected index
-    const removeListDisplay = (index) => {
-        let listDisplayWrappers = document.querySelectorAll('.list.display.wrapper');
-        let listItems = document.querySelectorAll('.list.item');
+    const removeTodoDisplay = (index) => {
+        let todoDisplayWrappers = document.querySelectorAll('.todo.display.wrapper');
+        let todoItems = document.querySelectorAll('.todo.item');
         // Update UI display indices of place after left shift from delete
-        listDisplayWrappers.item(index).remove();
+        todoDisplayWrappers.item(index).remove();
 
         // Update lists which do not change original reference even if DOM has changed after removal
-        listDisplayWrappers = document.querySelectorAll('.list.display.wrapper');
-        listItems = document.querySelectorAll('.list.item');
-        for (let i = index; i < listDisplayWrappers.length; i++) {
-            listItems.item(i).setAttribute('data-id', index);
+        todoDisplayWrappers = document.querySelectorAll('.todo.display.wrapper');
+        todoItems = document.querySelectorAll('.todo.item');
+        for (let i = index; i < todoDisplayWrappers.length; i++) {
+            todoItems.item(i).setAttribute('data-id', index);
         }
     };
 
     // Reflect edits of list item after changes are saved
-    const editListDisplay = (index) => {
-        let listItems = document.querySelectorAll('.list.item');
-        listItems.item(index).textContent = listsManager.getList(index).getName();
-    }
+    const editTodoDisplay = (index) => {
+        let todoItems = document.querySelectorAll('.todo.item');
+        todoItems.item(index).textContent = getListOfTodo.getTodo(index).getName();
+    };
 
-    return { addListDisplay, removeListDisplay, editListDisplay };
+    return { addTodoDisplay, removeTodoDisplay, editTodoDisplay };
 }();
 
 export default selectiveTodoUpdater;

@@ -12,7 +12,7 @@ let selectionTracker = function() {
     const getSelectedTodo = () => selectedTodoIndex;
     const getSelectedSubtask = () => selectedSubtaskIndex;
 
-    return { setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask };
+    return { setSelectedTodo: setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask };
 }();
 
 export default selectionTracker;
