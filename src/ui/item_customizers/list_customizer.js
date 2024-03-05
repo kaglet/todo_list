@@ -49,13 +49,11 @@ let listCustomizer = function() {
         
         form.append(nameLabel, nameInput);
         form.method = "dialog";
-        // TODO: pane can give getters and setter methods as well since these elements are created inside this component just like the footer etc.
-        // Same way it will be done for footer, header modules and them. On creation of them they give off other services they can take on.
 
         return pane;
     };
 
-    // Belong to factory
+    // Getter on factory instance pane's components
     const getFormInputs = function(pane) {
         let nameInput = pane.querySelector('#name');
 

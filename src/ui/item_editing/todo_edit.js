@@ -1,35 +1,58 @@
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 
 // Manages edit functionality of existing todo instances
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
+import todoCustomizer from '../item_customizers/todo_customizer.js';
+import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
+import selectiveTodoUpdater from '../selective_items_updater/todo_UI_updater.js';
+
+// Manages edit functionality of existing list instances
 let todoEditController = function() {
-    let showEditorButton = document.querySelector('');
-    let closeEditorButton = document.querySelector('');
+    const completeCustomizerPaneFunctionality = () => {
+        let editCustomizer = todoCustomizer.createCustomizerPane();
 
-    const createEditPane = () => {
-        let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'todo', 'customizer');
-        let container = document.querySelector('body');
+        let saveButton = document.createElement('button');
+        saveButton.classList.add('list', 'edit');
+        saveButton.textContent = 'Save Edit';
 
-        container.append(pane);
-        pane.classList.add('hidden');
+        saveButton.addEventListener('click', () => {
+            editTodo();
+            let selectedListIndex = selectionTracker.getSelectedTodo();
+            selectiveTodoUpdater.editTodoDisplay(selectedListIndex);
+            todoCustomizer.hideCustomizerPane(editCustomizer);
+        });
+    
+        editCustomizer.append(saveButton);
 
-        return pane;
+        return editCustomizer;
     };
 
-    let pane = createEditPane();
+    let todoEditCustomizerPane = completeCustomizerPaneFunctionality();
+    let container = document.querySelector('body');
+    container.append(todoEditCustomizerPane);
+    todoCustomizer.hideCustomizerPane(todoEditCustomizerPane);
 
-    const showEditPane = () => {
-        // TODO: Create and show dialog with all the inputs and options (basic for now)
-        pane.classList.remove('hidden');
-    }; 
+    let fillForm = (list) => {
+        let { nameInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
 
-    const hideEditPane = () => {
-        // TODO: Close dialog modal and wipe form inputs
-        pane.classList.add('hidden');
+        nameInput.value = list.getName();
     };
 
-    showEditorButton.addEventListener('click', showEditPane);
-    closeEditorButton.addEventListener('click', hideEditPane);
+    let editTodo = () => {
+        let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
+        let selectedListIndex = selectionTracker.getSelectedList();
+        let selectedTodoIndex = selectionTracker.getSelectedTodo();
+        let todoToEdit = listsManager.getList(selectedListIndex).getTodo(selectedTodoIndex);
+        todoToEdit.setName(nameInput.value);
+        // TODO: Set other edited properties of todo
+
+        console.log(listsManager.getList(selectedListIndex).getTodos());
+    };
+
+    let getCustomizerPane = () => todoEditCustomizerPane;
+
+    return { fillForm, getCustomizerPane, editList: editTodo }
 }();
 
 export default todoEditController;
