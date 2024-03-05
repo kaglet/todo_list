@@ -1,19 +1,10 @@
 // add/remove
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
-import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import todoCustomizer from "../item_customizers/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
 
-let selectiveTodoUpdater = function() {
+let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
-    
-    const getListOfTodo = () => {
-        let selectedListIndex = selectionTracker.getSelectedList();
-        let selectedList = listsManager.getList(selectedListIndex);
-
-        return selectedList;
-    };
 
     const addTodoDisplay = () => {
         let wrapper = document.createElement('div');
@@ -35,15 +26,15 @@ let selectiveTodoUpdater = function() {
 
         editButton.addEventListener('click', () => {
             let todoDisplayID = todoItem.getAttribute('data-id');
-            todoCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
+            todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane());
             // For completing edit set selected list in UI, for use later
-            selectionTracker.setSelectedTodo(todoDisplayID);
-            todoEditController.fillForm(getListOfTodo().getTodo(todoDisplayID));
+            selectionTracker.setSelectedTodoIndex(todoDisplayID);
+            todoEditController.fillForm(selectionTracker.getSelectedList().getTodo(todoDisplayID));
         });
         deleteButton.addEventListener('click', () => {
             let todoDisplayID = todoItem.getAttribute('data-id');
             removeTodoDisplay(todoDisplayID);
-            getListOfTodo().removeTodo(todoDisplayID);
+            selectionTracker.getSelectedList().removeTodo(todoDisplayID);
         });
 
         wrapper.append(todoItem, editButton, deleteButton);
@@ -66,14 +57,14 @@ let selectiveTodoUpdater = function() {
         }
     };
 
-    // Reflect edits of list item after changes are saved
+    // Reflect edits of specific list item in UI after changes are saved
     const editTodoDisplay = (index) => {
         let todoItems = document.querySelectorAll('.todo.item');
-        todoItems.item(index).textContent = getListOfTodo.getTodo(index).getName();
+        todoItems.item(index).textContent = selectionTracker.getSelectedList().getTodo(index).getName();
     };
 
     return { addTodoDisplay, removeTodoDisplay, editTodoDisplay };
 }();
 
-export default selectiveTodoUpdater;
+export default selectiveTodosUpdater;
 

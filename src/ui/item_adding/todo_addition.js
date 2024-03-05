@@ -1,75 +1,74 @@
-import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import createTodoPane from '../layout_component_outlines/todo_pane.js';
+import todoCustomizer from '../item_customizers/todo_customizer.js';
+import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
+import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
+import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
 
 // Manages addition functionality of new todo instances 
-let todoAdditionController = function() {
+let todoAddController = function() {
     let nameInput = createTodoPane.getNameInput();
 
-    let quickAddButton = createTodoPane.getQuickAddButton();
-    let saveButton;
-
+    let quickAddButton = createTodoPane.getQuickAddButton(); 
     let customAddButton = createTodoPane.getCustomAddButton();
-    let closeAddPaneButton;
 
-    const showAdditionPane = () => {
-        pane.classList.remove('hidden');
-    };
+    // Get containing list for accessing logical addition spot of todos
+    const completeCustomizerPaneFunctionality = () => {
+        let addCustomizerPane = todoCustomizer.createCustomizerPane();
 
-    const hideAdditionPane = () => {
-        pane.classList.add('hidden');
-    };
+        let saveButton = document.createElement('button');
+        saveButton.classList.add('todo', 'add');
+        saveButton.textContent = 'Add';
 
-    const createAddPane = () => {
-        let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'todo', 'addition');
-        let container = document.querySelector('body');
+        saveButton.addEventListener('click', () => {
+            addCustomTodo();
+            todoCustomizer.hideCustomizerPane(addCustomizerPane);
+            selectiveTodosUpdater.addTodoDisplay();
+        });
+    
+        addCustomizerPane.append(saveButton);
 
-        container.append(pane);
-        pane.classList.add('hidden');
+        return addCustomizerPane;
+    }
 
-        closeAddPaneButton = document.createElement('button');
-        saveButton = document.createElement('button');
-        saveButton.classList.add('.todo.save');
+    let todoAddCustomizerPane = completeCustomizerPaneFunctionality();
+    let container = document.querySelector('body');
+    container.append(todoAddCustomizerPane);
+    todoCustomizer.hideCustomizerPane(todoAddCustomizerPane);
 
-        customAddButton.addEventListener('click', showAdditionPane);
-        closeAddPaneButton.addEventListener('click', hideAdditionPane);
+    const addQuickList = () => {
+        let name = nameInput.value;
 
-        return pane;
-    };
-
-    let pane = createAddPane();
-
-    const addQuickTodo = () => {
-        // Create defaults for todo
-        let name = nameInput.textContent;
-        if (name.trim() === "") return;
-
-        let todo = createTodo(name); 
-        // TODO: Add todo to currently selected list in the application state (so it is to that logically stored list not the UI yet - that is on demand)
-    };
-
-    // TODO: Get custom details from editor in order to simply add since role here is addition
-    const getFormDetails = () => {
-        let name;
-        let dueDate;
-        let priority;
-        return { name, dueDate, priority };
+        let todo = createTodo(name);
+        // Store list after creating 
+        selectionTracker.getSelectedList().addTodo(todo);
+        console.log(selectionTracker.getSelectedList().getTodos());
     };
 
     const addCustomTodo = () => {
-        let { name, dueDate, priority } = getFormDetails();
-        let todo = createTodo();
-        todo.setName(name);
-        todo.setDueDate(dueDate);
-        todo.setPriority(priority);
-        // TODO: Next, store created todo in selected list
+        let {  nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
+        let todo = createList(nameInput.value);
+        todo.setScheduleDate(dateInput.value);
+        todo.setPriority(priorityInput.value);
+        todo.setList(listInput.value);
+        selectionTracker.getSelectedList().addTodo(todo);
+        console.log(selectionTracker.getSelectedList().getTodos());
     };
 
-    quickAddButton.addEventListener('click', addQuickTodo);
-    saveButton.addEventListener('click', addCustomTodo);
+    quickAddButton.addEventListener('click', () => {
+        // TODO: Use a get name input method on the sidebar not this singular reference here unless it is only needed here but still
+        let name = nameInput.value;
+        if (name.trim() === "") return;
+
+        addQuickList();
+        selectiveTodosUpdater.addTodoDisplay();
+    });
+
+    customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane));
+
+    return { addCustomTodo };
 }();
 
-export default todoAdditionController;
+export default todoAddController;
 
 // TODO: Not yet added to selected todo, and not yet added to UI, just created in isolation.

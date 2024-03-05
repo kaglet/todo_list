@@ -27,7 +27,7 @@ let todoCustomizer = function () {
 
         const createNameInput = function () {
             // Get name from UI if needed, its not yet saved to logical state
-            let alreadyEnteredName = createSidebar.getNameInput().textContent;
+            let alreadyEnteredName = createTodoPane.getNameInput().textContent;
             let name = alreadyEnteredName.trim() === "" ? "" : alreadyEnteredName;
             let nameInput = document.createElement('input');
             nameInput.textContent = name;

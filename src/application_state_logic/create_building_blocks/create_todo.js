@@ -1,7 +1,7 @@
 let createTodo = function(name) {
     let todo = Object.create(createTodo.proto);
     todo.setName(name);
-    this.subtasks = [];
+    todo.subtasks = [];
 
     return todo;
 };
@@ -14,7 +14,7 @@ createTodo.proto = {
         return this.name;
     },
     addSubtask(subtask) {
-        this.subtasks.append(subtask);
+        this.subtasks.push(subtask);
     },
     removeSubtask(index) {
         this.subtasks.splice(index, 1);
@@ -26,7 +26,7 @@ createTodo.proto = {
     setPriority(priority) {
         this.priority = priority;
     },
-    setDueDate(dueDate) {
+    setScheduleDate(dueDate) {
         this.dueDate = dueDate;
     },
     setDescription(desc) {

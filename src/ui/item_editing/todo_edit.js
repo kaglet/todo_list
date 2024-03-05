@@ -1,11 +1,8 @@
-import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
-
 // Manages edit functionality of existing todo instances
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
 import todoCustomizer from '../item_customizers/todo_customizer.js';
-import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
-import selectiveTodoUpdater from '../selective_items_updater/todo_UI_updater.js';
+import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
 
 // Manages edit functionality of existing list instances
 let todoEditController = function() {
@@ -18,8 +15,8 @@ let todoEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editTodo();
-            let selectedListIndex = selectionTracker.getSelectedTodo();
-            selectiveTodoUpdater.editTodoDisplay(selectedListIndex);
+            let selectedTodoIndex = selectionTracker.getSelectedTodo();
+            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex);
             todoCustomizer.hideCustomizerPane(editCustomizer);
         });
     
@@ -33,26 +30,25 @@ let todoEditController = function() {
     container.append(todoEditCustomizerPane);
     todoCustomizer.hideCustomizerPane(todoEditCustomizerPane);
 
-    let fillForm = (list) => {
+    let fillForm = (todo) => {
         let { nameInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
 
-        nameInput.value = list.getName();
+        nameInput.value = todo.getName();
     };
 
     let editTodo = () => {
         let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
-        let selectedListIndex = selectionTracker.getSelectedList();
         let selectedTodoIndex = selectionTracker.getSelectedTodo();
-        let todoToEdit = listsManager.getList(selectedListIndex).getTodo(selectedTodoIndex);
+        let todoToEdit = getListOfTodo().getTodo(selectedTodoIndex);
         todoToEdit.setName(nameInput.value);
         // TODO: Set other edited properties of todo
 
-        console.log(listsManager.getList(selectedListIndex).getTodos());
+        console.log(getListOfTodo().getTodos());
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;
 
-    return { fillForm, getCustomizerPane, editList: editTodo }
+    return { fillForm, getCustomizerPane, editTodo };
 }();
 
 export default todoEditController;

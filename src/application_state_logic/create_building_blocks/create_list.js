@@ -14,7 +14,7 @@ createList.proto = {
         return this.name;
     },
     addTodo(todo) {
-        this.todos.append(todo);
+        this.todos.push(todo);
     },
     removeTodo(index) {
         this.todos.splice(index, 1);

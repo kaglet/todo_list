@@ -17,9 +17,9 @@ import selectionTracker from './application_state_logic/selection_tracker/select
 import todosMigrator from './application_state_logic/todos_migrator/todos_migrator';
 
 import listAddController from './ui/item_adding/list_addition';
-// import todoAdditionController from './ui/item_adding/todo_addition';
+import todoAdditionController from './ui/item_adding/todo_addition';
 // import subtaskAdditionController from './ui/item_adding/subtask_addition';
 
 import listEditController from './ui/item_editing/list_edit';
-// import todoEditController from './ui/item_editing/todo_editor';
+import todoEditController from './ui/item_editing/todo_edit';
 // import subtaskEditController from './ui/item_editing/subtask_editor';

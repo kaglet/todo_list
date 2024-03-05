@@ -31,7 +31,7 @@ let selectiveListsUpdater = function() {
             let listDisplayID = listItem.getAttribute('data-id');
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
             // For edit set selected list in UI, for use later
-            selectionTracker.setSelectedTodo(listDisplayID);
+            selectionTracker.setSelectedListIndex(listDisplayID);
             listEditController.fillForm(listsManager.getList(listDisplayID));
         });
         deleteButton.addEventListener('click', () => {
@@ -64,7 +64,7 @@ let selectiveListsUpdater = function() {
     const editListDisplay = (index) => {
         let listItems = document.querySelectorAll('.list.item');
         listItems.item(index).textContent = listsManager.getList(index).getName();
-    }
+    };
 
     return { addListDisplay, removeListDisplay, editListDisplay };
 }();

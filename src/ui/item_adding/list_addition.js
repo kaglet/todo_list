@@ -20,7 +20,7 @@ let listAddController = function() {
 
 
         saveButton.addEventListener('click', () => {
-            listAddController.addCustomList();
+            addCustomList();
             listCustomizer.hideCustomizerPane(addCustomizer);
             selectiveListsUpdater.addListDisplay();
         });
@@ -37,7 +37,6 @@ let listAddController = function() {
 
     const addQuickList = () => {
         let name = nameInput.value;
-        if (name.trim() === "") return;
 
         let list = createList(name);
         // Store list after creating 

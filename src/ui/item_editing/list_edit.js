@@ -14,7 +14,7 @@ let listEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editList();
-            let selectedListIndex = selectionTracker.getSelectedList();
+            let selectedListIndex = selectionTracker.getSelectedListIndex();
             selectiveListsUpdater.editListDisplay(selectedListIndex);
             listCustomizer.hideCustomizerPane(editCustomizer);
         });
@@ -37,8 +37,7 @@ let listEditController = function() {
 
     let editList = () => {
         let { nameInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
-        let selectedListIndex = selectionTracker.getSelectedList();
-        let listToEdit = listsManager.getList(selectedListIndex);
+        let listToEdit = selectionTracker.getSelectedList();
         listToEdit.setName(nameInput.value);
         console.log(listsManager.getLists());
     };
