@@ -1,9 +1,7 @@
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
 import listCustomizer from '../item_customizers/list_customizer.js';
-
-// Access the same pane, or just show the same logical data on a different pane since its superficial, then on click of save button edit existing instance
-// We can use the same pane introduced by the list addition controller
+import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
 
 // Manages edit functionality of existing list instances
 let listEditController = function() {
@@ -14,9 +12,10 @@ let listEditController = function() {
         saveButton.classList.add('list', 'edit');
         saveButton.textContent = 'Save Edit';
 
-        // The extension includes completing the save functionality being filled in not just attached.
         saveButton.addEventListener('click', () => {
             editList();
+            let selectedListIndex = selectionTracker.getSelectedList();
+            selectiveListsUpdater.editListDisplay(selectedListIndex);
             listCustomizer.hideCustomizerPane(addCustomizer);
         });
     

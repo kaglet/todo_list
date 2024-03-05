@@ -38,7 +38,6 @@ let selectiveListsUpdater = function() {
         deleteButton.addEventListener('click', () => {
             let listDisplayID = listItem.getAttribute('data-id');
             removeListDisplay(listDisplayID);
-            // Get information from UI about which one is clicked to remove (this is the input we cannot mock)
             listsManager.removeList(listDisplayID);
             todosMigrator.migrateListTodos(newList);
         });
@@ -48,7 +47,7 @@ let selectiveListsUpdater = function() {
         listsDisplay.append(wrapper);
     };
 
-    // Remove list at selected index but I also have to remove corresponding buttons, so I feel like it is better they are in a wrapper
+    // Remove list display at selected index
     const removeListDisplay = (index) => {
         let listDisplayWrappers = document.querySelectorAll('.list.display.wrapper');
         let listItems = document.querySelectorAll('.list.item');
@@ -63,7 +62,13 @@ let selectiveListsUpdater = function() {
         }
     };
 
-    return { addListDisplay, removeListDisplay };
+    // Reflect edits of list item after changes are saved
+    const editListDisplay = (index) => {
+        let listItems = document.querySelectorAll('.list.item');
+        listItems.item(index).textContent = listsManager.getList(index).getName();
+    }
+
+    return { addListDisplay, removeListDisplay, editListDisplay };
 }();
 
 export default selectiveListsUpdater;

@@ -8,7 +8,7 @@ import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js
 let listAddController = function() {
     let nameInput = createSidebar.getNameInput();
 
-    let quickAddButton = createSidebar.getQuickAddButton(); // TODO: call a get quick add button from where its created in DOM for maintainability
+    let quickAddButton = createSidebar.getQuickAddButton(); 
     let customAddButton = createSidebar.getCustomAddButton();
 
     const completeCustomizerPaneFunctionality = () => {
@@ -18,12 +18,12 @@ let listAddController = function() {
         saveButton.classList.add('list', 'add');
         saveButton.textContent = 'Add';
 
-        // The extension includes completing the save functionality being filled in not just attached.
+
         saveButton.addEventListener('click', () => {
             listAddController.addCustomList();
             listCustomizer.hideCustomizerPane(addCustomizer);
             selectiveListsUpdater.addListDisplay();
-        }); // TODO: use listEditController.editList(); for edit existing list on save
+        });
     
         addCustomizer.append(saveButton);
 
@@ -53,7 +53,7 @@ let listAddController = function() {
     };
 
     quickAddButton.addEventListener('click', () => {
-        // TODO: Use a get name input method on the sidebar not this singular reference here unless it is only needed here
+        // TODO: Use a get name input method on the sidebar not this singular reference here unless it is only needed here but still
         let name = nameInput.value;
         if (name.trim() === "") return;
 
