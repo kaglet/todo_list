@@ -34,6 +34,7 @@ let createTodoPane = function() {
     todoAdditionWrapper.append(nameInput, quickAddBtn, customAddBtn);
 
     let todosDisplay = document.createElement('div');
+    todosDisplay.classList.add('todos', 'display');
 
     todoPane.append(headingsWrapper, todoAdditionWrapper, todosDisplay);
 
