@@ -9,6 +9,7 @@ import selectiveListsUpdater from './ui/selective_items_updater/list_UI_updater.
 
 import listsManager from './application_state_logic/all_lists_manager/lists_manager';
 import createList from './application_state_logic/create_building_blocks/create_list';
+import createDefaultList from './application_state_logic/create_building_blocks/create_default_list.js';
 import createSubtask from './application_state_logic/create_building_blocks/create_subtask';
 import createTodo from './application_state_logic/create_building_blocks/create_todo';
 
