@@ -21,7 +21,9 @@ let todoAddController = function() {
         saveButton.addEventListener('click', () => {
             addCustomTodo();
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
-            selectiveTodosUpdater.addTodoDisplay();
+            let listOfTodo = selectionTracker.getSelectedList();
+            let newTodoIndex = listOfTodo.getTodos().length - 1;
+            selectiveTodosUpdater.addTodoDisplay(newTodoIndex);
         });
     
         addCustomizerPane.append(saveButton);
@@ -58,7 +60,9 @@ let todoAddController = function() {
         if (name.trim() === "") return;
 
         addQuickList();
-        selectiveTodosUpdater.addTodoDisplay();
+        let listOfTodo = selectionTracker.getSelectedList();
+        let newTodoIndex = listOfTodo.getTodos().length - 1;
+        selectiveTodosUpdater.addTodoDisplay(newTodoIndex);
     });
 
     customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane));

@@ -27,7 +27,7 @@ let listAddController = function() {
         addCustomizer.append(saveButton);
 
         return addCustomizer;
-    }
+    };
 
     let listAddCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');

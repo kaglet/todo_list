@@ -63,11 +63,17 @@ let selectiveTodosUpdater = function() {
     };
 
     const clearDisplay = () => {
-
+        while (todosDisplay.firstChild) {
+            todosDisplay.removeChild(todosDisplay.lastChild);
+        }
     };
 
     const showListTodos = () => {
+        let todosLength = selectionTracker.getSelectedList().getTodos().length;
 
+        for (let i = 0; i < todosLength; i++) {
+            addTodoDisplay(i);
+        }
     };
 
     return { addTodoDisplay, removeTodoDisplay, editTodoDisplay, clearDisplay, showListTodos };
