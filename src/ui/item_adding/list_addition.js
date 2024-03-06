@@ -21,7 +21,8 @@ let listAddController = function() {
         saveButton.addEventListener('click', () => {
             addCustomList();
             listCustomizer.hideCustomizerPane(addCustomizer);
-            selectiveListsUpdater.addListDisplay();
+            let newListIndex = listsManager.getLists().length - 1;
+            selectiveListsUpdater.addListDisplay(newListIndex);
         });
     
         addCustomizer.append(saveButton);
@@ -55,13 +56,14 @@ let listAddController = function() {
         if (name.trim() === "") return;
 
         addQuickList();
-        selectiveListsUpdater.addListDisplay();
+        let newListIndex = listsManager.getLists().length - 1;
+        selectiveListsUpdater.addListDisplay(newListIndex);
     });
 
     customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
 
     // Before any other lists are added to the UI show the default "All" list
-    selectiveListsUpdater.addListDisplay();
+    selectiveListsUpdater.addListDisplay(0);
 
     return { addCustomList };
 }();

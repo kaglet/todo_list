@@ -11,10 +11,9 @@ let selectiveListsUpdater = function() {
     
     // Append new list to end of lists with newly added list in logical application state or maybe I do not want to keep track of that
     // This not only adds lists but adds functionality that allows it to call delete, and so I feel this should be separated
-    const addListDisplay = () => {
+    const addListDisplay = (newListIndex) => {
         let wrapper = document.createElement('div');
 
-        let newListIndex = listsManager.getLists().length - 1;
         let newList = listsManager.getList(newListIndex);
 
         let listItem = document.createElement('button');
