@@ -1,16 +1,15 @@
 // add/remove
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
-import todoCustomizer from "../item_customizers/todo_customizer";
+import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
 
 let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
 
-    const addTodoDisplay = () => {
+    const addTodoDisplay = (newTodoIndex) => {
         let wrapper = document.createElement('div');
 
         let listOfTodo = selectionTracker.getSelectedList();
-        let newTodoIndex = listOfTodo.getTodos().length - 1;
         let newTodo = listOfTodo.getTodo(newTodoIndex);
 
         let todoItem = document.createElement('button');
@@ -63,7 +62,15 @@ let selectiveTodosUpdater = function() {
         todoItems.item(index).textContent = selectionTracker.getSelectedList().getTodo(index).getName();
     };
 
-    return { addTodoDisplay, removeTodoDisplay, editTodoDisplay };
+    const clearDisplay = () => {
+
+    };
+
+    const showListTodos = () => {
+
+    };
+
+    return { addTodoDisplay, removeTodoDisplay, editTodoDisplay, clearDisplay, showListTodos };
 }();
 
 export default selectiveTodosUpdater;

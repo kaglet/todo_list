@@ -2,8 +2,9 @@
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
 import listEditController from "../item_editing/list_edit";
-import listCustomizer from "../item_customizers/list_customizer";
+import listCustomizer from "../item_customizer_panes/list_customizer";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
+import selectiveTodosUpdater from "./todo_UI_updater";
 
 let selectiveListsUpdater = function() {
     let listsDisplay = document.querySelector('.lists.display');
@@ -20,6 +21,13 @@ let selectiveListsUpdater = function() {
         listItem.textContent = newList.getName();
         listItem.setAttribute('data-id', newListIndex);
         listItem.classList.add('list', 'item');
+
+        listItem.addEventListener('click', () => {
+            let listDisplayID = listItem.getAttribute('data-id');
+            selectionTracker.setSelectedListIndex(listDisplayID);
+            selectiveTodosUpdater.clearDisplay();
+            selectiveTodosUpdater.showListTodos();
+        });
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');

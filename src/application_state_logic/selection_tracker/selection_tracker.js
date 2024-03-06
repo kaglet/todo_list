@@ -5,7 +5,8 @@ import listsManager from "../all_lists_manager/lists_manager";
 
 let selectionTracker = function() {
     let selectedListIndex, selectedTodoIndex, selectedSubtaskIndex;
-
+    
+    // Set and get containing items for accessing logical addition of sub-items
     const setSelectedListIndex = (index) => selectedListIndex = index;
     const setSelectedTodoIndex = (index) => selectedTodoIndex = index;
     const setSelectedSubtaskIndex = (index) => selectedSubtaskIndex = index;

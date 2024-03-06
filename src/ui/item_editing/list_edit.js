@@ -1,6 +1,6 @@
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
-import listCustomizer from '../item_customizers/list_customizer.js';
+import listCustomizer from '../item_customizer_panes/list_customizer.js';
 import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
 
 // Manages edit functionality of existing list instances

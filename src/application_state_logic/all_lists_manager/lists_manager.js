@@ -19,15 +19,14 @@ let listsManager = function() {
         return lists[index];
     };
 
-    const createAllList = () => {
+    const createInitialAllList = () => {
         let list = createList("All");
 
         return list;
     };
 
-    addList(createAllList());
+    addList(createInitialAllList());
     
-
     return { addList, removeList, getLists, getList };
 }();
 

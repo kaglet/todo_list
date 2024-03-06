@@ -1,7 +1,7 @@
 import createList from '../../application_state_logic/create_building_blocks/create_list.js';
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import createSidebar from '../layout_component_outlines/sidebar.js';
-import listCustomizer from '../item_customizers/list_customizer.js';
+import listCustomizer from '../item_customizer_panes/list_customizer.js';
 import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
 
 // Manages addition functionality of new list instances 
@@ -17,7 +17,6 @@ let listAddController = function() {
         let saveButton = document.createElement('button');
         saveButton.classList.add('list', 'add');
         saveButton.textContent = 'Add';
-
 
         saveButton.addEventListener('click', () => {
             addCustomList();
@@ -38,8 +37,8 @@ let listAddController = function() {
     const addQuickList = () => {
         let name = nameInput.value;
 
+        // Create list instance and store it
         let list = createList(name);
-        // Store list after creating 
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };
@@ -52,7 +51,6 @@ let listAddController = function() {
     };
 
     quickAddButton.addEventListener('click', () => {
-        // TODO: Use a get name input method on the sidebar not this singular reference here unless it is only needed here but still
         let name = nameInput.value;
         if (name.trim() === "") return;
 
@@ -62,13 +60,10 @@ let listAddController = function() {
 
     customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
 
-    // Add initial list "All" into UI 
-    // TODO: Do logical addition here explicitly as well
+    // Before any other lists are added to the UI show the default "All" list
     selectiveListsUpdater.addListDisplay();
 
     return { addCustomList };
 }();
 
 export default listAddController;
-
-// TODO: Whatever is altered in subtask edit view is edited at that selected index (good performance from selection tracker being used as always a linear search time)
