@@ -47,7 +47,10 @@ let selectiveListsUpdater = function() {
             listsManager.removeList(listDisplayID);
         });
 
-        wrapper.append(listItem, editButton, deleteButton);
+        wrapper.append(listItem, editButton);
+        if (newListIndex !== 0) {
+            wrapper.append(deleteButton);
+        }
         wrapper.classList.add('list', 'display', 'wrapper');
         listsDisplay.append(wrapper);
     };
