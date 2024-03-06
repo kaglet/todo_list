@@ -3,6 +3,7 @@ import todoCustomizer from '../item_customizer_panes/todo_customizer.js';
 import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
 import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
+import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 
 // Manages addition functionality of new todo instances 
 let todoAddController = function() {
@@ -63,6 +64,7 @@ let todoAddController = function() {
         let listOfTodo = selectionTracker.getSelectedList();
         let newTodoIndex = listOfTodo.getTodos().length - 1;
         selectiveTodosUpdater.addTodoDisplay(newTodoIndex);
+        console.log(listsManager.getList(0).getAllListsTodos());
     });
 
     customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane));
