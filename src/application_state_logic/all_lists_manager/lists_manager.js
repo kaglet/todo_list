@@ -7,7 +7,8 @@ let listsManager = function() {
         lists.push(list);
     };
 
-    const removeList = (index) => {
+    const removeList = (list) => {
+        let index = lists.indexOf(list);
         lists.splice(index, 1);
     };
 

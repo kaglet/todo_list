@@ -16,7 +16,8 @@ createTodo.proto = {
     addSubtask(subtask) {
         this.subtasks.push(subtask);
     },
-    removeSubtask(index) {
+    removeSubtask(subtask) {
+        let index = this.subtasks.indexOf(subtask);
         this.subtasks.splice(index, 1);
     },
     getSubtasks() {

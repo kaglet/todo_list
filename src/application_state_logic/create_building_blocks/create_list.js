@@ -16,7 +16,8 @@ createList.proto = {
     addTodo(todo) {
         this.todos.push(todo);
     },
-    removeTodo(index) {
+    removeTodo(todo) {
+        let index = this.todos.indexOf(todo);
         this.todos.splice(index, 1);
     },
     getTodos() {
