@@ -1,4 +1,5 @@
 // add/remove
+import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
@@ -6,7 +7,7 @@ import todoEditController from "../item_editing/todo_edit";
 let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
 
-    const addTodoDisplay = (newTodo) => {
+    const addTodoDisplay = (newTodo, newTodoIndex) => {
         let wrapper = document.createElement('div');
 
         let todoItem = document.createElement('button');
@@ -67,12 +68,21 @@ let selectiveTodosUpdater = function() {
 
     const showListTodos = () => {
         let todosLength = selectionTracker.getSelectedList().getTodos().length;
+        let listOfTodo = selectionTracker.getSelectedList();
+        let isListDefault = listOfTodo === listsManager.getList(0);
+        let defaultListTodos;
+        let finalTodosListLength = todosLength;
+        
+        if (isListDefault) {
+            defaultListTodos = listsManager.getList(0).getAllListsTodos();    
+            console.log(defaultListTodos);    
+            finalTodosListLength = defaultListTodos.length;    
+        }
 
-        for (let i = 0; i < todosLength; i++) {
-            // pass a todo not an index, it does not have to control the list sourced from
-            let listOfTodo = selectionTracker.getSelectedList();
-            let newTodo = listOfTodo.getTodo(i);
-            addTodoDisplay(newTodo);
+        for (let i = 0; i < finalTodosListLength; i++) {
+            let newTodo = isListDefault ? defaultListTodos[i] : listOfTodo.getTodo(i);
+            // Pass a todo not an index, it does not have to control the list sourced from
+            addTodoDisplay(newTodo, i);
         }
     };
 
