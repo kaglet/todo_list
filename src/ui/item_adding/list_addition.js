@@ -22,7 +22,8 @@ let listAddController = function() {
             addCustomList();
             listCustomizer.hideCustomizerPane(addCustomizer);
             let newListIndex = listsManager.getLists().length - 1;
-            selectiveListsUpdater.addListDisplay(newListIndex);
+            let newList = listsManager.getList(newListIndex);
+            selectiveListsUpdater.addListDisplay(newList, newListIndex);
         });
     
         addCustomizer.append(saveButton);
@@ -57,7 +58,8 @@ let listAddController = function() {
 
         addQuickList();
         let newListIndex = listsManager.getLists().length - 1;
-        selectiveListsUpdater.addListDisplay(newListIndex);
+        let newList = listsManager.getList(newListIndex);
+        selectiveListsUpdater.addListDisplay(newList, newListIndex);
     });
 
     customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));

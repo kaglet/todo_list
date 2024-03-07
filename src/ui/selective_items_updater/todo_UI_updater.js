@@ -31,7 +31,8 @@ let selectiveTodosUpdater = function() {
         deleteButton.addEventListener('click', () => {
             let todoDisplayID = todoItem.getAttribute('data-id');
             removeTodoDisplay(todoDisplayID);
-            selectionTracker.getSelectedList().removeTodo(todoDisplayID);
+            // Removal is not related by indices anymore
+            selectionTracker.getSelectedList().removeTodo(newTodo);
         });
 
         wrapper.append(todoItem, editButton, deleteButton);
