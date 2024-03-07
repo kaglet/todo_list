@@ -6,11 +6,8 @@ import todoEditController from "../item_editing/todo_edit";
 let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
 
-    const addTodoDisplay = (newTodoIndex) => {
+    const addTodoDisplay = (newTodo) => {
         let wrapper = document.createElement('div');
-
-        let listOfTodo = selectionTracker.getSelectedList();
-        let newTodo = listOfTodo.getTodo(newTodoIndex);
 
         let todoItem = document.createElement('button');
         todoItem.textContent = newTodo.getName();
@@ -72,7 +69,10 @@ let selectiveTodosUpdater = function() {
         let todosLength = selectionTracker.getSelectedList().getTodos().length;
 
         for (let i = 0; i < todosLength; i++) {
-            addTodoDisplay(i);
+            // pass a todo not an index, it does not have to control the list sourced from
+            let listOfTodo = selectionTracker.getSelectedList();
+            let newTodo = listOfTodo.getTodo(i);
+            addTodoDisplay(newTodo);
         }
     };
 

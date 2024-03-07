@@ -19,7 +19,7 @@ createDefaultList.proto = {
             allTodos = [...allTodos, ...list.getTodos()];
         });
         return allTodos;
-    }
+    },
 };
 
 Object.setPrototypeOf(createDefaultList.proto, createList.proto);
