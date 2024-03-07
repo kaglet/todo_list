@@ -32,11 +32,11 @@ let selectiveListsUpdater = function() {
         deleteButton.textContent = "Delete";
 
         editButton.addEventListener('click', () => {
-            let listDisplayID = listItem.getAttribute('data-id');
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
             // For edit set selected list in UI, for use later
-            selectionTracker.setSelectedListIndex(listDisplayID);
-            listEditController.fillForm(listsManager.getList(listDisplayID));
+            selectionTracker.setSelectedList(newList);
+            console.log(selectionTracker.getSelectedList());
+            listEditController.fillForm(newList);
         });
         deleteButton.addEventListener('click', () => {
             let listDisplayID = listItem.getAttribute('data-id');

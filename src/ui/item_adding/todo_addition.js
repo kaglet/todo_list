@@ -43,6 +43,7 @@ let todoAddController = function() {
 
         // Create todo instance and store it
         let todo = createTodo(name);
+        console.log(selectionTracker.getSelectedList());
         selectionTracker.getSelectedList().addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
     };
@@ -52,7 +53,7 @@ let todoAddController = function() {
         let todo = createTodo(nameInput.value);
         todo.setScheduleDate(dateInput.value);
         todo.setPriority(priorityInput.value);
-
+        selectionTracker;
         selectionTracker.getSelectedList().addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
     };

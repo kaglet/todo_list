@@ -7,7 +7,7 @@ let createDefaultList = function() {
     list.todos = [];
 
     listsManager.addList(list);
-
+    console.log(listsManager.getLists());
     return list;
 };
 

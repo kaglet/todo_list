@@ -14,7 +14,7 @@ let listEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editList();
-            let selectedListIndex = selectionTracker.getSelectedListIndex();
+            let selectedListIndex = listsManager.getLists().indexOf(selectionTracker.getSelectedList());
             selectiveListsUpdater.editListDisplay(selectedListIndex);
             listCustomizer.hideCustomizerPane(editCustomizer);
         });
