@@ -20,8 +20,7 @@ let selectiveListsUpdater = function() {
         listItem.classList.add('list', 'item');
 
         listItem.addEventListener('click', () => {
-            let listDisplayID = listItem.getAttribute('data-id');
-            selectionTracker.setSelectedListIndex(listDisplayID);
+            selectionTracker.setSelectedList(newList);
             selectiveTodosUpdater.clearDisplay();
             selectiveTodosUpdater.showListTodos();
         });
