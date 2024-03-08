@@ -1,8 +1,9 @@
-let createTodo = function(name) {
+let createTodo = function(name, list) {
     let todo = Object.create(createTodo.proto);
     todo.setName(name);
     todo.subtasks = [];
-
+    todo.list = list;
+    
     return todo;
 };
 
@@ -38,6 +39,9 @@ createTodo.proto = {
     },
     setDescription(desc) {
         this.description = desc;
+    },
+    getContainingList() {
+        return this.list;
     }
 };
 

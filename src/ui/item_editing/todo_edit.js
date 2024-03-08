@@ -15,8 +15,10 @@ let todoEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editTodo();
-            let selectedTodoIndex = selectionTracker.getSelectedList().getTodos().indexOf(selectionTracker.getSelectedTodo());
-            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex);
+            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
+            let selectedTodo = selectionTracker.getSelectedTodo();
+            // Update in UI with details of edited todo in application state
+            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
             todoCustomizer.hideCustomizerPane(editCustomizer);
         });
     

@@ -25,6 +25,8 @@ let selectiveTodosUpdater = function() {
             todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane());
             // For completing edit set selected list in UI, for use later
             selectionTracker.setSelectedTodo(newTodo);
+            let todoUIIndex = todoItem.getAttribute('data-id');
+            selectionTracker.setSelectedTodoInUIIndex(todoUIIndex);
             todoEditController.fillForm(newTodo);
         });
         deleteButton.addEventListener('click', () => {
@@ -55,9 +57,9 @@ let selectiveTodosUpdater = function() {
     };
 
     // Reflect edits of specific list item in UI after changes are saved
-    const editTodoDisplay = (index) => {
+    const editTodoDisplay = (indexInUI, todo) => {
         let todoItems = document.querySelectorAll('.todo.item');
-        todoItems.item(index).textContent = selectionTracker.getSelectedList().getTodo(index).getName();
+        todoItems.item(indexInUI).textContent = selectionTracker.getSelectedList().getTodo(todo).getName();
     };
 
     const clearDisplay = () => {

@@ -1,7 +1,5 @@
-import listsManager from "../all_lists_manager/lists_manager";
-
 let selectionTracker = function() {
-    let selectedList, selectedTodo, selectedSubtask;
+    let selectedList, selectedTodo, selectedSubtask, selectedListInUIIndex, selectedTodoInUIIndex, selectedSubtaskInUIIndex;
     
     // Set and get containing items for accessing logical addition of sub-items
     const setSelectedList = (list) => selectedList = list;
@@ -12,12 +10,15 @@ let selectionTracker = function() {
     const getSelectedTodo = () => selectedTodo;
     const getSelectedSubtask = () => selectedSubtask;
 
-    console.log(listsManager.getLists());
-    // Set for initial "All" list to be selected here for tasks to be displayable without selecting any other list
-    setSelectedList(listsManager.getList(0)); 
-    console.log(getSelectedList());
+    const setSelectedListInUIIndex = (index) => selectedListInUIIndex = index;
+    const setSelectedTodoInUIIndex = (index) => selectedTodoInUIIndex = index;
+    const setSelectedSubtaskInUIIndex = (index) => selectedSubtaskInUIIndex = index;
 
-    return { setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask };
+    const getSelectedListInUIIndex = () => selectedListInUIIndex;
+    const getSelectedTodoInUIIndex = () => selectedTodoInUIIndex;
+    const getSelectedSubtaskInUIIndex = () => selectedSubtaskInUIIndex;
+
+    return { setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask, setSelectedListInUIIndex, setSelectedSubtaskInUIIndex, setSelectedTodoInUIIndex, getSelectedListInUIIndex, getSelectedSubtaskInUIIndex, getSelectedTodoInUIIndex };
 }();
 
 export default selectionTracker;

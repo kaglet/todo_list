@@ -42,7 +42,7 @@ let todoAddController = function() {
         let name = nameInput.value;
 
         // Create todo instance and store it
-        let todo = createTodo(name);
+        let todo = createTodo(name, selectionTracker.getSelectedList());
         console.log(selectionTracker.getSelectedList());
         selectionTracker.getSelectedList().addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
@@ -50,7 +50,7 @@ let todoAddController = function() {
 
     const addCustomTodo = () => {
         let {  nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
-        let todo = createTodo(nameInput.value);
+        let todo = createTodo(nameInput.value, selectionTracker.getSelectedList());
         todo.setScheduleDate(dateInput.value);
         todo.setPriority(priorityInput.value);
         selectionTracker;
