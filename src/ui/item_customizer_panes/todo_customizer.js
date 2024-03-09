@@ -5,6 +5,7 @@ let todoCustomizer = function () {
     const showCustomizerPane = (pane) => {
         pane.showModal();
         pane.classList.remove('hidden');
+        updateListOptions(pane);
     };
 
     const hideCustomizerPane = (pane) => {
@@ -68,16 +69,8 @@ let todoCustomizer = function () {
             let listSelectID = 'list';
             listSelectInput.setAttribute('id', listSelectID);
 
-            // TODO: Create options based on all lists in list manager
-            listsManager.getLists().forEach(list => {
-                let listOption = document.createElement('option');
-                listOption.value = list.getName();
-                listOption.textContent = list.getName();
-                listSelectInput.append(listOption);
-            });
-
             return listSelectInput;
-        }
+        };
 
         const createScheduleDateInput = function () {
             let scheduleDate = document.createElement('input');
@@ -120,13 +113,28 @@ let todoCustomizer = function () {
     };
 
     // Getter on factory instance pane's components
-    const getFormInputs = function (pane) {
+    const getFormInputs = (pane) => {
         let nameInput = pane.querySelector('#name');
         let dateInput = pane.querySelector('#schedule-date');
         let priorityInput = pane.querySelector('#priority');
         let listInput = pane.querySelector('#list');
 
         return { nameInput, dateInput, priorityInput, listInput };
+    };
+
+    const updateListOptions = (pane) => {
+        let { listInput } = getFormInputs(pane);
+
+        while (!listInput.firstChild) {
+            listInput.remove(listInput.lastChild);
+        }
+        
+        listsManager.getLists().forEach(list => {
+            let listOption = document.createElement('option');
+            listOption.value = list.getName();
+            listOption.textContent = list.getName();
+            listInput.append(listOption);
+        });
     };
 
     return { hideCustomizerPane, showCustomizerPane, createCustomizerPane, getFormInputs };
