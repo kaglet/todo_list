@@ -1,3 +1,5 @@
+import listsManager from "../all_lists_manager/lists_manager";
+
 let selectionTracker = function() {
     let selectedList, selectedTodo, selectedSubtask, selectedListInUIIndex, selectedTodoInUIIndex, selectedSubtaskInUIIndex;
     
@@ -17,6 +19,8 @@ let selectionTracker = function() {
     const getSelectedListInUIIndex = () => selectedListInUIIndex;
     const getSelectedTodoInUIIndex = () => selectedTodoInUIIndex;
     const getSelectedSubtaskInUIIndex = () => selectedSubtaskInUIIndex;
+
+    setSelectedList(listsManager.getList(0));
 
     return { setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask, setSelectedListInUIIndex, setSelectedSubtaskInUIIndex, setSelectedTodoInUIIndex, getSelectedListInUIIndex, getSelectedSubtaskInUIIndex, getSelectedTodoInUIIndex };
 }();
