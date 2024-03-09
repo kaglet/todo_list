@@ -49,7 +49,7 @@ let todoEditController = function() {
         todoToEdit.setScheduleDate(dateInput.value);
         todoToEdit.setPriority(priorityInput.value);
 
-        console.log(selectionTracker.getSelectedList().getTodos());
+        console.log(todoToEdit.getContainingList().getTodos());
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;

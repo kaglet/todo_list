@@ -33,7 +33,7 @@ let selectiveTodosUpdater = function() {
             let todoDisplayID = todoItem.getAttribute('data-id');
             removeTodoDisplay(todoDisplayID);
             // Removal is not related by indices anymore
-            selectionTracker.getSelectedList().removeTodo(newTodo);
+            newTodo.getContainingList().removeTodo(newTodo);
         });
 
         wrapper.append(todoItem, editButton, deleteButton);
@@ -59,7 +59,7 @@ let selectiveTodosUpdater = function() {
     // Reflect edits of specific list item in UI after changes are saved
     const editTodoDisplay = (indexInUI, todo) => {
         let todoItems = document.querySelectorAll('.todo.item');
-        todoItems.item(indexInUI).textContent = selectionTracker.getSelectedList().getTodo(todo).getName();
+        todoItems.item(indexInUI).textContent = todo.getName();
     };
 
     const clearDisplay = () => {
