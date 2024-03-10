@@ -62,7 +62,7 @@ let listAddController = function() {
         let name = nameInput.value;
         if (listValidator.isInvalidOnQuickAdd(name)) return;
 
-        addQuickList();
+        addQuickList(name);
         showNewList();
     });
 

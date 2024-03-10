@@ -18,7 +18,7 @@ let todoValidator = function() {
             return name === "";
         };
         
-        return isNameEmpty() || isNameTaken();
+        return isNameEmpty();
     };
 
     const isDateInvalid = (date) => {

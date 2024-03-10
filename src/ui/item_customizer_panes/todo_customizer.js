@@ -1,4 +1,5 @@
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
+import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import createTodoPane from "../layout_component_outlines/todo_pane";
 
 let todoCustomizer = function () {
@@ -128,8 +129,14 @@ let todoCustomizer = function () {
         while (listInput.firstChild) {
             listInput.remove(listInput.lastChild);
         }
+
+        let listOfTodo = selectionTracker.getSelectedTodo().getContainingList();
+        let indexOfRemoval = listsManager.getLists().indexOf(listOfTodo);
+
+        let reorderedList = listsManager.getLists().toSpliced(indexOfRemoval, 1);
+        reorderedList.unshift(listOfTodo);
         
-        listsManager.getLists().forEach(list => {
+        reorderedList.forEach(list => {
             let listOption = document.createElement('option');
             listOption.value = list.getName();
             listOption.textContent = list.getName();
