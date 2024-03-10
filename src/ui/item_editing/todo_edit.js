@@ -5,26 +5,22 @@ import todoCustomizer from '../item_customizer_panes/todo_customizer.js';
 import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
 
 // Manages edit functionality of existing list instances
-let todoEditController = function() {
+let todoEditController = function () {
     const completeCustomizerPaneFunctionality = () => {
-        let editCustomizer = todoCustomizer.createCustomizerPane();
+        let editCustomizerPane = todoCustomizer.createCustomizerPane();
 
         let saveButton = document.createElement('button');
         saveButton.classList.add('list', 'edit');
         saveButton.textContent = 'Save Edit';
 
         saveButton.addEventListener('click', () => {
-            editTodo();
-            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
-            let selectedTodo = selectionTracker.getSelectedTodo();
-            // Update in UI with details of edited todo in application state
-            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
-            todoCustomizer.hideCustomizerPane(editCustomizer);
+            editTodo(editCustomizerPane);
+            todoCustomizer.hideCustomizerPane(editCustomizerPane);
         });
-    
-        editCustomizer.append(saveButton);
 
-        return editCustomizer;
+        editCustomizerPane.append(saveButton);
+
+        return editCustomizerPane;
     };
 
     let todoEditCustomizerPane = completeCustomizerPaneFunctionality();
@@ -33,16 +29,14 @@ let todoEditController = function() {
     todoCustomizer.hideCustomizerPane(todoEditCustomizerPane);
 
     let fillForm = (todo) => {
-        let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
+        let { nameInput, dateInput, priorityInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
 
         nameInput.value = todo.getName();
         dateInput.value = todo.getScheduleDate();
         priorityInput.value = todo.getPriority();
-        
-        // TODO: Set first option of list input
     };
 
-    let editTodo = () => {
+    let editTodo = (editCustomizerPane) => {
         let { nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoEditCustomizerPane);
         let todoToEdit = selectionTracker.getSelectedTodo();
         todoToEdit.setName(nameInput.value);
@@ -50,8 +44,45 @@ let todoEditController = function() {
         todoToEdit.setPriority(priorityInput.value);
         let selectedListName = listInput.value;
         let listMatchingName = listsManager.getLists().find(list => list.getName() === selectedListName);
-        todoToEdit.setContainingList(listMatchingName);
-        // console.log(todoToEdit.getContainingList().getTodos());
+
+        let listMismatch = listMatchingName !== selectionTracker.getSelectedList();
+        // Check if current list is default list because if so then addition of a todo from any different list is allowed - This is what "All" list is for
+        let isCurrListNotDefault = selectionTracker.getSelectedList() != listsManager.getList(0);
+
+        if (listMismatch && isCurrListNotDefault) {
+            // Get index of todo in current list where it is in UI for removal in UI
+            let currentList = selectionTracker.getSelectedList();
+            let indexOfUITodo = currentList.getTodos().indexOf(todoToEdit);
+            selectiveTodosUpdater.removeTodoDisplay(indexOfUITodo);
+
+            // Delete todo where it is in old list before losing information about old list
+            let oldList = todoToEdit.getContainingList();
+            oldList.removeTodo(todoToEdit);
+
+            todoToEdit.setContainingList(listMatchingName);
+            // Remove in list that used to contain it and add to new list
+            todoToEdit.getContainingList().addTodo(todoToEdit);
+        } else if (listMismatch) {
+            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
+            let selectedTodo = selectionTracker.getSelectedTodo();
+            // Update in UI with details of edited todo in application state
+            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
+            todoCustomizer.hideCustomizerPane(editCustomizerPane);
+
+            // Delete todo where it is in old list before losing information about old list
+            let oldList = todoToEdit.getContainingList();
+            oldList.removeTodo(todoToEdit);
+
+            todoToEdit.setContainingList(listMatchingName);
+            // Remove in list that used to contain it and add to new list
+            todoToEdit.getContainingList().addTodo(todoToEdit);
+        } else {
+            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
+            let selectedTodo = selectionTracker.getSelectedTodo();
+            // Update in UI with details of edited todo in application state
+            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
+            todoCustomizer.hideCustomizerPane(editCustomizerPane);
+        }
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;
