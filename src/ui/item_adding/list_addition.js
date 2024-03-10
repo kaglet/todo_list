@@ -40,7 +40,6 @@ let listAddController = function() {
     listCustomizer.hideCustomizerPane(listAddCustomizerPane);
 
     const addQuickList = (name) => {
-        let name = nameInput.value;
         // Create list instance and store it
         let list = createList(name);
         listsManager.addList(list);
