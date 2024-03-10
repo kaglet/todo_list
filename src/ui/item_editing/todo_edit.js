@@ -48,8 +48,10 @@ let todoEditController = function() {
         todoToEdit.setName(nameInput.value);
         todoToEdit.setScheduleDate(dateInput.value);
         todoToEdit.setPriority(priorityInput.value);
-
-        console.log(todoToEdit.getContainingList().getTodos());
+        let selectedListName = listInput.value;
+        let listMatchingName = listsManager.getLists().find(list => list.getName() === selectedListName);
+        todoToEdit.setContainingList(listMatchingName);
+        // console.log(todoToEdit.getContainingList().getTodos());
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;

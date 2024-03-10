@@ -42,6 +42,9 @@ createTodo.proto = {
     },
     getContainingList() {
         return this.list;
+    },
+    setContainingList(list) {
+        this.list = list;
     }
 };
 

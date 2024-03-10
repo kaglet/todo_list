@@ -26,15 +26,23 @@ let todoAddController = function() {
             let name = nameInput.value.trim();
             let date = dateInput.value;
             let priority = priorityInput.value;
-            let list = listsManager.getList(listInput.selectedIndex);
+            let selectedListName = listInput.value;
+            let listMatchingName = listsManager.getLists().find(list => list.getName() === selectedListName);
 
             if (todoValidator.isInvalidOnCustomAdd(name, date)) return;
 
-            addCustomTodo(name, date, priority, list);
+            addCustomTodo(name, date, priority, listMatchingName);
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
             let listOfTodo = selectionTracker.getSelectedList();
             let newTodoIndex = listOfTodo.getTodos().length - 1;
             let newTodo = listOfTodo.getTodo(newTodoIndex, newTodoIndex);
+
+            // Check if list of todo does not match current selected list the todo is about to be added to
+            let listMismatch = listMatchingName !== selectionTracker.getSelectedList();
+            // Check if current list is default list because if so then addition of a todo from any different list is allowed - This is what "All" list is for
+            let isCurrListNotDefault = selectionTracker.getSelectedList() != listsManager.getList(0);
+            if (listMismatch && isCurrListNotDefault) return;
+
             selectiveTodosUpdater.addTodoDisplay(newTodo);
         });
     
@@ -62,7 +70,7 @@ let todoAddController = function() {
         console.log('List of custom created todo: ' + list);
         todo.setScheduleDate(date);
         todo.setPriority(priority);
-        selectionTracker.getSelectedList().addTodo(todo);
+        list.addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
     };
 
