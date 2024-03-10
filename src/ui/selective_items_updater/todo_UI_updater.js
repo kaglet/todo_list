@@ -22,7 +22,7 @@ let selectiveTodosUpdater = function() {
         deleteButton.textContent = "Delete";
 
         editButton.addEventListener('click', () => {
-            todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane());
+            todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane(), newTodo.getContainingList());
             // For completing edit set selected list in UI, for use later
             selectionTracker.setSelectedTodo(newTodo);
             let todoUIIndex = todoItem.getAttribute('data-id');

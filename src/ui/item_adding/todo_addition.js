@@ -78,7 +78,7 @@ let todoAddController = function() {
         selectiveTodosUpdater.addTodoDisplay(newTodo, newTodoIndex);
     });
 
-    customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane));
+    customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane, selectionTracker.getSelectedList()));
 
     return { addCustomTodo };
 }();

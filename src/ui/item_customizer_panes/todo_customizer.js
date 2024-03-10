@@ -3,10 +3,10 @@ import selectionTracker from "../../application_state_logic/selection_tracker/se
 import createTodoPane from "../layout_component_outlines/todo_pane";
 
 let todoCustomizer = function () {
-    const showCustomizerPane = (pane) => {
+    const showCustomizerPane = (pane, todo) => {
         pane.showModal();
         pane.classList.remove('hidden');
-        updateListOptions(pane);
+        updateListOptions(pane, todo);
     };
 
     const hideCustomizerPane = (pane) => {
@@ -123,18 +123,17 @@ let todoCustomizer = function () {
         return { nameInput, dateInput, priorityInput, listInput };
     };
 
-    const updateListOptions = (pane) => {
+    const updateListOptions = (pane, firstList) => {
         let { listInput } = getFormInputs(pane);
 
         while (listInput.firstChild) {
             listInput.remove(listInput.lastChild);
         }
 
-        let listOfTodo = selectionTracker.getSelectedTodo().getContainingList();
-        let indexOfRemoval = listsManager.getLists().indexOf(listOfTodo);
+        let indexOfRemoval = listsManager.getLists().indexOf(firstList);
 
         let reorderedList = listsManager.getLists().toSpliced(indexOfRemoval, 1);
-        reorderedList.unshift(listOfTodo);
+        reorderedList.unshift(firstList);
         
         reorderedList.forEach(list => {
             let listOption = document.createElement('option');
