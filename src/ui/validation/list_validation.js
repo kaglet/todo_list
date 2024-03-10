@@ -1,15 +1,15 @@
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 
 let listValidator = function() {
-    const isValidOnQuickAdd = ({ name }) => {
+    const isValidOnQuickAdd = (name) => {
         return isNameValid(name);
     };
 
-    const isValidOnCustomAdd = ({ name, date }) => {
+    const isValidOnCustomAdd = (name, date) => {
         return isNameValid(name) && isDateValid(date);
     };
 
-    const isValidOnEdit = ({ name, date }) => {
+    const isValidOnEdit = (name, date) => {
         return isNameValid(name) && isDateValid(date);
     };
 
