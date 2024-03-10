@@ -49,39 +49,42 @@ let todoEditController = function () {
         // Check if current list is default list because if so then addition of a todo from any different list is allowed - This is what "All" list is for
         let isCurrListNotDefault = selectionTracker.getSelectedList() != listsManager.getList(0);
 
-        if (listMismatch && isCurrListNotDefault) {
+        const moveTodoToNewList = () => {
+            // Delete todo where it is in old list before losing information about old list
+            let oldList = todoToEdit.getContainingList();
+            oldList.removeTodo(todoToEdit);
+
+            todoToEdit.setContainingList(listMatchingName);
+            // Remove in list that used to contain it and add to new list
+            todoToEdit.getContainingList().addTodo(todoToEdit);
+        };
+        
+        // This emphasizes there is no need to edit a display if it will be removed
+        const editDisplayWithoutRemoval = () => {
+            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
+            let selectedTodo = selectionTracker.getSelectedTodo();
+            // Update in UI with details of edited todo in application state
+            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
+            todoCustomizer.hideCustomizerPane(editCustomizerPane);
+        };
+
+        const removeDisplay = () => {
             // Get index of todo in current list where it is in UI for removal in UI
             let currentList = selectionTracker.getSelectedList();
             let indexOfUITodo = currentList.getTodos().indexOf(todoToEdit);
             selectiveTodosUpdater.removeTodoDisplay(indexOfUITodo);
+        };
 
-            // Delete todo where it is in old list before losing information about old list
-            let oldList = todoToEdit.getContainingList();
-            oldList.removeTodo(todoToEdit);
+        if (listMismatch && isCurrListNotDefault) {
+            removeDisplay();
 
-            todoToEdit.setContainingList(listMatchingName);
-            // Remove in list that used to contain it and add to new list
-            todoToEdit.getContainingList().addTodo(todoToEdit);
-        } else if (listMismatch) {
-            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
-            let selectedTodo = selectionTracker.getSelectedTodo();
-            // Update in UI with details of edited todo in application state
-            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
-            todoCustomizer.hideCustomizerPane(editCustomizerPane);
+            moveTodoToNewList();
+        } else if (listMismatch && !isCurrListNotDefault) {
+            editDisplayWithoutRemoval()
 
-            // Delete todo where it is in old list before losing information about old list
-            let oldList = todoToEdit.getContainingList();
-            oldList.removeTodo(todoToEdit);
-
-            todoToEdit.setContainingList(listMatchingName);
-            // Remove in list that used to contain it and add to new list
-            todoToEdit.getContainingList().addTodo(todoToEdit);
+            moveTodoToNewList();
         } else {
-            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
-            let selectedTodo = selectionTracker.getSelectedTodo();
-            // Update in UI with details of edited todo in application state
-            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
-            todoCustomizer.hideCustomizerPane(editCustomizerPane);
+            editDisplayWithoutRemoval();
         }
     };
 
