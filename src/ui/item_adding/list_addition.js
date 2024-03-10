@@ -3,6 +3,7 @@ import listsManager from '../../application_state_logic/all_lists_manager/lists_
 import createSidebar from '../layout_component_outlines/sidebar.js';
 import listCustomizer from '../item_customizer_panes/list_customizer.js';
 import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
+import listValidator from '../validation/list_validation.js';
 
 // Manages addition functionality of new list instances 
 let listAddController = function() {
@@ -19,7 +20,11 @@ let listAddController = function() {
         saveButton.textContent = 'Add';
 
         saveButton.addEventListener('click', () => {
-            addCustomList();
+            let { nameInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
+            let name = nameInput.value.trim();
+            if (listValidator.isInvalidOnCustomAdd(name)) return;
+
+            addCustomList(name);
             listCustomizer.hideCustomizerPane(addCustomizer);
             showNewList();
         });
@@ -34,18 +39,16 @@ let listAddController = function() {
     container.append(listAddCustomizerPane);
     listCustomizer.hideCustomizerPane(listAddCustomizerPane);
 
-    const addQuickList = () => {
+    const addQuickList = (name) => {
         let name = nameInput.value;
-
         // Create list instance and store it
         let list = createList(name);
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };
 
-    const addCustomList = () => {
-        let { nameInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
-        let list = createList(nameInput.value);
+    const addCustomList = (name) => {
+        let list = createList(name);
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };
@@ -58,7 +61,7 @@ let listAddController = function() {
 
     quickAddButton.addEventListener('click', () => {
         let name = nameInput.value;
-        if (name.trim() === "") return;
+        if (listValidator.isInvalidOnQuickAdd(name)) return;
 
         addQuickList();
         showNewList();

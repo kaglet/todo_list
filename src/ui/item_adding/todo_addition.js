@@ -4,7 +4,7 @@ import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js
 import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
-import listValidator from '../validation/list_validation.js';
+import todoValidator from '../validation/todo_validation.js';
 
 // Manages addition functionality of new todo instances 
 let todoAddController = function() {
@@ -22,12 +22,13 @@ let todoAddController = function() {
 
         saveButton.addEventListener('click', () => {
             let {  nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
-            let name = nameInput.value;
+            // Always remove accidental whitespace to not mess up string equality checks
+            let name = nameInput.value.trim();
             let date = dateInput.value;
             let priority = priorityInput.value;
             let list = listsManager.getList(listInput.selectedIndex);
 
-            if (listValidator.isInvalidOnCustomAdd(name, date)) return;
+            if (todoValidator.isInvalidOnCustomAdd(name, date)) return;
 
             addCustomTodo(name, date, priority, list);
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
@@ -66,8 +67,9 @@ let todoAddController = function() {
     };
 
     quickAddButton.addEventListener('click', () => {
-        let name = nameInput.value;
-        if (listValidator.isInvalidOnQuickAdd(name)) return;
+        // Always remove accidental whitespace to not mess up string equality checks
+        let name = nameInput.value.trim();
+        if (todoValidator.isInvalidOnQuickAdd(name)) return;
 
         addQuickList(name);
         let listOfTodo = selectionTracker.getSelectedList();
