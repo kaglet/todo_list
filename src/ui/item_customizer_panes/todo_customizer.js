@@ -125,7 +125,7 @@ let todoCustomizer = function () {
     const updateListOptions = (pane) => {
         let { listInput } = getFormInputs(pane);
 
-        while (!listInput.firstChild) {
+        while (listInput.firstChild) {
             listInput.remove(listInput.lastChild);
         }
         

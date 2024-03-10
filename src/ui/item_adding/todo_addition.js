@@ -40,7 +40,6 @@ let todoAddController = function() {
 
     const addQuickList = () => {
         let name = nameInput.value;
-
         // Create todo instance and store it
         let todo = createTodo(name, selectionTracker.getSelectedList());
         console.log(selectionTracker.getSelectedList());
@@ -50,10 +49,11 @@ let todoAddController = function() {
 
     const addCustomTodo = () => {
         let {  nameInput, dateInput, priorityInput, listInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
-        let todo = createTodo(nameInput.value, selectionTracker.getSelectedList());
+        // Create todo instance and store it
+        let todo = createTodo(nameInput.value, listsManager.getList(listInput.selectedIndex));
+        console.log('List of custom created todo: ' + listsManager.getList(listInput.selectedIndex));
         todo.setScheduleDate(dateInput.value);
         todo.setPriority(priorityInput.value);
-        selectionTracker;
         selectionTracker.getSelectedList().addTodo(todo);
         console.log(selectionTracker.getSelectedList().getTodos());
     };
