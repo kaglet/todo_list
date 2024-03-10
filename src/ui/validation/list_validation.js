@@ -1,35 +1,35 @@
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 
 let listValidator = function() {
-    const isValidOnQuickAdd = (name) => {
-        return isNameValid(name);
+    const isInvalidOnQuickAdd = (name) => {
+        return isNameInvalid(name);
     };
 
-    const isValidOnCustomAdd = (name, date) => {
-        return isNameValid(name) && isDateValid(date);
+    const isInvalidOnCustomAdd = (name, date) => {
+        return isNameInvalid(name) || isDateInvalid(date);
     };
 
-    const isValidOnEdit = (name, date) => {
-        return isNameValid(name) && isDateValid(date);
+    const isInvalidOnEdit = (name, date) => {
+        return isNameInvalid(name) || isDateInvalid(date);
     };
 
-    const isNameValid = (name) => {
-        const isNameFilled = () => {
-            return name.trim() !== "";
+    const isNameInvalid = (name) => {
+        const isNameEmpty = () => {
+            return name.trim() === "";
         };
     
-        const isNameNotTaken = () => {
-            return !listsManager.getLists().some(list => list.getName() === name);
+        const isNameTaken = () => {
+            return listsManager.getLists().some(list => list.getName() === name);
         };
         
-        return isNameFilled() && isNameNotTaken();
+        return isNameEmpty() || isNameTaken();
     };
 
-    const isDateValid = (date) => {
-        return true;
+    const isDateInvalid = (date) => {
+        return false;
     };
 
-    return { isValidOnCustomAdd, isValidOnEdit, isValidOnQuickAdd };
+    return { isInvalidOnCustomAdd, isInvalidOnEdit, isInvalidOnQuickAdd };
 }();
 
 export default listValidator;

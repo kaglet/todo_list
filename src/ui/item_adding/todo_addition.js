@@ -27,7 +27,7 @@ let todoAddController = function() {
             let priority = priorityInput.value;
             let list = listsManager.getList(listInput.selectedIndex);
 
-            if (!listValidator.isValidOnCustomAdd(name, date)) return;
+            if (listValidator.isInvalidOnCustomAdd(name, date)) return;
 
             addCustomTodo(name, date, priority, list);
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
@@ -67,7 +67,7 @@ let todoAddController = function() {
 
     quickAddButton.addEventListener('click', () => {
         let name = nameInput.value;
-        if (!listValidator.isValidOnQuickAdd(name)) return;
+        if (listValidator.isInvalidOnQuickAdd(name)) return;
 
         addQuickList(name);
         let listOfTodo = selectionTracker.getSelectedList();
