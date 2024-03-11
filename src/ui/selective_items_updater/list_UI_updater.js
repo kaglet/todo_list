@@ -5,6 +5,7 @@ import listEditController from "../item_editing/list_edit";
 import listCustomizer from "../item_customizer_panes/list_customizer";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import selectiveTodosUpdater from "./todo_UI_updater";
+import createTodoPane from "../layout_component_outlines/todo_pane";
 
 let selectiveListsUpdater = function() {
     let listsDisplay = document.querySelector('.lists.display');
@@ -23,6 +24,7 @@ let selectiveListsUpdater = function() {
             selectionTracker.setSelectedList(newList);
             selectiveTodosUpdater.clearDisplay();
             selectiveTodosUpdater.showListTodos();
+            createTodoPane.setListHeading(newList.getName());
         });
 
         let editButton = document.createElement('button');

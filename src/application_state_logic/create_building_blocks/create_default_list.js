@@ -1,5 +1,6 @@
 import createList from "./create_list";
 import listsManager from "../all_lists_manager/lists_manager";
+import createTodoPane from "../../ui/layout_component_outlines/todo_pane";
 
 let createDefaultList = function() {
     let list = Object.create(createDefaultList.proto);
@@ -7,7 +8,7 @@ let createDefaultList = function() {
     list.todos = [];
 
     listsManager.addList(list);
-    console.log(listsManager.getLists());
+    createTodoPane.setListHeading(list.getName());
     return list;
 };
 
