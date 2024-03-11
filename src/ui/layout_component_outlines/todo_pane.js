@@ -13,7 +13,7 @@ let createTodoPane = function() {
     listHeading.textContent = 'ALL';
     let setListHeading = (heading) => listHeading.textContent = heading;
     let todosHeading = document.createElement('h2');
-    todosHeading.textContent = 'TO DOs';
+    todosHeading.textContent = 'To Do Items';
     headingsWrapper.append(listHeading, todosHeading);
 
     let quickAddBtn = document.createElement('button');

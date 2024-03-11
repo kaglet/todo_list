@@ -4,6 +4,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 }
 
 .hidden {
@@ -20,8 +22,12 @@ body {
     ;
 }
 
-body > :nth-child(n):not(.sidebar, dialog) {
+body > :nth-child(n):not(.sidebar, dialog, header) {
     padding: 1rem;
+}
+
+header {
+    padding: 0 2rem;
 }
 
 footer {
@@ -66,18 +72,38 @@ header {
     grid-column: 1 / span 2;
 }
 
-h2, h1 {
+h2 {
     text-align: center;
 }
 
+h1 {
+    font-size: 2.8rem;
+}
+
+h2 {
+    font-size: 1.9rem;
+}
+
 .todo.pane .headings.wrapper, .todo.addition.wrapper {
-    margin: auto;
+    margin: 0 auto;
     width: fit-content;
+}
+
+.todo.pane .headings.wrapper h2:first-child {
+    text-transform: uppercase;
+}
+
+section.todo.pane {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .todo.addition.wrapper {
     display: flex;
     gap: 1.5rem;
+    display: grid;
+    grid-template: 1fr / 3fr repeat(2, 1fr);
 }
 
 button, input, select {
