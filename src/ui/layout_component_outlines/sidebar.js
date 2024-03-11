@@ -4,9 +4,8 @@ let createSidebar = function() {
     let sidebar = document.createElement('section');
     sidebar.classList.add('sidebar');
 
-    let menuIcon = document.createElement('div');
-    menuIcon.classList.add('icon', 'menu');
-    menuIcon.textContent = "+";
+    let menuIcon = document.createElement('i');
+    menuIcon.classList.add('fa-solid', 'fa-bars', 'bars');
 
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';

@@ -27,3 +27,8 @@ import todoEditController from './ui/item_editing/todo_edit.js';
 // import subtaskEditController from './ui/item_editing/subtask_editor';
 
 import listValidator from './ui/validation/list_validation.js';
+
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'

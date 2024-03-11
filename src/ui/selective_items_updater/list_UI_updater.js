@@ -33,6 +33,15 @@ let selectiveListsUpdater = function() {
         editButton.textContent = "Edit";
         deleteButton.textContent = "Delete";
 
+        let editIcon = document.createElement('i');
+        editIcon.classList.add('fa-solid', 'fa-pen-to-square', 'edit');
+
+        let deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fa-solid', 'fa-trash', 'delete');
+
+        editButton.append(editIcon);
+        deleteButton.append(deleteIcon);
+
         editButton.addEventListener('click', () => {
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
             // For edit set selected list in UI, for use later
