@@ -14,7 +14,7 @@
     --secondary-bg-clr: #111111;
     --dark-text-clr: white;
     --light-text-clr: #010400;
-    --button-clr: #c37af3;
+    --button-clr: #d76161;
     --header-clr: var(--list-card-clr);
     --placeholder-txt-clr: rgb(84, 84, 84);
     --list-card-clr: rgb(77, 77, 77);
@@ -57,7 +57,7 @@ header {
 }
 
 header {
-    color: #d99fff;
+    color: #ff9f9f;
 }
 
 footer {
