@@ -14,7 +14,7 @@ let listCustomizer = function() {
 
     const createCustomizerPane = () => {
         let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'list');
+        pane.classList.add('list');
         
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');

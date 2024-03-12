@@ -16,7 +16,7 @@ let todoCustomizer = function () {
 
     const createCustomizerPane = () => {
         let pane = document.createElement('dialog');
-        pane.classList.add('pane', 'todo');
+        pane.classList.add('todo');
 
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');
