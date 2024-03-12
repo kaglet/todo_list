@@ -3,7 +3,7 @@ let createHeader = function() {
 
     let header = document.createElement('header');
     let pageTitle = document.createElement('h1');
-    pageTitle.textContent = 'To Do App';
+    pageTitle.textContent = 'TaskBuddy';
     header.append(pageTitle);
 
     body.append(header);

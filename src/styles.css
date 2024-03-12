@@ -10,14 +10,14 @@
 :root {
     --border-rad: 1.5rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #c7c7c7;
-    --secondary-bg-clr: #26547C;
+    --main-bg: #242424;
+    --secondary-bg-clr: #111111;
     --dark-text-clr: white;
     --light-text-clr: #010400;
-    --button-clr: #84DCC6;
+    --button-clr: #c37af3;
     --header-clr: var(--list-card-clr);
     --placeholder-txt-clr: rgb(84, 84, 84);
-    --list-card-clr: #306a9c;
+    --list-card-clr: rgb(77, 77, 77);
     --todo-card-clr: rgb(238, 238, 238);
     --input-underline-clr: white;
     --input-clr: #26547C;
@@ -50,6 +50,14 @@ body > :nth-child(n):not(.sidebar, dialog, header) {
 header {
     padding: 0 2rem;
     background-color: var(--header-clr);
+}
+
+.headings.wrapper, .addition.wrapper, footer {
+    color: var(--dark-text-clr);
+}
+
+header {
+    color: #d99fff;
 }
 
 footer {
@@ -88,6 +96,7 @@ header {
     /* border-top-right-radius: var(--border-rad); */
     border-bottom-right-radius: var(--border-rad);
     background-color: var(--secondary-bg-clr);
+    color: var(--dark-text-clr);
 }
 
 .lists.display {
