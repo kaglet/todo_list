@@ -10,16 +10,13 @@ let selectiveTodosUpdater = function() {
     const addTodoDisplay = (newTodo, newTodoIndex) => {
         let wrapper = document.createElement('div');
 
-        let todoItem = document.createElement('button');
+        let todoItem = document.createElement('div');
         todoItem.textContent = newTodo.getName();
         todoItem.setAttribute('data-id', newTodoIndex);
         todoItem.classList.add('todo', 'item');
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
-
-        editButton.textContent = "Edit";
-        deleteButton.textContent = "Delete";
 
         let editIcon = document.createElement('i');
         editIcon.classList.add('fa-solid', 'fa-pen-to-square', 'edit');

@@ -30,9 +30,6 @@ let selectiveListsUpdater = function() {
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
 
-        editButton.textContent = "Edit";
-        deleteButton.textContent = "Delete";
-
         let editIcon = document.createElement('i');
         editIcon.classList.add('fa-solid', 'fa-pen-to-square', 'edit');
 

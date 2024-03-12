@@ -18,18 +18,22 @@ let createSidebar = function() {
     let getCustomAddButton = () => customAddBtn;
 
     let nameInput = document.createElement('input');
-    nameInput.setAttribute('placeholder', 'Example Name');
+    nameInput.setAttribute('placeholder', 'Example list name');
     let getNameInput = () => nameInput;
 
     let addListOptionsWrapper = document.createElement('div');
-    addListOptionsWrapper.classList.add('wrapper', 'add', 'list');
+    addListOptionsWrapper.classList.add('wrapper', 'addition', 'list');
 
     addListOptionsWrapper.append(nameInput, quickAddBtn, customAddBtn);
 
     let listsDisplay = document.createElement('div');
     listsDisplay.classList.add('lists', 'display');
     
-    sidebar.append(menuIcon, addListOptionsWrapper, listsDisplay);
+    let wrapper = document.createElement('div');
+    wrapper.append(menuIcon, addListOptionsWrapper);
+    wrapper.classList.add('wrapper');
+
+    sidebar.append(wrapper, listsDisplay);
 
     body.append(sidebar);
 

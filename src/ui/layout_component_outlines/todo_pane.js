@@ -26,7 +26,7 @@ let createTodoPane = function() {
     customAddBtn.classList.add('custom', 'add');
     let getCustomAddButton = () => customAddBtn;
     let nameInput = document.createElement('input');
-    nameInput.setAttribute('placeholder', 'Example Name');
+    nameInput.setAttribute('placeholder', 'Example todo name');
     let getNameInput = () => nameInput;
 
     let todoAdditionWrapper = document.createElement('div');
