@@ -10,6 +10,22 @@
 :root {
     --border-rad: 1.5rem;
     --sidebar-large-padding: 1.5rem;
+    --main-bg: #c7c7c7;
+    --secondary-bg-clr: #26547C;
+    --dark-text-clr: white;
+    --light-text-clr: #010400;
+    --button-clr: #84DCC6;
+    --header-clr: var(--list-card-clr);
+    --placeholder-txt-clr: rgb(84, 84, 84);
+    --list-card-clr: #306a9c;
+    --todo-card-clr: rgb(238, 238, 238);
+    --input-underline-clr: white;
+    --input-clr: #26547C;
+}
+
+::placeholder {
+    color: var(--placeholder-txt-clr);
+    opacity: 1;
 }
 
 .hidden {
@@ -24,6 +40,7 @@ body {
     "sidebar todo_pane" 10fr
     "footer footer" 1fr / 1fr 4fr
     ;
+    background-color: var(--main-bg);
 }
 
 body > :nth-child(n):not(.sidebar, dialog, header) {
@@ -32,6 +49,7 @@ body > :nth-child(n):not(.sidebar, dialog, header) {
 
 header {
     padding: 0 2rem;
+    background-color: var(--header-clr);
 }
 
 footer {
@@ -67,9 +85,9 @@ header {
     flex-direction: column;
     align-items: center;
     padding-bottom: var(--sidebar-large-padding);
-    border-top-right-radius: var(--border-rad);
+    /* border-top-right-radius: var(--border-rad); */
     border-bottom-right-radius: var(--border-rad);
-    background-color: aliceblue;
+    background-color: var(--secondary-bg-clr);
 }
 
 .lists.display {
@@ -81,7 +99,7 @@ header {
 .list.display.wrapper {
     display: grid;
     grid-template: 1fr / 2fr repeat(2, auto);
-    background-color: greenyellow;
+    background-color: var(--list-card-clr);
     border-top-right-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad);
 }
@@ -155,7 +173,7 @@ section.todo.pane {
     display: grid;
     grid-template: 1fr / 4fr repeat(2, auto);
     gap: 1rem;
-    background-color: aliceblue;
+    background-color: var(--todo-card-clr);
 }
 
 .todo.display.wrapper > div {
@@ -163,15 +181,15 @@ section.todo.pane {
     align-items: center;
 }
 
-.todo.addition.wrapper button, .list.addition.wrapper button {
+.todo.addition.wrapper button, .list.addition.wrapper button, dialog button:not(.close) {
     width: 9rem;
 }
 
-button, input, select, .todo.display.wrapper > div {
+button, select, .todo.display.wrapper > div {
     padding: 0.7rem;
 }
 
-.addition.wrapper button, select, .todo.display.wrapper {
+.addition.wrapper button, select, .todo.display.wrapper, dialog button {
     border-radius: var(--border-rad);
 }
 
@@ -182,24 +200,28 @@ button, input, select {
     font-size: 1rem;
 }
 
+input {
+    padding: 0;
+    background-color: transparent;
+    border-bottom: 2px solid var(--input-underline-clr);
+    outline: none;
+    color: var(--dark-text-clr);
+}
+
 button {
-    color: palevioletred;
+    color: var(--dark-text-clr);
+    background-color: var(--button-clr);
 }
 
 select {
-    background-color: rgb(189, 189, 189);
-    color: white;
-}
-
-input {
-    border-bottom: 2px solid black;
-    outline: none;
+    background-color: var(--input-clr);
+    color: var(--dark-text-clr);
 }
 
 /* PANE DIALOG STYLING START */
 
 dialog::backdrop {
-    background-color: #2c6bbde6;
+    background-color: #82a2cde6;
 }
 
 dialog {
@@ -212,7 +234,8 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: #0c1c33; */
+    border: none;
+    border-radius: var(--border-rad);
 }
 
 dialog form {
@@ -243,10 +266,14 @@ dialog select {
     border: none;
 }
 
-dialog input, dialog select {
+dialog select {
     padding: 0.8rem 0.4rem;
+}
+
+dialog input, dialog select {
     font-size: 1.3rem;
     font-weight: 800;
 }
+
 
 /* PANE DIALOG STYLING END */

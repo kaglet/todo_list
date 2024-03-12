@@ -18,7 +18,12 @@ let listCustomizer = function() {
         
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');
-        closeAddPaneButton.textContent = "X";
+        
+        let closeAddPaneIcon = document.createElement('i');
+        closeAddPaneIcon.classList.add('fa-solid', 'fa-xmark');
+
+        closeAddPaneButton.append(closeAddPaneIcon);
+
         closeAddPaneButton.addEventListener('click', () => hideCustomizerPane(pane));
         pane.append(closeAddPaneButton);
 
