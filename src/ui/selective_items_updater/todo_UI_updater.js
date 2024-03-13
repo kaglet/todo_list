@@ -18,19 +18,20 @@ let selectiveTodosUpdater = function() {
         scheduleDateDisplay.textContent = newTodo.getScheduleDate();
         scheduleDateDisplay.classList.add('schedule', 'date' , 'display');
 
-        let listDisplay = document.createElement('div');
+        let listDisplay = document.createElement('span');
         listDisplay.textContent = newTodo.getContainingList().getName();
         listDisplay.classList.add('todo', 'containing-list', 'display');
 
-        let priorityDisplay = document.createElement('div');
-        priorityDisplay.textContent = newTodo.getPriority() === undefined ? "none" : newTodo.getPriority();
+        let priorityDisplay = document.createElement('span');
+        let priorityText = newTodo.getPriority() === undefined ? "none" : newTodo.getPriority();
+        priorityDisplay.append(listDisplay, priorityText);
         priorityDisplay.classList.add('todo', 'priority', 'display');
 
         let nameDisplay = document.createElement('div');
         nameDisplay.textContent = newTodo.getName();
         nameDisplay.classList.add('todo', 'name', 'display');
 
-        todoItem.append(listDisplay, priorityDisplay, nameDisplay);
+        todoItem.append(priorityDisplay, nameDisplay);
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');

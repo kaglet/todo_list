@@ -202,16 +202,42 @@ section.todo.pane {
     background-color: var(--todo-card-clr);
 }
 
-.todo.display.wrapper > div {
-    display: flex;
+.todo.display.wrapper > div.todo.item {
     align-items: center;
+    display: grid;
+    grid-template: auto 1fr / 2fr 8fr;
+}
+
+div.todo.item .containing-list, div.todo.item .priority {
+    padding-right: 2.3rem;
+}
+
+div.todo.item .containing-list {
+    background-color: red;
+    border-top-left-radius: var(--border-rad);
+    border-bottom-right-radius: var(--border-rad);
+    width: 5rem;
+    padding-left: 1rem;
+}
+
+div.todo.item .priority {
+    background-color: aquamarine;
+    border-top-left-radius: var(--border-rad);
+    border-bottom-right-radius: var(--border-rad);
+    width: 10rem;
+}
+
+div.todo.item > .name {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 .todo.addition.wrapper button, .list.addition.wrapper button, dialog button:not(.close) {
     width: 9rem;
 }
 
-button, select, .todo.display.wrapper > div {
+button, select {
     padding: 0.7rem;
 }
 
@@ -233,7 +259,7 @@ input:not(dialog input) {
     color: var(--dark-text-clr);
 }
 
-.sidebar button, .todo.pane button, dialog button, input, select, .todo.display.wrapper div, label {
+.sidebar button, .todo.pane button, dialog button, input, select, .todo.display.wrapper .todo.name, label {
     font-size: var(--text-size-labels);
 }
 
