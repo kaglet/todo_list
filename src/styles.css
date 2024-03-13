@@ -210,21 +210,23 @@ section.todo.pane {
 
 div.todo.item .containing-list, div.todo.item .priority {
     padding-right: 2.3rem;
+    padding-left: 2.3rem;
+}
+
+div.todo.item .priority {
+    padding-left: 0;
 }
 
 div.todo.item .containing-list {
     background-color: red;
     border-top-left-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad);
-    width: 5rem;
-    padding-left: 1rem;
 }
 
 div.todo.item .priority {
     background-color: aquamarine;
     border-top-left-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad);
-    width: 10rem;
 }
 
 div.todo.item > .name {
