@@ -10,16 +10,16 @@
 :root {
     --border-rad: 1.5rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #658bac;
-    --secondary-bg-clr: #26547C;
+    --main-bg: #8dabc5; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --secondary-bg-clr: #658bac;
     --dark-text-clr: white;
     --light-text-clr: #010400;
     --button-clr-side-pane: #d76161;
-    --button-clr-todo-pane: #26547C;
-    --header-clr: var(--list-card-clr);
+    --button-clr-todo-pane: #d76161;
+    --header-clr: #8dabc5;
     --placeholder-txt-clr: rgb(194, 194, 194);
-    --list-card-clr: #30699b;
-    --todo-card-clr: rgb(238, 238, 238);
+    --list-card-clr: #658bac;
+    --todo-card-clr: rgb(233, 233, 233);
     --input-underline-clr: white;
     --input-clr: #26547C;
     --text-size-small: 1rem;
@@ -118,6 +118,7 @@ header {
     display: grid;
     grid-template: 1fr / 2fr repeat(2, 3rem);
     background-color: var(--list-card-clr);
+    border-bottom: 1px solid rgba(232, 232, 232, 0.6)
     /* border-top-right-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad); */
 }
@@ -213,12 +214,17 @@ div.todo.item .containing-list, div.todo.item .priority {
     padding-left: 2.3rem;
 }
 
+div.todo.item .name {
+    padding: 0 1rem 0.2rem 1rem;
+}
+
 div.todo.item .priority {
     padding-left: 0;
+    justify-self: start;
 }
 
 div.todo.item .containing-list {
-    background-color: red;
+    background-color: rgb(240, 148, 148);
     border-top-left-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad);
 }
@@ -324,7 +330,7 @@ dialog input, dialog select {
     font-weight: 800;
     padding: 0.8rem 0.4rem;
     border: none;
-    background-color: var(--main-bg);
+    background-color: #658bac;
     color: var(--dark-text-clr);
 }
 
