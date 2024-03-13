@@ -9,6 +9,7 @@
 
 :root {
     --border-rad: 1.5rem;
+    --border-rad-smaller: 0.7rem;
     --sidebar-large-padding: 1.5rem;
     --main-bg: #8dabc5; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
     --secondary-bg-clr: #658bac;
@@ -19,9 +20,9 @@
     --header-clr: #8dabc5;
     --placeholder-txt-clr: rgb(194, 194, 194);
     --list-card-clr: #658bac;
-    --todo-card-clr: rgb(233, 233, 233);
+    --todo-card-clr: var(--input-clr);
     --input-underline-clr: white;
-    --input-clr: #26547C;
+    --input-clr: #658bac;
     --text-size-small: 1rem;
     --text-size-medium: 1rem;
     --text-size-labels: 1.3rem;
@@ -225,14 +226,14 @@ div.todo.item .priority {
 
 div.todo.item .containing-list {
     background-color: rgb(240, 148, 148);
-    border-top-left-radius: var(--border-rad);
-    border-bottom-right-radius: var(--border-rad);
+    border-top-left-radius: var(--border-rad-smaller);
+    border-bottom-right-radius: var(--border-rad-smaller);
 }
 
 div.todo.item .priority {
     background-color: aquamarine;
-    border-top-left-radius: var(--border-rad);
-    border-bottom-right-radius: var(--border-rad);
+    border-top-left-radius: var(--border-rad-smaller);
+    border-bottom-right-radius: var(--border-rad-smaller);
 }
 
 div.todo.item > .name {
@@ -249,8 +250,12 @@ button, select {
     padding: 0.7rem;
 }
 
-.addition.wrapper button, select, .todo.display.wrapper, dialog button, dialog input {
+.addition.wrapper button, select, dialog button, dialog input {
     border-radius: var(--border-rad);
+}
+
+.todo.display.wrapper {
+    border-radius: var(--border-rad-smaller);
 }
 
 button, input, select {
