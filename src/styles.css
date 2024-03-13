@@ -185,6 +185,10 @@ section.todo.pane {
     grid-template: 1fr / 4fr repeat(2, auto);
 }
 
+.schedule.date.display {
+    width: auto;
+}
+
 .todos.display {
     display: flex;
     flex-direction: column;
@@ -193,7 +197,7 @@ section.todo.pane {
 
 .todo.display.wrapper {
     display: grid;
-    grid-template: 1fr / 4fr repeat(2, auto);
+    grid-template: 1fr / 4fr repeat(3, auto);
     gap: 1rem;
     background-color: var(--todo-card-clr);
 }

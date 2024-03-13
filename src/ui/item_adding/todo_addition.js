@@ -35,7 +35,7 @@ let todoAddController = function() {
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
             let listOfTodo = selectionTracker.getSelectedList();
             let newTodoIndex = listOfTodo.getTodos().length - 1;
-            let newTodo = listOfTodo.getTodo(newTodoIndex, newTodoIndex);
+            let newTodo = listOfTodo.getTodo(newTodoIndex);
 
             // Check if list of todo does not match current selected list the todo is about to be added to
             let listMismatch = listMatchingName !== selectionTracker.getSelectedList();

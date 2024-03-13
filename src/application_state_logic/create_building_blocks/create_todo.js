@@ -31,8 +31,8 @@ createTodo.proto = {
     getPriority() {
         return this.priority;
     },
-    setScheduleDate(dueDate) {
-        this.dueDate = dueDate;
+    setScheduleDate(scheduleDate) {
+        this.scheduleDate = scheduleDate;
     },
     getScheduleDate() {
         return this.scheduleDate;

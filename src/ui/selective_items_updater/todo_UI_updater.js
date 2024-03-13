@@ -15,6 +15,10 @@ let selectiveTodosUpdater = function() {
         todoItem.setAttribute('data-id', newTodoIndex);
         todoItem.classList.add('todo', 'item');
 
+        let scheduleDateDisplay = document.createElement('div');
+        scheduleDateDisplay.textContent = newTodo.getScheduleDate();
+        scheduleDateDisplay.classList.add('schedule', 'date' , 'display');
+
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
 
@@ -42,7 +46,7 @@ let selectiveTodosUpdater = function() {
             newTodo.getContainingList().removeTodo(newTodo);
         });
 
-        wrapper.append(todoItem, editButton, deleteButton);
+        wrapper.append(todoItem, scheduleDateDisplay, editButton, deleteButton);
         wrapper.classList.add('todo', 'display', 'wrapper');
         todosDisplay.append(wrapper);
     };
@@ -66,6 +70,8 @@ let selectiveTodosUpdater = function() {
     const editTodoDisplay = (indexInUI, todo) => {
         let todoItems = document.querySelectorAll('.todo.item');
         todoItems.item(indexInUI).textContent = todo.getName();
+        let dateDisplays = document.querySelectorAll('.schedule.date.display');
+        dateDisplays.item(indexInUI).textContent = todo.getScheduleDate();
     };
 
     const clearDisplay = () => {
