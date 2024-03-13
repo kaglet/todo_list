@@ -12,9 +12,8 @@ let createTodoPane = function() {
     // TODO: Get currently selected list heading/name instead of placeholder
     listHeading.textContent = 'ALL';
     let setListHeading = (heading) => listHeading.textContent = heading;
-    let todosHeading = document.createElement('h2');
-    todosHeading.textContent = 'To Do Items';
-    headingsWrapper.append(listHeading, todosHeading);
+
+    headingsWrapper.append(listHeading);
 
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';

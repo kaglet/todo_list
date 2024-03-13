@@ -43,11 +43,13 @@ body {
     min-height: 100vh;
     display: grid;
     grid: 
-    "sidebar header" 1fr
+    "sidebar todo_pane" 1fr
     "sidebar todo_pane" 10fr
     "sidebar todo_pane" 1fr / 1fr 4fr
     ;
     background-color: var(--main-bg);
+    gap: 2rem;
+    padding: 4rem;
 }
 
 header {
@@ -77,7 +79,8 @@ footer a {
     display: flex;
     flex-direction: column;
     background-color: var(--main-bg);
-    border-right: 2px solid var(--todo-card-clr);
+    border: 2px solid var(--todo-card-clr);
+    border-radius: var(--border-rad);
 }
 
 header {
@@ -171,7 +174,7 @@ h2 {
 section.todo.pane {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.4rem;
 }
 
 .todo.addition.wrapper {
@@ -191,9 +194,8 @@ section.todo.pane {
     flex: 1;
     gap: 1.7rem;
     padding: 2rem;
-    /* border-top-right-radius: 3rem;
-    border-top-left-radius: 3rem; */
     background-color: rgb(71, 135, 135);
+    border-radius: var(--border-rad);
 }
 
 .todo.display.wrapper {
