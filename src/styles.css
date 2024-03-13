@@ -14,7 +14,7 @@
     --main-bg: #8dabc5; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
     --secondary-bg-clr: #658bac;
     --dark-text-clr: white;
-    --light-text-clr: #010400;
+    --light-text-clr: #ffffff;
     --button-clr-side-pane: #d76161;
     --button-clr-todo-pane: #d76161;
     --header-clr: #8dabc5;
@@ -45,13 +45,9 @@ body {
     grid: 
     "sidebar header" 1fr
     "sidebar todo_pane" 10fr
-    "sidebar footer" 1fr / 1fr 4fr
+    "sidebar todo_pane" 1fr / 1fr 4fr
     ;
     background-color: var(--main-bg);
-}
-
-body > :nth-child(n):not(.sidebar, dialog, header) {
-    padding: 1rem;
 }
 
 header {
@@ -178,13 +174,13 @@ section.todo.pane {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    padding: 1rem 7rem;
 }
 
 .todo.addition.wrapper {
     gap: 1rem;
     display: grid;
     grid-template: 1fr / 4fr repeat(2, auto);
+    padding: 0 4rem;
 }
 
 .schedule.date.display {
@@ -194,7 +190,12 @@ section.todo.pane {
 .todos.display {
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 1.7rem;
+    padding: 2rem;
+    border-top-right-radius: 3rem;
+    border-top-left-radius: 3rem;
+    background-color: rgb(71, 135, 135);
 }
 
 .todo.display.wrapper {
@@ -217,6 +218,10 @@ div.todo.item .containing-list, div.todo.item .priority {
 
 div.todo.item .name {
     padding: 0 1rem 0.2rem 1rem;
+}
+
+div.todo.item .name, .todo.display.wrapper > button {
+    color: var(--light-text-clr);
 }
 
 div.todo.item .priority {
