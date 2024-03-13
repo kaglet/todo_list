@@ -6,7 +6,7 @@ let createHeader = function() {
     pageTitle.textContent = 'TaskBuddy';
     header.append(pageTitle);
 
-    body.append(header);
+    // body.append(header);
 }();
 
 export default createHeader;
