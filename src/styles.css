@@ -11,15 +11,15 @@
     --border-rad: 1.5rem;
     --border-rad-smaller: 0.7rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #8dabc5; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
-    --secondary-bg-clr: #658bac;
+    --main-bg: #dae3e4; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --secondary-bg-clr: #4281A4;
     --dark-text-clr: white;
     --light-text-clr: #010400;
-    --button-clr-side-pane: #d76161;
-    --button-clr-todo-pane: #d76161;
-    --header-clr: #8dabc5;
+    --button-clr-side-pane: #C1666B;
+    --button-clr-todo-pane: #C1666B;
+    --header-clr: #48A9A6;
     --placeholder-txt-clr: rgb(194, 194, 194);
-    --list-card-clr: #658bac;
+    --list-card-clr: rgba(232, 232, 232, 0.6);
     --todo-card-clr: rgb(220, 220, 220);
     --input-underline-clr: white;
     --input-clr: #658bac;
@@ -43,7 +43,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid: 
-    "sidebar header" 1fr
+    "header header" 1fr
     "sidebar todo_pane" 10fr
     "sidebar footer" 1fr / 1fr 4fr
     ;
@@ -80,8 +80,8 @@ footer a {
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
-    background-color: var(--input-clr);
-    border-right: 3px solid rgba(232, 232, 232, 0.6);
+    background-color: var(--secondary-bg-clr);
+    /* border-right: 3px solid rgba(232, 232, 232, 0.6); */
 }
 
 header {
