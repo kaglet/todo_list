@@ -24,14 +24,14 @@ let selectiveTodosUpdater = function() {
 
         let priorityDisplay = document.createElement('span');
         let priorityText = newTodo.getPriority() === undefined ? "none" : newTodo.getPriority();
-        priorityDisplay.append(listDisplay, priorityText);
+        priorityDisplay.append(priorityText);
         priorityDisplay.classList.add('todo', 'priority', 'display');
 
         let nameDisplay = document.createElement('div');
         nameDisplay.textContent = newTodo.getName();
         nameDisplay.classList.add('todo', 'name', 'display');
 
-        todoItem.append(priorityDisplay, nameDisplay);
+        todoItem.append(listDisplay, priorityDisplay, nameDisplay);
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
