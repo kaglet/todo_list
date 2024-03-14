@@ -113,6 +113,7 @@ header {
     display: grid;
     grid-template-rows: 1fr;
     grid-auto-flow: row;
+    padding: 0.5rem;
     /* background-color: var(--list-card-clr); */
 } 
 
@@ -120,7 +121,7 @@ header {
     display: grid;
     grid-template: 1fr / 2fr repeat(2, 3rem);
     /* background-color: var(--list-card-clr); */
-    border-bottom: 1px solid rgba(232, 232, 232, 0.6);
+    border: 1px solid rgba(232, 232, 232, 0.6);
     /* border-top-right-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad); */
 }
@@ -227,14 +228,12 @@ div.todo.item .priority {
 
 div.todo.item .containing-list {
     background-color: rgb(240, 148, 148);
-    border-top-left-radius: var(--border-rad-smaller);
-    border-bottom-right-radius: var(--border-rad-smaller);
+    text-align: center;
 }
 
 div.todo.item .priority {
     background-color: aquamarine;
-    border-top-left-radius: var(--border-rad-smaller);
-    border-bottom-right-radius: var(--border-rad-smaller);
+    text-align: center;
 }
 
 div.todo.item > .name {
@@ -252,11 +251,11 @@ button, select {
 }
 
 .addition.wrapper button, select, dialog button, dialog input {
-    border-radius: var(--border-rad);
+    /* border-radius: var(--border-rad); */
 }
 
 .todo.display.wrapper {
-    border-radius: var(--border-rad-smaller);
+    /* border-radius: var(--border-rad-smaller); */
 }
 
 button, input, select {
@@ -304,7 +303,7 @@ dialog {
     left: 50%;
     transform: translate(-50%, -50%);
     border: none;
-    border-radius: var(--border-rad);
+    /* border-radius: var(--border-rad); */
     background-color: #8dabc5;
 }
 
