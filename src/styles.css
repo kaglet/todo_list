@@ -11,12 +11,12 @@
     --border-rad: 1.5rem;
     --border-rad-smaller: 0.7rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: rgba(27, 90, 42, 0.962); /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
-    --secondary-bg-clr: #ffffff;
-    --dark-text-clr: rgb(0, 0, 0);
+    --main-bg: rgb(15, 25, 52); /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --secondary-bg-clr: #000000;
+    --dark-text-clr: white;
     --light-text-clr: #ffffff;
-    --button-clr-side-pane: #ECBEB4;
-    --button-clr-todo-pane: #ECBEB4;
+    --button-clr-side-pane: #d76161;
+    --button-clr-todo-pane: #d76161;
     --header-clr: rgb(23, 42, 42);
     --placeholder-txt-clr: rgb(194, 194, 194);
     --list-card-clr: transparent;
@@ -52,11 +52,11 @@ body {
 }
 
 body {
-    /* background-image: url(../src/assets/pics/clarisse-meyer-DAPRvgCg2eE-unsplash.jpg);
+    /* background-image: url(../src/assets/pics/evgeni-tcherkasski-kYAgkoUN0hc-unsplash.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; */
-    position: relative;
+    background-size: cover;
+    position: relative; */
 }
 
 body::before {
@@ -69,7 +69,7 @@ body::before {
     height: 100%;
     z-index: -1;
     position: fixed;
-    background-color: var(--main-bg);
+    background-color: rgba(12, 12, 12, 0);
     backdrop-filter: blur(4px);
 }
 
@@ -100,7 +100,7 @@ footer a {
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(10px);
-    border-radius: var(--border-rad);
+    /* border-radius: var(--border-rad); */
 }
 
 header {
@@ -130,6 +130,7 @@ header {
     grid-template-rows: 1fr;
     grid-auto-flow: row;
     background-color: var(--list-card-clr);
+    padding: 1rem;
 } 
 
 .list.display.wrapper:first-child {}
@@ -138,7 +139,8 @@ header {
     display: grid;
     grid-template: 1fr / 2fr repeat(2, 3rem);
     background-color: var(--list-card-clr);
-    border-bottom: 1px solid rgba(232, 232, 232, 0.6);
+    border: 1px solid rgba(232, 232, 232, 0.6);
+    margin-bottom: 0.3rem;
     /* border-top-right-radius: var(--border-rad);
     border-bottom-right-radius: var(--border-rad); */
 }
@@ -148,7 +150,7 @@ header {
 }
 
 .todo.display.wrapper button {
-    color: var(--dark-text-clr);
+    color: var(--light-text-clr);
 }
 
 .list.display.wrapper button:first-child {
@@ -213,12 +215,13 @@ section.todo.pane {
     flex: 1;
     gap: 1.7rem;
     padding: 2rem;
-    border-radius: var(--border-rad);
+    /* border-radius: var(--border-rad); */
 }
 
 .todos.display, .sidebar {
-    background-color: var(--secondary-bg-clr);
+    background-color: rgba(11, 11, 11, 0.96);
     backdrop-filter: blur(10px);
+    border: 2px solid white;
 }
 
 .todo.display.wrapper {
@@ -244,7 +247,7 @@ div.todo.item .name {
 }
 
 div.todo.item .name, .todo.display.wrapper > button {
-    color: var(--dark-text-clr);
+    color: var(--light-text-clr);
 }
 
 div.todo.item .priority {
@@ -278,9 +281,9 @@ button, select {
     padding: 0.7rem;
 }
 
-.addition.wrapper button, select, dialog button, dialog input {
+/* .addition.wrapper button, select, dialog button, dialog input {
     border-radius: var(--border-rad);
-}
+} */
 
 .todo.display.wrapper {
     border-radius: var(--border-rad-smaller);
