@@ -12,7 +12,7 @@ let createFooter = function() {
     selfCredit.append(' ', githubIcon);
     
     footer.append(selfCredit);
-    body.append(footer);
+    // body.append(footer);
 }();
 
 export default createFooter;

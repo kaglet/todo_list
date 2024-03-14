@@ -4,9 +4,6 @@ let createSidebar = function() {
     let sidebar = document.createElement('section');
     sidebar.classList.add('sidebar');
 
-    let menuIcon = document.createElement('i');
-    menuIcon.classList.add('fa-solid', 'fa-bars', 'bars');
-
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';
     quickAddBtn.classList.add('quick', 'add');
@@ -30,7 +27,7 @@ let createSidebar = function() {
     listsDisplay.classList.add('lists', 'display');
     
     let wrapper = document.createElement('div');
-    wrapper.append(menuIcon, addListOptionsWrapper);
+    wrapper.append(addListOptionsWrapper);
     wrapper.classList.add('wrapper');
 
     sidebar.append(wrapper, listsDisplay);

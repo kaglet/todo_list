@@ -11,7 +11,7 @@
     --border-rad: 1.5rem;
     --border-rad-smaller: 0.7rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #dae3e4; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --main-bg: #ededed; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
     --secondary-bg-clr: #4281A4;
     --dark-text-clr: white;
     --light-text-clr: #010400;
@@ -44,8 +44,7 @@ body {
     display: grid;
     grid: 
     "header header" 1fr
-    "sidebar todo_pane" 10fr
-    "sidebar footer" 1fr / 1fr 4fr
+    "sidebar todo_pane" 9fr / 1fr 4fr
     ;
     background-color: var(--main-bg);
 }
@@ -57,6 +56,8 @@ body > :nth-child(n):not(.sidebar, dialog, header) {
 header {
     padding: 0 2rem;
     background-color: var(--header-clr);
+    display: flex;
+    gap: 2.5rem;
 }
 
 .headings.wrapper, .addition.wrapper, footer {
