@@ -23,9 +23,9 @@ let selectiveTodosUpdater = function() {
         listDisplay.classList.add('todo', 'containing-list', 'display');
 
         let priorityDisplay = document.createElement('span');
-        let priorityText = newTodo.getPriority() === undefined ? "none" : newTodo.getPriority();
+        let priorityText = newTodo.getPriority() === undefined ? "" : newTodo.getPriority();
         priorityDisplay.append(priorityText);
-        priorityDisplay.classList.add('todo', 'priority', 'display');
+        priorityDisplay.classList.add('todo', 'priority', 'display', newTodo.getPriority());
 
         let nameDisplay = document.createElement('div');
         nameDisplay.textContent = newTodo.getName();

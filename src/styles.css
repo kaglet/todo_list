@@ -122,7 +122,6 @@ header {
 .list.display.wrapper {
     display: grid;
     grid-template: 1fr / 2fr repeat(2, 3rem);
-    /* background-color: var(--list-card-clr); */
     border: 2px solid var(--list-card-clr);
     margin-bottom: 0.6rem;
     /* border-top-right-radius: var(--border-rad);
@@ -140,6 +139,10 @@ header {
 
 .todo.display.wrapper button {
     color: var(--dark-text-clr);
+}
+
+.list.display.wrapper button {
+    color: var(--button-clr-side-pane);
 }
 
 .list.display.wrapper button:first-child {
@@ -231,6 +234,18 @@ div.todo.item .containing-list, div.todo.item .priority {
     padding-left: 2.3rem;
 }
 
+div.todo.item .priority.low {
+    background-color: rgb(83, 205, 197);
+}
+
+div.todo.item .priority.medium {
+    background-color: rgb(240, 209, 34);
+}
+
+div.todo.item .priority.high {
+    background-color: rgb(255, 69, 69);
+}
+
 div.todo.item .name {
     padding: 0 1rem 0.2rem 1rem;
 }
@@ -246,7 +261,6 @@ div.todo.item .containing-list {
 }
 
 div.todo.item .priority {
-    background-color: rgb(60, 192, 148);
     text-align: center;
 }
 
