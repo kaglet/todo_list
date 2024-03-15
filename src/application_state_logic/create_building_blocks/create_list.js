@@ -26,6 +26,12 @@ createList.proto = {
     getTodo(index) {
         return this.todos[index];
     },
+    setColor(color) {
+        this.color = color;
+    },
+    getColor() {
+        return this.color;
+    }
 };
 
 export default createList;

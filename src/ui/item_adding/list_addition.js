@@ -23,11 +23,13 @@ let listAddController = function() {
         saveButton.textContent = 'Add';
 
         saveButton.addEventListener('click', () => {
-            let { nameInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
+            let { nameInput, colorInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
             let name = nameInput.value.trim();
+            let color = colorInput.getAttribute('data-color');
+            console.log(color);
             if (listValidator.isInvalidOnCustomAdd(name)) return;
 
-            addCustomList(name);
+            addCustomList(name, color);
             listCustomizer.hideCustomizerPane(addCustomizerPane);
             showNewList();
         });
@@ -49,8 +51,9 @@ let listAddController = function() {
         console.log(listsManager.getLists());
     };
 
-    const addCustomList = (name) => {
+    const addCustomList = (name, color) => {
         let list = createList(name);
+        list.setColor(color);
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };

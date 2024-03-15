@@ -305,7 +305,7 @@ button, input, select {
     height: 2rem;
 }
 
-#color-choices input:focus {
+#color-choices input:checked {
     outline: 3px solid var(--dark-text-clr);
 }
 
