@@ -13,7 +13,10 @@ let listAddController = function() {
     let customAddButton = createSidebar.getCustomAddButton();
 
     const completeCustomizerPaneFunctionality = () => {
-        let addCustomizer = listCustomizer.createCustomizerPane();
+        let addCustomizerPane = listCustomizer.createCustomizerPane();
+
+        let h2 = listCustomizer.getHeading(addCustomizerPane);
+        h2.textContent = "Add list";
 
         let saveButton = document.createElement('button');
         saveButton.classList.add('list', 'add');
@@ -25,13 +28,13 @@ let listAddController = function() {
             if (listValidator.isInvalidOnCustomAdd(name)) return;
 
             addCustomList(name);
-            listCustomizer.hideCustomizerPane(addCustomizer);
+            listCustomizer.hideCustomizerPane(addCustomizerPane);
             showNewList();
         });
     
-        addCustomizer.append(saveButton);
+        addCustomizerPane.append(saveButton);
 
-        return addCustomizer;
+        return addCustomizerPane;
     };
 
     let listAddCustomizerPane = completeCustomizerPaneFunctionality();

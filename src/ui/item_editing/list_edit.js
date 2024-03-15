@@ -6,7 +6,10 @@ import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js
 // Manages edit functionality of existing list instances
 let listEditController = function() {
     const completeCustomizerPaneFunctionality = () => {
-        let editCustomizer = listCustomizer.createCustomizerPane();
+        let editCustomizerPane = listCustomizer.createCustomizerPane();
+
+        let h2 = listCustomizer.getHeading(editCustomizerPane);
+        h2.textContent = "Edit todo";
 
         let saveButton = document.createElement('button');
         saveButton.classList.add('list', 'edit');
@@ -16,12 +19,12 @@ let listEditController = function() {
             editList();
             let selectedListIndex = listsManager.getLists().indexOf(selectionTracker.getSelectedList());
             selectiveListsUpdater.editListDisplay(selectedListIndex);
-            listCustomizer.hideCustomizerPane(editCustomizer);
+            listCustomizer.hideCustomizerPane(editCustomizerPane);
         });
     
-        editCustomizer.append(saveButton);
+        editCustomizerPane.append(saveButton);
 
-        return editCustomizer;
+        return editCustomizerPane;
     }
 
     let listEditCustomizerPane = completeCustomizerPaneFunctionality();

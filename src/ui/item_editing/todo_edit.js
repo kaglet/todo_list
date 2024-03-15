@@ -9,6 +9,9 @@ let todoEditController = function () {
     const completeCustomizerPaneFunctionality = () => {
         let editCustomizerPane = todoCustomizer.createCustomizerPane();
 
+        let h2 = todoCustomizer.getHeading(editCustomizerPane);
+        h2.textContent = "Edit todo";
+
         let saveButton = document.createElement('button');
         saveButton.classList.add('list', 'edit');
         saveButton.textContent = 'Save Edit';

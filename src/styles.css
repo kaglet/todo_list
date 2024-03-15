@@ -260,11 +260,11 @@ button, select {
 }
 
 .addition.wrapper button, select, dialog button, dialog input {
-    /* border-radius: var(--border-rad); */
+    border-radius: var(--border-rad-smaller);
 }
 
 .todo.display.wrapper {
-    /* border-radius: var(--border-rad-smaller); */
+    border-radius: var(--border-rad-smaller);
 }
 
 button, input, select {
@@ -290,7 +290,7 @@ button, input, select {
 /* PANE DIALOG STYLING START */
 
 dialog::backdrop {
-    background-color: #82a2cde6;
+    background-color: #b9cce5e6;
 }
 
 dialog {
@@ -305,7 +305,7 @@ dialog {
     transform: translate(-50%, -50%);
     border: none;
     /* border-radius: var(--border-rad); */
-    background-color: #8dabc5;
+    background-color: var(--main-bg);
 }
 
 dialog form {
@@ -317,8 +317,10 @@ dialog form {
     grid-auto-flow: row;
 }
 
-dialog button.close {
-    margin-left: auto;
+dialog .wrapper:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 dialog button.add {
@@ -326,9 +328,12 @@ dialog button.add {
     width: 50%;
 }
 
+dialog button {
+     background-color: var(--header-clr);
+}
+
 dialog h2 {
     text-align: center;
-    margin-bottom: 2.1rem;
     font-size: 3.2rem;
 }
 
@@ -336,8 +341,8 @@ dialog input, dialog select {
     font-weight: 800;
     padding: 0.8rem 0.4rem;
     border: none;
-    background-color: #658bac;
     color: var(--dark-text-clr);
+    background-color: white;
 }
 
 /* PANE DIALOG STYLING END */

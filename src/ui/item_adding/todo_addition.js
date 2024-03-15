@@ -16,6 +16,9 @@ let todoAddController = function() {
     const completeCustomizerPaneFunctionality = () => {
         let addCustomizerPane = todoCustomizer.createCustomizerPane();
 
+        let h2 = todoCustomizer.getHeading(addCustomizerPane);
+        h2.textContent = "Add todo";
+
         let saveButton = document.createElement('button');
         saveButton.classList.add('todo', 'add');
         saveButton.textContent = 'Add';

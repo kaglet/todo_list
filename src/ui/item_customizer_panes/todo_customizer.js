@@ -18,6 +18,8 @@ let todoCustomizer = function () {
         let pane = document.createElement('dialog');
         pane.classList.add('todo');
 
+        let heading = document.createElement('h2');
+
         let closeAddPaneButton = document.createElement('button');
         closeAddPaneButton.classList.add('list', 'close');
         
@@ -28,6 +30,11 @@ let todoCustomizer = function () {
 
         closeAddPaneButton.addEventListener('click', () => hideCustomizerPane(pane));
         pane.append(closeAddPaneButton);
+
+        let wrapper = document.createElement('div');
+        wrapper.classList.add('wrapper');
+        wrapper.append(heading, closeAddPaneButton);
+        pane.append(wrapper);
 
         let form = document.createElement('form');
         pane.append(form);
@@ -148,7 +155,13 @@ let todoCustomizer = function () {
         });
     };
 
-    return { hideCustomizerPane, showCustomizerPane, createCustomizerPane, getFormInputs };
+    const getHeading = function(pane) {
+        let h2 = pane.querySelector('h2');
+
+        return h2;
+    };
+
+    return { hideCustomizerPane, showCustomizerPane, createCustomizerPane, getFormInputs, getHeading };
 }();
 
 export default todoCustomizer;
