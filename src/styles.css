@@ -171,11 +171,11 @@ h2 {
 }
 
 h1 {
-    font-size: 3.1rem;
+    font-size: 3.5rem;
 }
 
 h2 {
-    font-size: 2.7rem;
+    font-size: 3.2rem;
 }
 
 .todo.pane .headings.wrapper {
@@ -287,7 +287,7 @@ button, input, select {
     font-size: var(--text-size-labels);
 }
 
-.sidebar button, dialog .wrapper button, dialog button.add, dialog button.save {
+.sidebar button, dialog .wrapper button, dialog button.add, dialog button.edit {
     color: var(--dark-text-clr);
     background-color: var(--header-clr);
 }
@@ -353,7 +353,6 @@ dialog button.add {
 
 dialog h2 {
     text-align: center;
-    font-size: 3.2rem;
 }
 
 dialog input, dialog select {
