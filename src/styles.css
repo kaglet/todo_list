@@ -300,9 +300,13 @@ button, input, select {
     grid-auto-rows: 1fr;
 }
 
-#color-choices button {
+#color-choices input {
     width: 2rem;
     height: 2rem;
+}
+
+#color-choices input:focus {
+    outline: 3px solid var(--dark-text-clr);
 }
 
 .todo.pane button {
