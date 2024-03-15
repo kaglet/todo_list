@@ -69,7 +69,12 @@ let listAddController = function() {
         showNewList();
     });
 
-    customAddButton.addEventListener('click', () => listCustomizer.showCustomizerPane(listAddCustomizerPane));
+    customAddButton.addEventListener('click', () => {
+        listCustomizer.showCustomizerPane(listAddCustomizerPane);
+
+        let { nameInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
+        nameInput.value = document.querySelector('.addition.list input').value;
+    });
 
     // Before any other lists are added to the UI show the default "All" list
     selectiveListsUpdater.addListDisplay(listsManager.getList(0), 0);

@@ -89,7 +89,12 @@ let todoAddController = function() {
         selectiveTodosUpdater.addTodoDisplay(newTodo, newTodoIndex);
     });
 
-    customAddButton.addEventListener('click', () => todoCustomizer.showCustomizerPane(todoAddCustomizerPane, selectionTracker.getSelectedList()));
+    customAddButton.addEventListener('click', () => {
+        todoCustomizer.showCustomizerPane(todoAddCustomizerPane, selectionTracker.getSelectedList());
+
+        let { nameInput } = todoCustomizer.getFormInputs(todoAddCustomizerPane);
+        nameInput.value = document.querySelector('.addition.todo input').value;
+    });
 
     return { addCustomTodo };
 }();
