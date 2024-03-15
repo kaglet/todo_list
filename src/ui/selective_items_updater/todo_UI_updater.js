@@ -31,7 +31,7 @@ let selectiveTodosUpdater = function() {
         nameDisplay.textContent = newTodo.getName();
         nameDisplay.classList.add('todo', 'name', 'display');
 
-        todoItem.append(nameDisplay, listDisplay, priorityDisplay);
+        todoItem.append(nameDisplay);
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');
@@ -60,7 +60,7 @@ let selectiveTodosUpdater = function() {
             newTodo.getContainingList().removeTodo(newTodo);
         });
 
-        wrapper.append(todoItem, scheduleDateDisplay, editButton, deleteButton);
+        wrapper.append(todoItem, listDisplay, priorityDisplay, scheduleDateDisplay, editButton, deleteButton);
         wrapper.classList.add('todo', 'display', 'wrapper');
         todosDisplay.append(wrapper);
     };
