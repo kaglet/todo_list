@@ -52,10 +52,11 @@ let listCustomizer = function() {
             let colorChoicesDisplay = document.createElement('div');
             colorChoicesDisplay.setAttribute('id', 'color-choices');
     
-            let colors = ['#FE5F55', '#60D394', '#AAF683', '#FFD97D', '#E1CA96', '#FF9B85', '#81A4CD', '#054A91', '#5A5766', '#BBC8CA', '#454ADE', '#FB8B24', '#5F0F40', '#0F4C5C', '#9792E3'];
+            let colors = ['#FE5F55', '#FB8B24', '#FFD97D', '#E1CA96', '#FF9B85', '#60D394', '#AAF683', '#81A4CD', '#054A91', '#5A5766', '#BBC8CA', '#454ADE', '#5F0F40', '#0F4C5C', '#9792E3'];
             
             colors.forEach(color => {
                 let colorDisplay = document.createElement('button');
+                colorDisplay.setAttribute('type', 'button');
                 console.log(color);
                 colorDisplay.setAttribute('data-color', color);
                 colorDisplay.style.backgroundColor = color;
