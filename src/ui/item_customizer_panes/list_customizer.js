@@ -48,6 +48,24 @@ let listCustomizer = function() {
             return nameInput;
         };
 
+        const createColorChoicesDisplay = () => {
+            let colorChoicesDisplay = document.createElement('div');
+            colorChoicesDisplay.setAttribute('id', 'color-choices');
+    
+            let colors = ['#FE5F55', '#60D394', '#AAF683', '#FFD97D', '#E1CA96', '#FF9B85', '#81A4CD', '#054A91', '#5A5766', '#BBC8CA', '#454ADE', '#FB8B24', '#5F0F40', '#0F4C5C', '#9792E3'];
+            
+            colors.forEach(color => {
+                let colorDisplay = document.createElement('button');
+                console.log(color);
+                colorDisplay.setAttribute('data-color', color);
+                colorDisplay.style.backgroundColor = color;
+    
+                colorChoicesDisplay.append(colorDisplay);
+            });
+
+            return colorChoicesDisplay;
+        };
+
         const giveLabelToInput = function(label, input) {
            label.setAttribute('for', input.getAttribute('id'));
         };
@@ -57,8 +75,13 @@ let listCustomizer = function() {
         nameLabel.textContent = "Enter list name: ";
 
         giveLabelToInput(nameLabel, nameInput);
+
+        let colorChoicesDisplay = createColorChoicesDisplay();
+        let colorChoiceLabel = document.createElement('label');
+        colorChoiceLabel.textContent = "Choose list color";
+        giveLabelToInput(colorChoiceLabel, colorChoicesDisplay);
         
-        form.append(nameLabel, nameInput);
+        form.append(nameLabel, nameInput, colorChoiceLabel, colorChoicesDisplay);
         form.method = "dialog";
 
         return pane;

@@ -226,6 +226,9 @@ section.todo.pane {
 
 .todo.display.wrapper > div.todo.item {
     padding: 0 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 div.todo.wrapper .containing-list, div.todo.wrapper .priority {
@@ -284,9 +287,22 @@ button, input, select {
     font-size: var(--text-size-labels);
 }
 
-.sidebar button, dialog button {
+.sidebar button, dialog .wrapper button, dialog button.add, dialog button.save {
     color: var(--dark-text-clr);
-    background-color: var(--button-clr-side-pane);
+    background-color: var(--header-clr);
+}
+
+#color-choices {
+    display: grid;
+    gap: 0.3rem;
+    justify-items: center;
+    grid-template: 1fr / repeat(9, auto);
+    grid-auto-rows: 1fr;
+}
+
+#color-choices button {
+    width: 2rem;
+    height: 2rem;
 }
 
 .todo.pane button {
@@ -333,10 +349,6 @@ dialog .wrapper:first-child {
 dialog button.add {
     margin: 0 auto;
     width: 50%;
-}
-
-dialog button {
-     background-color: var(--header-clr);
 }
 
 dialog h2 {
