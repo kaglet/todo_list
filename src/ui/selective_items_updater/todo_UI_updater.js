@@ -31,7 +31,7 @@ let selectiveTodosUpdater = function() {
         nameDisplay.textContent = newTodo.getName();
         nameDisplay.classList.add('todo', 'name', 'display');
 
-        todoItem.append(listDisplay, priorityDisplay, nameDisplay);
+        todoItem.append(nameDisplay, listDisplay, priorityDisplay);
 
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');

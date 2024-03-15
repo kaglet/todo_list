@@ -221,7 +221,9 @@ section.todo.pane {
 .todo.display.wrapper > div.todo.item {
     align-items: center;
     display: grid;
-    grid-template: auto 1fr / 1fr 1fr 5fr;
+    grid-template: 1fr / 6fr 1fr 1fr;
+    gap: 0.7rem;
+    padding: 0 0.4rem;
 }
 
 div.todo.item .containing-list, div.todo.item .priority {
@@ -241,18 +243,11 @@ div.todo.item .priority {
 div.todo.item .containing-list {
     background-color: rgb(240, 148, 148);
     text-align: center;
-    border-top-left-radius: var(--border-rad-smaller);
 }
 
 div.todo.item .priority {
     background-color: rgb(60, 192, 148);
     text-align: center;
-}
-
-div.todo.item > .name {
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-column-end: 4;
 }
 
 button, select {
