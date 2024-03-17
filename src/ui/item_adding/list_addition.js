@@ -26,7 +26,7 @@ let listAddController = function() {
             let { nameInput, colorInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
             let name = nameInput.value.trim();
             let color = colorInput.getAttribute('data-color');
-            console.log(color);
+            console.log("List color is " + color);
             if (listValidator.isInvalidOnCustomAdd(name)) return;
 
             addCustomList(name, color);

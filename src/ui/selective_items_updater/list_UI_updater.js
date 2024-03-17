@@ -15,6 +15,10 @@ let selectiveListsUpdater = function() {
     const addListDisplay = (newList, newListIndex) => {
         let wrapper = document.createElement('div');
 
+        let colorDisplay = document.createElement('div');
+        colorDisplay.classList.add('color', 'display');
+        colorDisplay.style.backgroundColor = newList.getColor();
+
         let listItem = document.createElement('button');
         listItem.textContent = newList.getName();
         listItem.setAttribute('data-id', newListIndex);
@@ -52,7 +56,7 @@ let selectiveListsUpdater = function() {
             listsManager.removeList(newList);
         });
 
-        wrapper.append(listItem, editButton);
+        wrapper.append(colorDisplay, listItem, editButton);
         if (newListIndex !== 0) {
             wrapper.append(deleteButton);
         }

@@ -92,9 +92,9 @@ let listCustomizer = function() {
     // Getter on factory instance pane's components
     const getFormInputs = function(pane) {
         let nameInput = pane.querySelector('#name');
-        let colorInputs = pane.querySelectorAll(`#color-choices input[type='radio']`);
-        let colorInput = [...colorInputs].find(colorInput => colorInput.selected = true);
+        let colorInput = pane.querySelector(`#color-choices input[type='radio']:checked`);
 
+        console.log(colorInput);
         return { nameInput, colorInput };
     };
 

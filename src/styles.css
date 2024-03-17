@@ -105,9 +105,6 @@ header {
     flex-direction: column;
     align-items: center;
     padding-bottom: var(--sidebar-large-padding);
-    /* border-top-right-radius: var(--border-rad); */
-    /* border-bottom-right-radius: var(--border-rad); */
-    /* background-color: var(--secondary-bg-clr); */
     color: var(--dark-text-clr);
 }
 
@@ -116,16 +113,15 @@ header {
     grid-template-rows: 1fr;
     grid-auto-flow: row;
     padding: 0.5rem;
-    /* background-color: var(--list-card-clr); */
 } 
 
 .list.display.wrapper {
     display: grid;
-    grid-template: 1fr / 2fr repeat(2, 3rem);
+    grid-template: 1fr / 3rem 2fr repeat(2, 3rem);
     border: 2px solid var(--list-card-clr);
     margin-bottom: 0.6rem;
-    /* border-top-right-radius: var(--border-rad);
-    border-bottom-right-radius: var(--border-rad); */
+    align-items: center;
+    justify-items: center;
 }
 
 .list.display.wrapper:hover, .list.display.wrapper:hover button {
@@ -143,6 +139,12 @@ header {
 
 .list.display.wrapper button {
     color: var(--button-clr-side-pane);
+}
+
+.color.display {
+    border-radius: 50%;
+    width: 0.7rem;
+    height: 0.7rem;
 }
 
 .list.display.wrapper button:first-child {
