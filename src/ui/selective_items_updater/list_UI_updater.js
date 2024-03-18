@@ -46,8 +46,8 @@ let selectiveListsUpdater = function() {
         editButton.addEventListener('click', () => {
             listCustomizer.showCustomizerPane(listEditController.getCustomizerPane());
             // For edit set selected list in UI, for use later
-            selectionTracker.setSelectedList(newList);
-            console.log(selectionTracker.getSelectedList());
+            selectionTracker.setListToEdit(newList);
+            console.log(selectionTracker.getListToEdit());
             listEditController.fillForm(newList);
         });
         deleteButton.addEventListener('click', () => {

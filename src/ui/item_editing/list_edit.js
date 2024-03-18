@@ -17,7 +17,7 @@ let listEditController = function() {
 
         saveButton.addEventListener('click', () => {
             editList();
-            let selectedListIndex = listsManager.getLists().indexOf(selectionTracker.getSelectedList());
+            let selectedListIndex = listsManager.getLists().indexOf(selectionTracker.getListToEdit());
             selectiveListsUpdater.editListDisplay(selectedListIndex);
             listCustomizer.hideCustomizerPane(editCustomizerPane);
         });
@@ -25,29 +25,29 @@ let listEditController = function() {
         editCustomizerPane.append(saveButton);
 
         return editCustomizerPane;
-    }
+    };
 
     let listEditCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');
     container.append(listEditCustomizerPane);
     listCustomizer.hideCustomizerPane(listEditCustomizerPane);
 
-    let fillForm = (list) => {
+    const fillForm = (list) => {
         let { nameInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
 
         nameInput.value = list.getName();
     };
 
-    let editList = () => {
+    const editList = () => {
         let { nameInput, colorInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
-        let listToEdit = selectionTracker.getSelectedList();
+        let listToEdit = selectionTracker.getListToEdit();
         listToEdit.setName(nameInput.value);
         let color = colorInput !== null ? colorInput.getAttribute('data-color') : 'transparent';
         listToEdit.setColor(color);
         console.log(listsManager.getLists());
     };
 
-    let getCustomizerPane = () => listEditCustomizerPane;
+    const getCustomizerPane = () => listEditCustomizerPane;
 
     return { fillForm, getCustomizerPane, editList }
 }();
