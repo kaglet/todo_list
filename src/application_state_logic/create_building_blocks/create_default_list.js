@@ -5,7 +5,7 @@ import createTodoPane from "../../ui/layout_component_outlines/todo_pane";
 let createDefaultList = function() {
     let list = Object.create(createDefaultList.proto);
     list.setName("All");
-    list.setColor('blue');
+    list.setColor('#FE5F55');
     list.todos = [];
 
     listsManager.addList(list);

@@ -21,6 +21,7 @@ let selectiveTodosUpdater = function() {
         let listDisplay = document.createElement('span');
         listDisplay.textContent = newTodo.getContainingList().getName();
         listDisplay.classList.add('todo', 'containing-list', 'display');
+        listDisplay.style.backgroundColor = newTodo.getContainingList().getColor();
 
         let priorityDisplay = document.createElement('span');
         let priorityText = newTodo.getPriority() === undefined ? "" : newTodo.getPriority();
