@@ -94,7 +94,7 @@ let listCustomizer = function() {
         let nameInput = pane.querySelector('#name');
         let colorInput = pane.querySelector(`#color-choices input[type='radio']:checked`);
 
-        console.log(colorInput);
+        
         return { nameInput, colorInput };
     };
 

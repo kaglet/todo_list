@@ -42,7 +42,8 @@ let listEditController = function() {
         let { nameInput, colorInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
         let listToEdit = selectionTracker.getSelectedList();
         listToEdit.setName(nameInput.value);
-        listToEdit.setColor(colorInput.getAttribute('data-color'));
+        let color = colorInput !== null ? colorInput.getAttribute('data-color') : 'none';
+        listToEdit.setColor(color);
         console.log(listsManager.getLists());
     };
 
@@ -52,5 +53,3 @@ let listEditController = function() {
 }();
 
 export default listEditController;
-
-// TODO: Change color display of list to reflect edit like other attributes

@@ -25,7 +25,7 @@ let listAddController = function() {
         saveButton.addEventListener('click', () => {
             let { nameInput, colorInput } = listCustomizer.getFormInputs(listAddCustomizerPane);
             let name = nameInput.value.trim();
-            let color = colorInput.getAttribute('data-color');
+            let color = colorInput !== null ? colorInput.getAttribute('data-color') : 'none';
             console.log("List color is " + color);
             if (listValidator.isInvalidOnCustomAdd(name)) return;
 

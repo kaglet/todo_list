@@ -79,15 +79,13 @@ let selectiveListsUpdater = function() {
         }
     };
 
-    // Reflect edits of list item after changes are saved
+    // Reflect edits of list item in UI after changes are saved
     const editListDisplay = (index) => {
         let listItems = document.querySelectorAll('.list.item');
-        listItems.item(index).textContent = listsManager.getList(index).getName();
+        let editedList = listsManager.getList(index);
+        listItems.item(index).textContent = editedList.getName();
         let colorDisplays = document.querySelectorAll('.color.display');
-        colorDisplays.item(index).style.backgroundColor = listsManager.getList(index).getColor();
-        console.log(colorDisplays);
-        console.log('Color display at index' + index + 'is' + colorDisplays.item(index).backgroundColor);
-        console.log('List color at index' + index + 'is' + listsManager.getList(index).getColor());
+        colorDisplays.item(index).style.backgroundColor = editedList.getColor();
     };
 
     return { addListDisplay, removeListDisplay, editListDisplay };
