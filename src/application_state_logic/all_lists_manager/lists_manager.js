@@ -17,8 +17,8 @@ let listsManager = function() {
     };
 
     const getList = (index) => {
-        console.log(index);
-        console.log(lists);
+        // console.log(index);
+        // console.log(lists);
         return lists[index];
     };
     
