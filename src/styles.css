@@ -163,8 +163,8 @@ svg {
     text-overflow: ellipsis;
 }
 
-.list.display.wrapper:first-child > button:nth-child(2) {
-    grid-column: 2 / 4;
+.list.display.wrapper:first-child > button:nth-of-type(2) {
+    grid-column-start: 4;
 }
 
 .list.addition.wrapper {
@@ -226,7 +226,7 @@ section.todo.pane {
 
 .todo.display.wrapper {
     display: grid;
-    grid-template: 1fr / 6fr;
+    grid-template: 1fr / 6fr repeat(3, 7rem) repeat(2, auto);
     align-items: center;
     grid-auto-columns: auto;
     grid-auto-flow: column;
@@ -241,11 +241,6 @@ section.todo.pane {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-div.todo.wrapper .containing-list, div.todo.wrapper .priority {
-    padding-right: 2.3rem;
-    padding-left: 2.3rem;
 }
 
 div.todo.wrapper .priority.low {

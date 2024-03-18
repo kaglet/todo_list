@@ -83,10 +83,16 @@ let selectiveTodosUpdater = function() {
 
     // Reflect edits of specific list item in UI after changes are saved
     const editTodoDisplay = (indexInUI, todo) => {
-        let todoItems = document.querySelectorAll('.todo.item');
+        let todoItems = document.querySelectorAll('.todo.name.display');
         todoItems.item(indexInUI).textContent = todo.getName();
         let dateDisplays = document.querySelectorAll('.schedule.date.display');
         dateDisplays.item(indexInUI).textContent = todo.getScheduleDate();
+        let priorityDisplays = document.querySelectorAll('.todo.priority.display');
+        priorityDisplays.item(indexInUI).textContent = todo.getPriority();
+        priorityDisplays.item(indexInUI).classList.remove('high', 'medium', 'low');
+        priorityDisplays.item(indexInUI).classList.add(todo.getPriority());
+        let listDisplays = document.querySelectorAll('.todo.containing-list.display');
+        listDisplays.item(indexInUI).textContent = todo.getContainingList().getName();
     };
 
     const clearDisplay = () => {
