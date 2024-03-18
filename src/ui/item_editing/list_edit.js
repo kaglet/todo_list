@@ -42,7 +42,7 @@ let listEditController = function() {
         let { nameInput, colorInput } = listCustomizer.getFormInputs(listEditCustomizerPane);
         let listToEdit = selectionTracker.getSelectedList();
         listToEdit.setName(nameInput.value);
-        let color = colorInput !== null ? colorInput.getAttribute('data-color') : 'none';
+        let color = colorInput !== null ? colorInput.getAttribute('data-color') : 'transparent';
         listToEdit.setColor(color);
         console.log(listsManager.getLists());
     };

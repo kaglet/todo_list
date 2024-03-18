@@ -1,4 +1,3 @@
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import createSidebar from "../layout_component_outlines/sidebar";
 
 let listCustomizer = function() {
@@ -52,15 +51,18 @@ let listCustomizer = function() {
             let colorChoicesDisplay = document.createElement('div');
             colorChoicesDisplay.setAttribute('id', 'color-choices');
     
-            let colors = ['#FE5F55', '#FB8B24', '#FFD97D', '#E1CA96', '#FF9B85', '#60D394', '#AAF683', '#81A4CD', '#054A91', '#5A5766', '#BBC8CA', '#454ADE', '#5F0F40', '#0F4C5C', '#9792E3'];
+            let colors = ['transparent','#FE5F55', '#FB8B24', '#FFD97D', '#E1CA96', '#FF9B85', '#60D394', '#AAF683', '#81A4CD', '#054A91', '#5A5766', '#BBC8CA', '#454ADE', '#5F0F40', '#0F4C5C', '#9792E3'];
             
             colors.forEach(color => {
                 let colorDisplay = document.createElement('input');
                 colorDisplay.setAttribute('type', 'radio');
                 colorDisplay.setAttribute('name', 'color-choice');
-                console.log(color);
                 colorDisplay.setAttribute('data-color', color);
                 colorDisplay.style.backgroundColor = color;
+                if (color === 'transparent') {
+                    colorDisplay.classList.add('transparent');
+                    colorDisplay.style.border = '2px dotted black';
+                }
     
                 colorChoicesDisplay.append(colorDisplay);
             });
@@ -94,7 +96,6 @@ let listCustomizer = function() {
         let nameInput = pane.querySelector('#name');
         let colorInput = pane.querySelector(`#color-choices input[type='radio']:checked`);
 
-        
         return { nameInput, colorInput };
     };
 
