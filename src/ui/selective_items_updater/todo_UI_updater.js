@@ -90,7 +90,7 @@ let selectiveTodosUpdater = function() {
         let priorityDisplays = document.querySelectorAll('.todo.priority.display');
         priorityDisplays.item(indexInUI).textContent = todo.getPriority();
         priorityDisplays.item(indexInUI).classList.remove('high', 'medium', 'low');
-        priorityDisplays.item(indexInUI).classList.add(todo.getPriority());
+        todo.getPriority() !== "" ? priorityDisplays.item(indexInUI).classList.add(todo.getPriority()) : undefined;
         let listDisplays = document.querySelectorAll('.todo.containing-list.display');
         listDisplays.item(indexInUI).textContent = todo.getContainingList().getName();
     };

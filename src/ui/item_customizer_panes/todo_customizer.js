@@ -58,19 +58,22 @@ let todoCustomizer = function () {
             let priorityInputID = 'priority';
             priorityInput.setAttribute('id', priorityInputID);
 
+            let noPriorityOption = document.createElement('option');
             let highPriorityOption = document.createElement('option');
             let mediumPriorityOption = document.createElement('option');
             let lowPriorityOption = document.createElement('option');
 
+            lowPriorityOption.setAttribute('value', "");
             lowPriorityOption.setAttribute('value', 'low');
             mediumPriorityOption.setAttribute('value', 'medium');
             highPriorityOption.setAttribute('value', 'high');
 
+            noPriorityOption.textContent = '';
             lowPriorityOption.textContent = 'Low';
             mediumPriorityOption.textContent = 'Medium';
             highPriorityOption.textContent = 'High';
 
-            priorityInput.append(lowPriorityOption, mediumPriorityOption, highPriorityOption);
+            priorityInput.append(noPriorityOption, lowPriorityOption, mediumPriorityOption, highPriorityOption);
 
             return priorityInput;
         };
