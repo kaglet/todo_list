@@ -1,6 +1,7 @@
 // add/remove
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
+import todoAddController from "../item_adding/todo_addition";
 import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
 
@@ -26,7 +27,7 @@ let selectiveTodosUpdater = function() {
         let priorityDisplay = document.createElement('span');
         let priorityText = newTodo.getPriority() === undefined ? "" : newTodo.getPriority();
         priorityDisplay.append(priorityText);
-        priorityDisplay.classList.add('todo', 'priority', 'display', newTodo.getPriority());
+        priorityDisplay.classList.add('todo', 'priority', 'display', priorityText === "" ? "none" : priorityText);
 
         let nameDisplay = document.createElement('div');
         nameDisplay.textContent = newTodo.getName();
@@ -90,7 +91,9 @@ let selectiveTodosUpdater = function() {
         let priorityDisplays = document.querySelectorAll('.todo.priority.display');
         priorityDisplays.item(indexInUI).textContent = todo.getPriority();
         priorityDisplays.item(indexInUI).classList.remove('high', 'medium', 'low');
-        todo.getPriority() !== "" ? priorityDisplays.item(indexInUI).classList.add(todo.getPriority()) : undefined;
+        if (todo.getPriority() !== "") { 
+            priorityDisplays.item(indexInUI).classList.add(todo.getPriority())
+        };
         let listDisplays = document.querySelectorAll('.todo.containing-list.display');
         listDisplays.item(indexInUI).textContent = todo.getContainingList().getName();
     };
@@ -101,21 +104,13 @@ let selectiveTodosUpdater = function() {
         }
     };
 
-    const showListTodos = () => {
-        let todosLength = selectionTracker.getSelectedList().getTodos().length;
-        let listOfTodo = selectionTracker.getSelectedList();
-        let isListDefault = listOfTodo === listsManager.getList(0);
-        let defaultListTodos;
-        let finalTodosListLength = todosLength;
-        
-        if (isListDefault) {
-            defaultListTodos = listsManager.getList(0).getAllListsTodos();    
-            console.log(defaultListTodos);    
-            finalTodosListLength = defaultListTodos.length;    
-        }
-
-        for (let i = 0; i < finalTodosListLength; i++) {
-            let newTodo = isListDefault ? defaultListTodos[i] : listOfTodo.getTodo(i);
+    // Show the desired list of todos, should
+    const showListTodos = (list) => {
+        let todos = todoAddController.getTodosIfDefaultList(list);
+        console.log('The todos of ' + list.getName() + 'are');
+        console.log(todos);
+        for (let i = 0; i < todos.length; i++) {
+            let newTodo = todos[i];
             // Pass a todo not an index, it does not have to control the list sourced from
             addTodoDisplay(newTodo, i);
         }

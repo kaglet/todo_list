@@ -13,6 +13,19 @@ let todoAddController = function() {
     let quickAddButton = createTodoPane.getQuickAddButton(); 
     let customAddButton = createTodoPane.getCustomAddButton();
 
+    const getTodosIfDefaultList = (list) => {
+        let isListDefault = list === listsManager.getList(0);
+        let todos;
+
+        if (isListDefault) {
+            todos = listsManager.getList(0).getAllListsTodos();    
+        } else {
+            todos = list.getTodos();
+        }
+
+        return todos;
+    };
+
     const completeCustomizerPaneFunctionality = () => {
         let addCustomizerPane = todoCustomizer.createCustomizerPane();
 
@@ -37,24 +50,23 @@ let todoAddController = function() {
             addCustomTodo(name, date, priority, listMatchingName);
             todoCustomizer.hideCustomizerPane(addCustomizerPane);
 
-            // Get newly added todo in its list
-            let newTodoIndex = listMatchingName.getTodos().length - 1;
-            let newTodo = listMatchingName.getTodo(newTodoIndex);
+            let list = selectionTracker.getSelectedList();
 
-            // Check if list of todo does not match current selected list the todo is about to be added to
+            // Check if list given to todo in customizer does not match current selected list the todo is about to be added to, because then do not add into this display
             let listMismatch = listMatchingName !== selectionTracker.getSelectedList();
-            // Check if current list is default list because if so then addition of a todo from any different list is allowed - This is what "All" list is for
+            // Check if current list is default list "All" because contrary to the previous comment if so then addition of a todo from any different list is allowed
             let isCurrListNotDefault = selectionTracker.getSelectedList() != listsManager.getList(0);
             if (listMismatch && isCurrListNotDefault) return;
 
+            // Refresh and show display
             selectiveTodosUpdater.clearDisplay();
-            selectiveTodosUpdater.showListTodos();
+            selectiveTodosUpdater.showListTodos(list);
         });
     
         addCustomizerPane.append(saveButton);
 
         return addCustomizerPane;
-    }
+    };
 
     let todoAddCustomizerPane = completeCustomizerPaneFunctionality();
     let container = document.querySelector('body');
@@ -86,8 +98,10 @@ let todoAddController = function() {
 
         addQuickTodo(name);
 
+        let list = selectionTracker.getSelectedList();
+
         selectiveTodosUpdater.clearDisplay();
-        selectiveTodosUpdater.showListTodos();
+        selectiveTodosUpdater.showListTodos(list);
     });
 
     customAddButton.addEventListener('click', () => {
@@ -97,7 +111,7 @@ let todoAddController = function() {
         nameInput.value = document.querySelector('.addition.todo input').value;
     });
 
-    return { addCustomTodo };
+    return { addCustomTodo, getTodosIfDefaultList };
 }();
 
 export default todoAddController;

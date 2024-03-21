@@ -27,7 +27,7 @@ let selectiveListsUpdater = function() {
         listItem.addEventListener('click', () => {
             selectionTracker.setSelectedList(newList);
             selectiveTodosUpdater.clearDisplay();
-            selectiveTodosUpdater.showListTodos();
+            selectiveTodosUpdater.showListTodos(newList);
             createTodoPane.setListHeading(newList.getName());
         });
 
