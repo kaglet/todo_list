@@ -31,10 +31,47 @@ let createTodoPane = function() {
     todoAdditionWrapper.classList.add('todo', 'addition', 'wrapper');
     todoAdditionWrapper.append(nameInput, quickAddBtn, customAddBtn);
 
+    let filterLabel = document.createElement('label');
+    let sortLabel = document.createElement('label');
+    filterLabel.textContent = 'Filter by date: ';
+    sortLabel.textContent = 'Sort by date: ';
+
+    let filterSelect = document.createElement('select');
+
+    let todayOption = document.createElement('option');
+    let nextWeekOption = document.createElement('option');
+    let nextThirtyDays = document.createElement('option');
+
+    todayOption.setAttribute('value', 'today');
+    nextWeekOption.setAttribute('value', 'next week');
+    nextThirtyDays.setAttribute('value', 'next thirty days');
+
+    todayOption.textContent = "Today";
+    nextWeekOption.textContent = "Next Week";
+    nextThirtyDays.textContent = "Next Thirty Days";
+
+    filterSelect.append(todayOption, nextWeekOption, nextThirtyDays);
+
+    let sortSelect = document.createElement('select');
+
+    let ascendingOption = document.createElement('option');
+    let descendingOption = document.createElement('option');
+
+    ascendingOption.setAttribute('value', 'asc');
+    descendingOption.setAttribute('value', 'desc');
+
+    ascendingOption.textContent = "Ascending";
+    descendingOption.textContent = "Descending";
+
+    sortSelect.append(ascendingOption, descendingOption);
+
+    let wrapper = document.createElement('div');
+    wrapper.append(filterLabel, filterSelect, sortLabel, sortSelect);
+
     let todosDisplay = document.createElement('div');
     todosDisplay.classList.add('todos', 'display');
 
-    todoPane.append(headingsWrapper, todoAdditionWrapper, todosDisplay);
+    todoPane.append(headingsWrapper, todoAdditionWrapper, wrapper, todosDisplay);
 
     body.append(todoPane);
 
