@@ -11,21 +11,21 @@ let createTodoPane = function() {
     let listHeading = document.createElement('h2');
     // TODO: Get currently selected list heading/name instead of placeholder
     listHeading.textContent = 'ALL';
-    let setListHeading = (heading) => listHeading.textContent = heading;
+    const setListHeading = (heading) => listHeading.textContent = heading;
     headingsWrapper.append(listHeading);
 
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';
     quickAddBtn.classList.add('quick', 'add');
-    let getQuickAddButton = () => quickAddBtn;
+    const getQuickAddButton = () => quickAddBtn;
 
     let customAddBtn = document.createElement('button');
     customAddBtn.textContent = 'Custom Add';
     customAddBtn.classList.add('custom', 'add');
-    let getCustomAddButton = () => customAddBtn;
+    const getCustomAddButton = () => customAddBtn;
     let nameInput = document.createElement('input');
     nameInput.setAttribute('placeholder', 'Example todo name');
-    let getNameInput = () => nameInput;
+    const getNameInput = () => nameInput;
 
     let todoAdditionWrapper = document.createElement('div');
     todoAdditionWrapper.classList.add('todo', 'addition', 'wrapper');
@@ -51,6 +51,7 @@ let createTodoPane = function() {
     nextThirtyDays.textContent = "Next Thirty Days";
 
     filterSelect.append(todayOption, nextWeekOption, nextThirtyDays);
+    const getFilterSelect = () => filterSelect;
 
     let sortSelect = document.createElement('select');
 
@@ -64,6 +65,7 @@ let createTodoPane = function() {
     descendingOption.textContent = "Descending";
 
     sortSelect.append(ascendingOption, descendingOption);
+    const getSortSelect = () => sortSelect;
 
     let wrapper = document.createElement('div');
     wrapper.append(filterLabel, filterSelect, sortLabel, sortSelect);
@@ -75,7 +77,7 @@ let createTodoPane = function() {
 
     body.append(todoPane);
 
-    return { getCustomAddButton, getNameInput, getQuickAddButton, setListHeading };
+    return { getCustomAddButton, getNameInput, getQuickAddButton, setListHeading, getFilterSelect, getSortSelect };
 }();
 
 export default createTodoPane;

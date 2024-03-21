@@ -47,7 +47,8 @@ let todoAddController = function() {
             let isCurrListNotDefault = selectionTracker.getSelectedList() != listsManager.getList(0);
             if (listMismatch && isCurrListNotDefault) return;
 
-            selectiveTodosUpdater.addTodoDisplay(newTodo);
+            selectiveTodosUpdater.clearDisplay();
+            selectiveTodosUpdater.showListTodos();
         });
     
         addCustomizerPane.append(saveButton);
@@ -60,7 +61,7 @@ let todoAddController = function() {
     container.append(todoAddCustomizerPane);
     todoCustomizer.hideCustomizerPane(todoAddCustomizerPane);
 
-    const addQuickList = (name) => {
+    const addQuickTodo = (name) => {
         // Create todo instance and store it
         let todo = createTodo(name, selectionTracker.getSelectedList());
         console.log(selectionTracker.getSelectedList());
@@ -83,11 +84,10 @@ let todoAddController = function() {
         let name = nameInput.value.trim();
         if (todoValidator.isInvalidOnQuickAdd(name)) return;
 
-        addQuickList(name);
-        let listOfTodo = selectionTracker.getSelectedList();
-        let newTodoIndex = listOfTodo.getTodos().length - 1;
-        let newTodo = listOfTodo.getTodo(newTodoIndex);
-        selectiveTodosUpdater.addTodoDisplay(newTodo, newTodoIndex);
+        addQuickTodo(name);
+
+        selectiveTodosUpdater.clearDisplay();
+        selectiveTodosUpdater.showListTodos();
     });
 
     customAddButton.addEventListener('click', () => {
