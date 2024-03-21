@@ -96,6 +96,10 @@ let selectiveTodosUpdater = function() {
         };
         let listDisplays = document.querySelectorAll('.todo.containing-list.display');
         listDisplays.item(indexInUI).textContent = todo.getContainingList().getName();
+        listDisplays.item(indexInUI).style.backgroundColor = todo.getContainingList().getColor();
+        console.log(listDisplays.item(indexInUI));
+        console.log(todo.getContainingList().getColor());
+        console.log(todo.getContainingList());
     };
 
     const clearDisplay = () => {

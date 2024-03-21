@@ -47,6 +47,7 @@ let listAddController = function() {
     const addQuickList = (name) => {
         // Create list instance and store it
         let list = createList(name);
+        list.setColor("transparent");
         listsManager.addList(list);
         console.log(listsManager.getLists());
     };
