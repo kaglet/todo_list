@@ -1,7 +1,17 @@
 import { isToday, differenceInCalendarDays, endOfDay, addDays } from "date-fns";
 import createTodoPane from "../layout_component_outlines/todo_pane";
+import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
+import selectiveTodosUpdater from "../selective_items_updater/todo_UI_updater";
 
 let todosFilter = function () {
+    let filterSelect = createTodoPane.getFilterSelect();
+    filterSelect.addEventListener('change', () => {
+        let list = selectionTracker.getSelectedList();
+        
+        selectiveTodosUpdater.clearDisplay();
+        selectiveTodosUpdater.showListTodos(list);
+    });
+
     const getUpcomingWeekTodos = (todosList) => {
         let todaysDate = endOfDay(new Date());
         const daysDifference = 7;
