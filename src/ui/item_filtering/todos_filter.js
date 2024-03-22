@@ -38,6 +38,11 @@ let todosFilter = function () {
         return filteredList;
     };
 
+    const getOverdueTodos = (todosList) => {
+        let filteredList = todosList.filter(todo => differenceInCalendarDays(todaysDate, todo.getScheduleDate()) <= 0);
+        return filteredList;
+    };
+
     // from currently selected filter get the filtered todos
     const getFilteredTodos = (todosList) => {
         let filterTimeSpan = createTodoPane.getFilterSelect().value;
@@ -54,6 +59,9 @@ let todosFilter = function () {
                 break;
             case "all":
                 filteredList = todosList;
+                break;
+            case "overdue":
+                filteredList = getOverdueTodos(todosList);
                 break;
             default:
                 break;

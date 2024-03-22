@@ -42,19 +42,22 @@ let createTodoPane = function() {
     let allOption = document.createElement('option');
     let todayOption = document.createElement('option');
     let nextWeekOption = document.createElement('option');
-    let nextThirtyDays = document.createElement('option');
+    let nextThirtyDaysOption = document.createElement('option');
+    let overdueOption = document.createElement('option');
 
     allOption.setAttribute('value', 'all');
     todayOption.setAttribute('value', 'today');
     nextWeekOption.setAttribute('value', 'next week');
-    nextThirtyDays.setAttribute('value', 'next thirty days');
+    nextThirtyDaysOption.setAttribute('value', 'next thirty days');
+    overdueOption.setAttribute('value', 'overdue');
 
     allOption.textContent = "All";
     todayOption.textContent = "Today";
     nextWeekOption.textContent = "Next Week";
-    nextThirtyDays.textContent = "Next Thirty Days";
+    nextThirtyDaysOption.textContent = "Next Thirty Days";
+    overdueOption.textContent = "Overdue";
 
-    filterSelect.append(allOption, todayOption, nextWeekOption, nextThirtyDays);
+    filterSelect.append(allOption, todayOption, nextWeekOption, nextThirtyDaysOption, overdueOption);
     const getFilterSelect = () => filterSelect;
 
     let sortSelect = document.createElement('select');
