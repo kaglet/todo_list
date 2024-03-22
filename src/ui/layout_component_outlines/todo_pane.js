@@ -35,22 +35,26 @@ let createTodoPane = function() {
     let sortLabel = document.createElement('label');
     filterLabel.textContent = 'Filter by date: ';
     sortLabel.textContent = 'Sort by date: ';
+    sortLabel.classList.add('sort');
 
     let filterSelect = document.createElement('select');
 
+    let allOption = document.createElement('option');
     let todayOption = document.createElement('option');
     let nextWeekOption = document.createElement('option');
     let nextThirtyDays = document.createElement('option');
 
+    allOption.setAttribute('value', 'all');
     todayOption.setAttribute('value', 'today');
     nextWeekOption.setAttribute('value', 'next week');
     nextThirtyDays.setAttribute('value', 'next thirty days');
 
+    allOption.textContent = "All";
     todayOption.textContent = "Today";
     nextWeekOption.textContent = "Next Week";
     nextThirtyDays.textContent = "Next Thirty Days";
 
-    filterSelect.append(todayOption, nextWeekOption, nextThirtyDays);
+    filterSelect.append(allOption, todayOption, nextWeekOption, nextThirtyDays);
     const getFilterSelect = () => filterSelect;
 
     let sortSelect = document.createElement('select');

@@ -1,5 +1,3 @@
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
-
 let todoValidator = function() {
     const isInvalidOnQuickAdd = (name) => {
         return isNameInvalid(name);

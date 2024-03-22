@@ -79,8 +79,8 @@ let todoEditController = function () {
         };
 
         if (listMismatch && isCurrListNotDefault) {
-            removeDisplay();
             moveTodoToNewList();
+            removeDisplay();
         } else {
             moveTodoToNewList();
             editDisplayWithoutRemoval();

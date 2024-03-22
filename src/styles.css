@@ -199,6 +199,10 @@ h2 {
     text-transform: uppercase;
 }
 
+label.sort {
+    margin-left: 3rem;
+}
+
 section.todo.pane {
     display: flex;
     flex-direction: column;
@@ -293,6 +297,10 @@ button, input, select {
     font-size: var(--text-size-labels);
 }
 
+label {
+    font-weight: 800;
+}
+
 .sidebar button, dialog .wrapper button, dialog button.add, dialog button.edit {
     color: var(--dark-text-clr);
     background-color: var(--header-clr);
@@ -378,7 +386,7 @@ dialog h2 {
     text-align: center;
 }
 
-dialog input, dialog select {
+dialog input, select {
     font-weight: 800;
     padding: 0.8rem 0.4rem;
     border: none;

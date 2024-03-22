@@ -99,7 +99,7 @@ let todoAddController = function() {
         addQuickTodo(name);
 
         let list = selectionTracker.getSelectedList();
-
+        
         selectiveTodosUpdater.clearDisplay();
         selectiveTodosUpdater.showListTodos(list);
     });

@@ -4,6 +4,7 @@ import selectionTracker from "../../application_state_logic/selection_tracker/se
 import todoAddController from "../item_adding/todo_addition";
 import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
+import todosFilter from "../item_filtering/todos_filter";
 
 let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
@@ -111,10 +112,10 @@ let selectiveTodosUpdater = function() {
     // Show the desired list of todos, should
     const showListTodos = (list) => {
         let todos = todoAddController.getTodosIfDefaultList(list);
-        console.log('The todos of ' + list.getName() + 'are');
-        console.log(todos);
-        for (let i = 0; i < todos.length; i++) {
-            let newTodo = todos[i];
+        let filteredTodos = todosFilter.getFilteredTodos(todos);
+
+        for (let i = 0; i < filteredTodos.length; i++) {
+            let newTodo = filteredTodos[i];
             // Pass a todo not an index, it does not have to control the list sourced from
             addTodoDisplay(newTodo, i);
         }

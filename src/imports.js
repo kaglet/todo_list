@@ -32,3 +32,4 @@ import todoEditController from './ui/item_editing/todo_edit.js';
 
 import listValidator from './ui/validation/list_validation.js';
 
+import todosFilter from './ui/item_filtering/todos_filter.js';
