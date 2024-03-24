@@ -24,9 +24,15 @@ let selectionTracker = function() {
     const getSelectedTodoInUIIndex = () => selectedTodoInUIIndex;
     const getSelectedSubtaskInUIIndex = () => selectedSubtaskInUIIndex;
 
+    const getListOfTodo = (todoToFind) => {
+        let containingList = listsManager.getLists().find(list => list.getTodos().some(todo => todo === todoToFind));
+
+        return containingList;
+    };
+
     setSelectedList(listsManager.getList(0));
 
-    return { setListToEdit, getListToEdit, setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask, setSelectedListInUIIndex, setSelectedSubtaskInUIIndex, setSelectedTodoInUIIndex, getSelectedListInUIIndex, getSelectedSubtaskInUIIndex, getSelectedTodoInUIIndex };
+    return { getListOfTodo, setListToEdit, getListToEdit, setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask, setSelectedListInUIIndex, setSelectedSubtaskInUIIndex, setSelectedTodoInUIIndex, getSelectedListInUIIndex, getSelectedSubtaskInUIIndex, getSelectedTodoInUIIndex };
 }();
 
 export default selectionTracker;

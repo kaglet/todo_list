@@ -6,6 +6,8 @@ import selectionTracker from '../../application_state_logic/selection_tracker/se
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import todoValidator from '../validation/todo_validation.js';
 
+// import { jsonc } from 'jsonc';
+
 // Manages addition functionality of new todo instances 
 let todoAddController = function() {
     let nameInput = createTodoPane.getNameInput();
@@ -76,9 +78,15 @@ let todoAddController = function() {
     const addQuickTodo = (name) => {
         // Create todo instance and store it
         let todo = createTodo(name, selectionTracker.getSelectedList());
-        console.log(selectionTracker.getSelectedList());
+        
         selectionTracker.getSelectedList().addTodo(todo);
-        console.log(selectionTracker.getSelectedList().getTodos());
+        let containingList = selectionTracker.getListOfTodo(todo);
+
+        console.log(containingList);
+
+        // localStorage.setItem("todo", JSON.stringify(todo));
+        // console.log(localStorage.getItem("todo"));
+        console.log(selectionTracker.getSelectedList());
     };
 
     const addCustomTodo = (name, date, priority, list) => {
@@ -88,6 +96,9 @@ let todoAddController = function() {
         todo.setScheduleDate(date);
         todo.setPriority(priority);
         list.addTodo(todo);
+
+        // localStorage.setItem("default-list", jsonc.stringify(list));
+        // console.log(localStorage.getItem("default-list"));
         console.log(selectionTracker.getSelectedList().getTodos());
     };
 

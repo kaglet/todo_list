@@ -24,6 +24,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "date-fns": "^3.6.0"
+    "date-fns": "^3.6.0",
+    "jsonc": "^2.0.0"
   }
 }

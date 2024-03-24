@@ -1,8 +1,9 @@
 import './styles.css';
-import '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
+// import { jsonc } from 'jsonc';
 
 import createHeader from './ui/layout_component_outlines/header.js';
 import createSidebar from './ui/layout_component_outlines/sidebar.js';
