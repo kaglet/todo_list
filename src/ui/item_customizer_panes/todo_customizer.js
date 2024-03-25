@@ -3,10 +3,10 @@ import selectionTracker from "../../application_state_logic/selection_tracker/se
 import createTodoPane from "../layout_component_outlines/todo_pane";
 
 let todoCustomizer = function () {
-    const showCustomizerPane = (pane, todo) => {
+    const showCustomizerPane = (pane, containingList) => {
         pane.showModal();
         pane.classList.remove('hidden');
-        updateListOptions(pane, todo);
+        updateListOptions(pane, containingList);
     };
 
     const hideCustomizerPane = (pane) => {
