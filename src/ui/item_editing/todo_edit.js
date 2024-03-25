@@ -64,10 +64,9 @@ let todoEditController = function () {
         
         // This emphasizes there is no need to edit a display if it will be removed
         const editDisplayWithoutRemoval = () => {
-            let selectedTodoIndex = selectionTracker.getSelectedTodoInUIIndex();
-            let selectedTodo = selectionTracker.getSelectedTodo();
-            // Update in UI with details of edited todo in application state
-            selectiveTodosUpdater.editTodoDisplay(selectedTodoIndex, selectedTodo);
+            selectiveTodosUpdater.clearDisplay();
+            // Show todos of currently selected list display regardless of where todo was added
+            selectiveTodosUpdater.showListTodos(selectionTracker.getSelectedList());
             todoCustomizer.hideCustomizerPane(editCustomizerPane);
         };
 
