@@ -30,8 +30,6 @@ let selectionTracker = function() {
         return containingList;
     };
 
-    setSelectedList(listsManager.getList(0));
-
     return { getListOfTodo, setListToEdit, getListToEdit, setSelectedList, setSelectedTodo, setSelectedSubtask, getSelectedList, getSelectedTodo, getSelectedSubtask, setSelectedListInUIIndex, setSelectedSubtaskInUIIndex, setSelectedTodoInUIIndex, getSelectedListInUIIndex, getSelectedSubtaskInUIIndex, getSelectedTodoInUIIndex };
 }();
 

@@ -26,8 +26,13 @@ let listEditController = function() {
             selectiveListsUpdater.editListDisplay(selectedListIndex);
             listCustomizer.hideCustomizerPane(editCustomizerPane);
 
+            console.log(selectionTracker.getSelectedList());
+            console.log(listsManager.getList(0));
+
+            let isSelectedListDefault = selectionTracker.getSelectedList() === listsManager.getList(0);
+            let isSelectedListEditedList = selectionTracker.getListToEdit() === selectionTracker.getSelectedList();
             // Reflect list edits in UI display if selected list matches edited list
-            if (selectionTracker.getListToEdit() === selectionTracker.getSelectedList()) {
+            if (isSelectedListDefault || isSelectedListEditedList) {
                 let nameDisplays = document.querySelectorAll('.todo.containing-list.display');
 
                 nameDisplays.forEach((nameDisplay) => {

@@ -25,7 +25,7 @@ let preloader = function () {
 
     const populateInitialLists = () => {
         if (!localStorage.getItem("lists")) {
-            createDefaultList();
+            let list = createDefaultList();
             // Store default list in storage 
             storageManager.saveChanges();
             listsManager.addList(list);
@@ -35,7 +35,6 @@ let preloader = function () {
                 let listWithMethods;
                 if (i === 0) {
                     listWithMethods = attachDefaultListPrototype(list);
-                    createDefaultList(listWithMethods.getName(), listWithMethods.getColor());
                     createTodoPane.setListHeading(listWithMethods.getName());
                 } else {
                     listWithMethods = attachListPrototype(list);
@@ -51,8 +50,9 @@ let preloader = function () {
 
             // After the list is added to the manager todos can be shown where a search can be performed within the lists manager for finding the list a todo belongs in
             selectiveTodosUpdater.showListTodos(listsManager.getList(0));
-
         }
+
+        setSelectedList(listsManager.getList(0));
     };
 
     const updateDisplayWithLists = () => {
