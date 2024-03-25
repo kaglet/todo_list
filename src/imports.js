@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-// import { jsonc } from 'jsonc';
+import storageManager from './application_state_logic/storage_management/storage_manager.js';
 
 import createHeader from './ui/layout_component_outlines/header.js';
 import createSidebar from './ui/layout_component_outlines/sidebar.js';
@@ -34,3 +34,5 @@ import todoEditController from './ui/item_editing/todo_edit.js';
 import listValidator from './ui/validation/list_validation.js';
 
 import todosFilter from './ui/item_filtering/todos_filter.js';
+
+import preloader from './application_state_logic/storage_management/preloader.js';

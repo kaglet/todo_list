@@ -91,7 +91,23 @@ let selectiveListsUpdater = function() {
         colorDisplays.item(index).style.backgroundColor = editedList.getColor();
     };
 
-    return { addListDisplay, removeListDisplay, editListDisplay };
+    const clearDisplay = () => {
+        while (listsDisplay.firstChild) {
+            listsDisplay.removeChild(listsDisplay.lastChild);
+        }
+    };
+
+    const showAllLists = () => {
+        let lists = listsManager.getLists();
+
+        for (let i = 0; i < lists.length; i++) {
+            let newList = lists[i];
+            // Pass a todo not an index, it does not have to control the list sourced from
+            addListDisplay(newList, i);
+        }
+    };
+
+    return { addListDisplay, removeListDisplay, editListDisplay, clearDisplay, showAllLists };
 }();
 
 export default selectiveListsUpdater;
