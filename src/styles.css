@@ -11,15 +11,15 @@
     --border-rad: 1.5rem;
     --border-rad-smaller: 0.5rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #3C887E; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
-    --secondary-bg-clr: #3C887E;
+    --main-bg: #B3C2F2; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --secondary-bg-clr: #B3C2F2;
     --accent-clr: #44a99b;
     --dark-text-clr: rgb(40, 40, 40);
     --light-text-clr: #eeeeee;
     --button-clr-side-pane: #FE5F55;
     --button-clr-todo-pane: #FE5F55;
     --button-size: 10rem;
-    --header-clr: #317169;
+    --header-clr: #0B1D51;
     --placeholder-txt-clr: rgb(99, 99, 99);
     --list-card-clr: #6fd0e8;
     --todo-card-clr: rgba(226, 226, 226, 0.6);
