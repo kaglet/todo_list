@@ -1,5 +1,3 @@
-import createList from "../create_building_blocks/create_list.js";
-
 let listsManager = function() {
     let lists = []; 
     

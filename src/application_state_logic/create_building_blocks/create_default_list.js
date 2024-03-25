@@ -2,14 +2,13 @@ import createList from "./create_list";
 import listsManager from "../all_lists_manager/lists_manager";
 import createTodoPane from "../../ui/layout_component_outlines/todo_pane";
 
-let createDefaultList = function() {
+// This method must only be executed once to add only one default list with index 0
+let createDefaultList = function(name = "All", color = "FE5F55") {
     let list = Object.create(createDefaultList.proto);
-    list.setName("All");
-    list.setColor('#FE5F55');
+    list.setName(name);
+    list.setColor(color);
     list.todos = [];
 
-    listsManager.addList(list);
-    createTodoPane.setListHeading(list.getName());
     return list;
 };
 
@@ -25,7 +24,5 @@ createDefaultList.proto = {
 };
 
 Object.setPrototypeOf(createDefaultList.proto, createList.proto);
-
-createDefaultList();
 
 export default createDefaultList;

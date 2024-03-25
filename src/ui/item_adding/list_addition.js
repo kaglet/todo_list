@@ -83,9 +83,6 @@ let listAddController = function() {
         nameInput.value = document.querySelector('.addition.list input').value;
     });
 
-    // Before any other lists are added to the UI show the default "All" list
-    selectiveListsUpdater.addListDisplay(listsManager.getList(0), 0);
-
     return { addCustomList };
 }();
 
