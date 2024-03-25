@@ -1,5 +1,5 @@
 import createList from "./create_list";
-import listsManager from "../all_lists_manager/lists_manager";
+import listsManager from "../all_lists_management/lists_manager";
 import createTodoPane from "../../ui/layout_component_outlines/todo_pane";
 
 // This method must only be executed once to add only one default list with index 0

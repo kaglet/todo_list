@@ -1,5 +1,5 @@
 // add/remove
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
+import listsManager from "../../application_state_logic/all_lists_management/lists_manager";
 import todosMigrator from "../../application_state_logic/todos_migrator/todos_migrator";
 import listEditController from "../item_editing/list_edit";
 import listCustomizer from "../item_customizer_panes/list_customizer";

@@ -10,7 +10,7 @@ import createSidebar from './ui/layout_component_outlines/sidebar.js';
 import createTodoPane from './ui/layout_component_outlines/todo_pane.js';
 import createFooter from './ui/layout_component_outlines/footer.js';
 
-import listsManager from './application_state_logic/all_lists_manager/lists_manager.js';
+import listsManager from './application_state_logic/all_lists_management/lists_manager.js';
 import createList from './application_state_logic/create_building_blocks/create_list.js';
 import createDefaultList from './application_state_logic/create_building_blocks/create_default_list.js';
 import createSubtask from './application_state_logic/create_building_blocks/create_subtask.js';

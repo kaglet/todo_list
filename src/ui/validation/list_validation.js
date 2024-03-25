@@ -1,4 +1,4 @@
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
+import listsManager from "../../application_state_logic/all_lists_management/lists_manager";
 
 let listValidator = function() {
     const isInvalidOnQuickAdd = (name) => {

@@ -1,4 +1,4 @@
-import listsManager from "../all_lists_manager/lists_manager";
+import listsManager from "../all_lists_management/lists_manager";
 
 let storageManager = function () {
     // Do not perform any functionality if storage API is not available on user browser

@@ -1,6 +1,7 @@
 import createTodoPane from "../../ui/layout_component_outlines/todo_pane.js";
 import selectiveListsUpdater from "../../ui/selective_items_updater/list_UI_updater.js";
-import listsManager from "../all_lists_manager/lists_manager";
+import selectiveTodosUpdater from "../../ui/selective_items_updater/todo_UI_updater.js";
+import listsManager from "../all_lists_management/lists_manager.js";
 import createDefaultList from "../create_building_blocks/create_default_list.js";
 import createList from "../create_building_blocks/create_list.js";
 import createTodo from "../create_building_blocks/create_todo.js";
@@ -35,7 +36,7 @@ let preloader = function () {
                 if (i === 0) {
                     listWithMethods = attachDefaultListPrototype(list);
                     createDefaultList(listWithMethods.getName(), listWithMethods.getColor());
-                    createTodoPane.setListHeading(list.getName());
+                    createTodoPane.setListHeading(listWithMethods.getName());
                 } else {
                     listWithMethods = attachListPrototype(list);
                 }
@@ -43,8 +44,14 @@ let preloader = function () {
                 listWithMethods.getTodos().forEach(todo => {
                     todo = attachTodoPrototype(todo);
                 });
+
+                // Show default list todos in display after methods for todo are attached to be used in addTodoDisplay method
                 listsManager.addList(listWithMethods);
             });
+
+            // After the list is added to the manager todos can be shown where a search can be performed within the lists manager for finding the list a todo belongs in
+            selectiveTodosUpdater.showListTodos(listsManager.getList(0));
+
         }
     };
 

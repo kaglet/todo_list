@@ -1,5 +1,5 @@
 import createList from '../../application_state_logic/create_building_blocks/create_list.js';
-import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+import listsManager from '../../application_state_logic/all_lists_management/lists_manager.js';
 import createSidebar from '../layout_component_outlines/sidebar.js';
 import listCustomizer from '../item_customizer_panes/list_customizer.js';
 import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';

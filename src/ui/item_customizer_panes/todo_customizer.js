@@ -1,4 +1,4 @@
-import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
+import listsManager from "../../application_state_logic/all_lists_management/lists_manager";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import createTodoPane from "../layout_component_outlines/todo_pane";
 

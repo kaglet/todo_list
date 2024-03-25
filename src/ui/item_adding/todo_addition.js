@@ -3,7 +3,7 @@ import todoCustomizer from '../item_customizer_panes/todo_customizer.js';
 import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
 import createTodo from '../../application_state_logic/create_building_blocks/create_todo.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
-import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
+import listsManager from '../../application_state_logic/all_lists_management/lists_manager.js';
 import todoValidator from '../validation/todo_validation.js';
 import storageManager from '../../application_state_logic/storage_management/storage_manager.js';
 
@@ -18,10 +18,13 @@ let todoAddController = function() {
 
     const getTodosIfDefaultList = (list) => {
         let isListDefault = list === listsManager.getList(0);
+        console.log(`Is list default ${isListDefault} for `);
+        console.log(list);
         let todos;
 
         if (isListDefault) {
             todos = listsManager.getList(0).getAllListsTodos();    
+            console.log(todos);
         } else {
             todos = list.getTodos();
         }

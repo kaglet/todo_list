@@ -1,4 +1,4 @@
-import listsManager from "../all_lists_manager/lists_manager";
+import listsManager from "../all_lists_management/lists_manager";
 
 let selectionTracker = function() {
     let selectedList, selectedTodo, selectedSubtask, selectedListInUIIndex, selectedTodoInUIIndex, selectedSubtaskInUIIndex, listToEdit;
