@@ -11,16 +11,16 @@
     --border-rad: 1.5rem;
     --border-rad-smaller: 0.5rem;
     --sidebar-large-padding: 1.5rem;
-    --main-bg: #ededed; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
-    --secondary-bg-clr: #c7c7c787;
+    --main-bg: #797596; /*dialog bg: #8dabc5, dialog inputs: #658bac, dialog btn: #d76161, main bg old: #658bac, secondary bg old: #26547C*/ 
+    --secondary-bg-clr: #A1869E;
     --dark-text-clr: rgb(40, 40, 40);
     --light-text-clr: #eeeeee;
     --button-clr-side-pane: #669dc1;
     --button-clr-todo-pane: #669dc1;
     --button-size: 10rem;
-    --header-clr: #C1666B;
+    --header-clr: #0B1D51;
     --placeholder-txt-clr: rgb(99, 99, 99);
-    --list-card-clr: #9fbacb;
+    --list-card-clr: #44CCFF;
     --todo-card-clr: rgba(226, 226, 226, 0.6);
     --input-underline-clr: rgb(72, 72, 72);
     --input-clr: #658bac;
@@ -29,7 +29,7 @@
     --text-size-labels: 1.3rem;
     --text-size-footer: 1.5rem;
     --text-size-items: 1.3rem;
-    --shadow: 0px 2px 10.3px 1px rgb(170, 170, 170);
+    --shadow: 0px 2px 10.3px 1px rgb(80, 80, 80);
 }
 
 ::placeholder {
@@ -61,6 +61,7 @@ header {
     display: flex;
     align-items: center;
     gap: 2.5rem;
+    color: var(--light-text-clr);
 }
 
 .headings.wrapper, .addition.wrapper, footer {
@@ -148,7 +149,7 @@ svg {
 }
 
 .list.display.wrapper button {
-    color: var(--button-clr-side-pane);
+    color: var(--list-card-clr);
 }
 
 .color.display {
@@ -303,7 +304,7 @@ label {
 
 .sidebar button, dialog .wrapper button, dialog button.add, dialog button.edit {
     color: var(--dark-text-clr);
-    background-color: var(--header-clr);
+    background-color: var(--button-clr-side-pane);
 }
 
 #color-choices {
