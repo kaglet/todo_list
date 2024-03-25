@@ -6,6 +6,7 @@ import todoAddController from "../item_adding/todo_addition";
 import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
 import todosFilter from "../item_filtering/todos_filter";
+import todosSorter from "../item_sorting/todo_sorter";
 
 let selectiveTodosUpdater = function() {
     let todosDisplay = document.querySelector('.todos.display');
@@ -119,7 +120,8 @@ let selectiveTodosUpdater = function() {
     const showListTodos = (list) => {
         let todos = todoAddController.getTodosIfDefaultList(list);
         let filteredTodos = todosFilter.getFilteredTodos(todos);
-
+        let sortedTodos = todosSorter.getSortedTodos(filteredTodos);
+        
         for (let i = 0; i < filteredTodos.length; i++) {
             let newTodo = filteredTodos[i];
             // Pass a todo not an index, it does not have to control the list sourced from

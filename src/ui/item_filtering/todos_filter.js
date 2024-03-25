@@ -45,7 +45,7 @@ let todosFilter = function () {
 
     // from currently selected filter get the filtered todos
     const getFilteredTodos = (todosList) => {
-        let filterTimeSpan = createTodoPane.getFilterSelect().value;
+        let filterTimeSpan = filterSelect.value;
         let filteredList;
         switch (filterTimeSpan) {
             case "today":
