@@ -80,16 +80,21 @@ let todoAddController = function() {
         let todo = createTodo(name, selectionTracker.getSelectedList());
         
         selectionTracker.getSelectedList().addTodo(todo);
-        // let containingList = selectionTracker.getListOfTodo(todo);
+        localStorage.setItem("todo", JSON.stringify(todo));
+        console.log(localStorage.getItem("todo"));
     };
 
     const addCustomTodo = (name, date, priority, list) => {
         // Create todo instance and store it
         let todo = createTodo(name, list);
-
+        console.log('List of custom created todo: ' + list);
         todo.setScheduleDate(date);
         todo.setPriority(priority);
         list.addTodo(todo);
+
+        localStorage.setItem("default-list", JSON.stringify(list));
+        console.log(localStorage.getItem("default-list"));
+        // console.log(selectionTracker.getSelectedList().getTodos());
     };
 
     quickAddButton.addEventListener('click', () => {
