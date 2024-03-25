@@ -21,9 +21,10 @@ let selectiveTodosUpdater = function() {
         scheduleDateDisplay.classList.add('schedule', 'date' , 'display');
 
         let listDisplay = document.createElement('span');
-        listDisplay.textContent = newTodo.getContainingList().getName();
+        let containingList = selectionTracker.getListOfTodo(newTodo);
+        listDisplay.textContent = containingList.getName();
         listDisplay.classList.add('todo', 'containing-list', 'display');
-        listDisplay.style.backgroundColor = newTodo.getContainingList().getColor();
+        listDisplay.style.backgroundColor = containingList.getColor();
 
         let priorityDisplay = document.createElement('span');
         let priorityText = newTodo.getPriority() === undefined ? "" : newTodo.getPriority();
@@ -49,7 +50,7 @@ let selectiveTodosUpdater = function() {
         deleteButton.append(deleteIcon);
 
         editButton.addEventListener('click', () => {
-            todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane(), newTodo.getContainingList());
+            todoCustomizer.showCustomizerPane(todoEditController.getCustomizerPane(), containingList);
             // For completing edit set selected list in UI, for use later
             selectionTracker.setSelectedTodo(newTodo);
             let todoUIIndex = todoItem.getAttribute('data-id');
@@ -60,7 +61,7 @@ let selectiveTodosUpdater = function() {
             let todoDisplayID = todoItem.getAttribute('data-id');
             removeTodoDisplay(todoDisplayID);
             // Removal is not related by indices anymore
-            newTodo.getContainingList().removeTodo(newTodo);
+            containingList.removeTodo(newTodo);
         });
 
         wrapper.append(todoItem, listDisplay, priorityDisplay, scheduleDateDisplay, editButton, deleteButton);
@@ -95,9 +96,10 @@ let selectiveTodosUpdater = function() {
         if (todo.getPriority() !== "") { 
             priorityDisplays.item(indexInUI).classList.add(todo.getPriority())
         };
+        let containingList = selectionTracker.getListOfTodo(todo);
         let listDisplays = document.querySelectorAll('.todo.containing-list.display');
-        listDisplays.item(indexInUI).textContent = todo.getContainingList().getName();
-        listDisplays.item(indexInUI).style.backgroundColor = todo.getContainingList().getColor();
+        listDisplays.item(indexInUI).textContent = containingList.getName();
+        listDisplays.item(indexInUI).style.backgroundColor = containingList.getColor();
     };
 
     const clearDisplay = () => {

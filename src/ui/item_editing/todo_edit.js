@@ -54,7 +54,7 @@ let todoEditController = function () {
 
         const moveTodoToNewList = () => {
             // Delete todo where it is in old list before losing information about old list
-            let oldList = selectionTracker.getListOfTodo(todo);
+            let oldList = selectionTracker.getListOfTodo(todoToEdit);
             oldList.removeTodo(todoToEdit);
 
             // Remove in list that used to contain it and add to new list

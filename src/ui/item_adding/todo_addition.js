@@ -80,6 +80,7 @@ let todoAddController = function() {
         let todo = createTodo(name, selectionTracker.getSelectedList());
         
         selectionTracker.getSelectedList().addTodo(todo);
+        // let containingList = selectionTracker.getListOfTodo(todo);
     };
 
     const addCustomTodo = (name, date, priority, list) => {
