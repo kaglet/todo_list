@@ -1,6 +1,7 @@
 // Manages edit functionality of existing todo instances
 import listsManager from '../../application_state_logic/all_lists_manager/lists_manager.js';
 import selectionTracker from '../../application_state_logic/selection_tracker/selection_tracker.js';
+import storageManager from '../../application_state_logic/storage_management/storage_manager.js';
 import todoCustomizer from '../item_customizer_panes/todo_customizer.js';
 import selectiveTodosUpdater from '../selective_items_updater/todo_UI_updater.js';
 
@@ -84,6 +85,8 @@ let todoEditController = function () {
             moveTodoToNewList();
             editDisplayWithoutRemoval();
         }
+
+        storageManager.saveChanges();
     };
 
     let getCustomizerPane = () => todoEditCustomizerPane;

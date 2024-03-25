@@ -4,6 +4,7 @@ import createSidebar from '../layout_component_outlines/sidebar.js';
 import listCustomizer from '../item_customizer_panes/list_customizer.js';
 import selectiveListsUpdater from '../selective_items_updater/list_UI_updater.js';
 import listValidator from '../validation/list_validation.js';
+import storageManager from '../../application_state_logic/storage_management/storage_manager.js';
 
 // Manages addition functionality of new list instances 
 let listAddController = function() {
@@ -49,14 +50,16 @@ let listAddController = function() {
         let list = createList(name);
         list.setColor("transparent");
         listsManager.addList(list);
-        console.log(listsManager.getLists());
+
+        storageManager.saveChanges();
     };
 
     const addCustomList = (name, color) => {
         let list = createList(name);
         list.setColor(color);
         listsManager.addList(list);
-        console.log(listsManager.getLists());
+
+        storageManager.saveChanges();
     };
 
     const showNewList = () => {

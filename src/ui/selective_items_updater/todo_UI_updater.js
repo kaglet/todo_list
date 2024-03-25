@@ -1,6 +1,7 @@
 // add/remove
 import listsManager from "../../application_state_logic/all_lists_manager/lists_manager";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
+import storageManager from "../../application_state_logic/storage_management/storage_manager";
 import todoAddController from "../item_adding/todo_addition";
 import todoCustomizer from "../item_customizer_panes/todo_customizer";
 import todoEditController from "../item_editing/todo_edit";
@@ -62,6 +63,8 @@ let selectiveTodosUpdater = function() {
             removeTodoDisplay(todoDisplayID);
             // Removal is not related by indices anymore
             containingList.removeTodo(newTodo);
+
+            storageManager.saveChanges();
         });
 
         wrapper.append(todoItem, listDisplay, priorityDisplay, scheduleDateDisplay, editButton, deleteButton);
@@ -91,7 +94,7 @@ let selectiveTodosUpdater = function() {
 
         let dateDisplays = document.querySelectorAll('.schedule.date.display');
         dateDisplays.item(indexInUI).textContent = todo.getScheduleDate();
-        
+
         let priorityDisplays = document.querySelectorAll('.todo.priority.display');
         priorityDisplays.item(indexInUI).textContent = todo.getPriority();
         priorityDisplays.item(indexInUI).classList.remove('high', 'medium', 'low');

@@ -6,6 +6,7 @@ import listCustomizer from "../item_customizer_panes/list_customizer";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import selectiveTodosUpdater from "./todo_UI_updater";
 import createTodoPane from "../layout_component_outlines/todo_pane";
+import storageManager from "../../application_state_logic/storage_management/storage_manager";
 
 let selectiveListsUpdater = function() {
     let listsDisplay = document.querySelector('.lists.display');
@@ -54,6 +55,8 @@ let selectiveListsUpdater = function() {
             let listDisplayID = listItem.getAttribute('data-id');
             removeListDisplay(listDisplayID);
             listsManager.removeList(newList);
+
+            storageManager.saveChanges();
         });
 
         wrapper.append(colorDisplay, listItem, editButton);
