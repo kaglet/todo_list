@@ -54,12 +54,11 @@ let todoEditController = function () {
 
         const moveTodoToNewList = () => {
             // Delete todo where it is in old list before losing information about old list
-            let oldList = todoToEdit.getContainingList();
+            let oldList = selectionTracker.getListOfTodo(todo);
             oldList.removeTodo(todoToEdit);
 
-            todoToEdit.setContainingList(listMatchingName);
             // Remove in list that used to contain it and add to new list
-            todoToEdit.getContainingList().addTodo(todoToEdit);
+            listMatchingName.addTodo(todoToEdit);
         };
         
         // This emphasizes there is no need to edit a display if it will be removed
