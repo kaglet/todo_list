@@ -5,6 +5,7 @@ import listsManager from "../all_lists_management/lists_manager.js";
 import createDefaultList from "../create_building_blocks/create_default_list.js";
 import createList from "../create_building_blocks/create_list.js";
 import createTodo from "../create_building_blocks/create_todo.js";
+import selectionTracker from "../selection_tracker/selection_tracker.js";
 import storageManager from "./storage_manager.js";
 
 let preloader = function () {
@@ -51,8 +52,7 @@ let preloader = function () {
             // After the list is added to the manager todos can be shown where a search can be performed within the lists manager for finding the list a todo belongs in
             selectiveTodosUpdater.showListTodos(listsManager.getList(0));
         }
-
-        setSelectedList(listsManager.getList(0));
+        selectionTracker.setSelectedList(listsManager.getList(0));
     };
 
     const updateDisplayWithLists = () => {
