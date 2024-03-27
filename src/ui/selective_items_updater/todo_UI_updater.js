@@ -130,8 +130,8 @@ let selectiveTodosUpdater = function() {
         let filteredTodos = todosFilter.getFilteredTodos(todos);
         let sortedTodos = todosSorter.getSortedTodos(filteredTodos);
         
-        for (let i = 0; i < filteredTodos.length; i++) {
-            let newTodo = filteredTodos[i];
+        for (let i = 0; i < sortedTodos.length; i++) {
+            let newTodo = sortedTodos[i];
             // Pass a todo not an index, it does not have to control the list sourced from
             addTodoDisplay(newTodo, i);
         }
