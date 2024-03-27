@@ -443,7 +443,6 @@ select {
 /* PANE DIALOG STYLING END */
 
 /* STYLE CHECKBOX */
-
 input[type="checkbox"] {
     padding: 0.25rem;
     transform: translateY(-0.075em);
@@ -474,4 +473,18 @@ input[type="checkbox"]:checked::before {
 input[type="checkbox"]:focus {
     outline: 1.7px solid white;
     outline-offset: max(1px, 0.05em);
+}
+
+div.cancel {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 102%;
+    height: 2px;
+    position: absolute;
+    background-color: black;
+}
+
+.todo.display.wrapper {
+    position: relative;
 }

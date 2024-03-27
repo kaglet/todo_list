@@ -20,7 +20,7 @@ let selectiveTodosUpdater = function() {
         let cancelledBar = document.createElement('div');
         cancelledBar.classList.add('cancel');
 
-
+        wrapper.append(cancelledBar);
 
         let todoItem = document.createElement('div');
         todoItem.setAttribute('data-id', newTodoIndex);
