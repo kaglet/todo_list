@@ -3,7 +3,7 @@ let createHeader = function() {
 
     let header = document.createElement('header');
     let pageTitle = document.createElement('h1');
-    pageTitle.textContent = 'TaskBuddy';
+    pageTitle.textContent = 'To Do Tracker';
 
     let menuIcon = document.createElement('i');
     menuIcon.classList.add('fa-solid', 'fa-bars', 'bars');
