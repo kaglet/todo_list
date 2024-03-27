@@ -7,8 +7,6 @@ import listsManager from '../../application_state_logic/all_lists_management/lis
 import todoValidator from '../validation/todo_validation.js';
 import storageManager from '../../application_state_logic/storage_management/storage_manager.js';
 
-// import { jsonc } from 'jsonc';
-
 // Manages addition functionality of new todo instances 
 let todoAddController = function() {
     let nameInput = createTodoPane.getNameInput();
@@ -18,8 +16,6 @@ let todoAddController = function() {
 
     const getTodosIfDefaultList = (list) => {
         let isListDefault = list === listsManager.getList(0);
-        console.log(`Is list default ${isListDefault} for `);
-        console.log(list);
         let todos;
 
         if (isListDefault) {
@@ -94,8 +90,6 @@ let todoAddController = function() {
         todo.setScheduleDate(date);
         todo.setPriority(priority);
         list.addTodo(todo);
-
-
     };
 
     quickAddButton.addEventListener('click', () => {

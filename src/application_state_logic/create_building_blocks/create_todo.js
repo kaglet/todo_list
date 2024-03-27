@@ -38,7 +38,16 @@ createTodo.proto = {
     },
     setDescription(desc) {
         this.description = desc;
-    }
+    },
+    setAsCompleted() {
+        this.complete = true;
+    },
+    setAsNotComplete() {
+        this.complete = false;
+    },
+    getCompletionStatus() {
+        return this.complete;
+    },
 };
 
 export default createTodo;

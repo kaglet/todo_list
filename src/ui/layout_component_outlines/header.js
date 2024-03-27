@@ -8,7 +8,7 @@ let createHeader = function() {
     let menuIcon = document.createElement('i');
     menuIcon.classList.add('fa-solid', 'fa-bars', 'bars');
 
-    header.append(menuIcon, pageTitle);
+    header.append(pageTitle);
 
     body.append(header);
 }();

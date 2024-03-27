@@ -100,7 +100,6 @@ footer a {
     display: flex;
     flex-direction: column;
     background-color: var(--secondary-bg-clr);
-    /* border-right: 3px solid rgba(232, 232, 232, 0.6); */
 }
 
 header {
@@ -258,8 +257,9 @@ section.todo.pane {
 }
 
 .todo.display.wrapper {
+    padding-left: 0.5rem;
     display: grid;
-    grid-template: 1fr / 6fr repeat(3, 7rem) repeat(2, auto);
+    grid-template: 1fr / auto 6fr repeat(3, 7rem) repeat(2, auto);
     align-items: center;
     grid-auto-columns: auto;
     grid-auto-flow: column;
@@ -431,7 +431,7 @@ dialog h2 {
     text-align: center;
 }
 
-dialog input,
+input,
 select {
     font-weight: 800;
     padding: 0.8rem 0.4rem;
@@ -441,3 +441,37 @@ select {
 }
 
 /* PANE DIALOG STYLING END */
+
+/* STYLE CHECKBOX */
+
+input[type="checkbox"] {
+    padding: 0.25rem;
+    transform: translateY(-0.075em);
+    -webkit-appearance: none;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    justify-self: center;
+    align-self: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--main-accent);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+    outline: 1.7px solid white;
+    outline-offset: max(1px, 0.05em);
+}
