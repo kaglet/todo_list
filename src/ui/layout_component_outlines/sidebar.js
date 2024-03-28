@@ -18,7 +18,7 @@ let createSidebar = function() {
     let getCustomAddButton = () => customAddBtn;
 
     let nameInput = document.createElement('input');
-    nameInput.setAttribute('placeholder', 'Example list name');
+    nameInput.setAttribute('placeholder', 'List ideas: Health/School/Movies');
     let getNameInput = () => nameInput;
 
     let addListOptionsWrapper = document.createElement('div');

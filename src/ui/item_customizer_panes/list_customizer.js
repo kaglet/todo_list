@@ -41,7 +41,7 @@ let listCustomizer = function() {
             let name = alreadyEnteredName.trim() === "" ? "" : alreadyEnteredName;
             let nameInput = document.createElement('input');
             nameInput.textContent = name;
-            nameInput.placeholder = 'Example List Name';
+            nameInput.placeholder = 'List ideas: Health/School/Movies';
             nameInput.setAttribute('id', 'name');
 
             return nameInput;

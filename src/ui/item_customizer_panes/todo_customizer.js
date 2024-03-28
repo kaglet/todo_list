@@ -45,7 +45,7 @@ let todoCustomizer = function () {
             let name = alreadyEnteredName.trim() === "" ? "" : alreadyEnteredName;
             let nameInput = document.createElement('input');
             nameInput.textContent = name;
-            nameInput.placeholder = 'Example Todo Name';
+            nameInput.placeholder = 'E.g. Walk the dogs/Read book';
             nameInput.setAttribute('id', 'name');
 
             return nameInput;
