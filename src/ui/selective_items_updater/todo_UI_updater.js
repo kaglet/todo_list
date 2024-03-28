@@ -25,6 +25,8 @@ let selectiveTodosUpdater = function() {
         completedCheckbox.addEventListener('change', () => {
             cancelledBar.classList.toggle('visible');
             newTodo.toggleComplete();
+            storageManager.saveChanges();
+            console.log(JSON.parse(localStorage.getItem('todo')));
         });
 
         if (newTodo.getCompletionStatus() === true) {

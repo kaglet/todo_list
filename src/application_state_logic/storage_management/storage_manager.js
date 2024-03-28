@@ -37,7 +37,7 @@ let storageManager = function () {
         localStorage.setItem("lists", JSON.stringify(listsManager.getLists()));
 
         console.clear();
-        console.log(JSON.parse(localStorage.getItem("lists")));
+        console.log('Changed lists', JSON.parse(localStorage.getItem("lists")));
     };
 
     const getAllLists = () => {
