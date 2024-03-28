@@ -14,6 +14,9 @@ let createTodoPane = function() {
     const setListHeading = (heading) => listHeading.textContent = heading;
     headingsWrapper.append(listHeading);
 
+    let addTodoLabel = document.createElement('label');
+    addTodoLabel.textContent = 'Enter to do name: ';
+    
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';
     quickAddBtn.classList.add('quick', 'add');
@@ -29,7 +32,7 @@ let createTodoPane = function() {
 
     let todoAdditionWrapper = document.createElement('div');
     todoAdditionWrapper.classList.add('todo', 'addition', 'wrapper');
-    todoAdditionWrapper.append(nameInput, quickAddBtn, customAddBtn);
+    todoAdditionWrapper.append(addTodoLabel, nameInput, quickAddBtn, customAddBtn);
 
     let filterLabel = document.createElement('label');
     let sortLabel = document.createElement('label');

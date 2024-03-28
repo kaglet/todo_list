@@ -4,6 +4,9 @@ let createSidebar = function() {
     let sidebar = document.createElement('section');
     sidebar.classList.add('sidebar');
 
+    let addListLabel = document.createElement('label');
+    addListLabel.textContent = 'Enter list name: ';
+
     let quickAddBtn = document.createElement('button');
     quickAddBtn.textContent = 'Quick Add';
     quickAddBtn.classList.add('quick', 'add');
@@ -21,7 +24,7 @@ let createSidebar = function() {
     let addListOptionsWrapper = document.createElement('div');
     addListOptionsWrapper.classList.add('wrapper', 'addition', 'list');
 
-    addListOptionsWrapper.append(nameInput, quickAddBtn, customAddBtn);
+    addListOptionsWrapper.append(addListLabel, nameInput, quickAddBtn, customAddBtn);
 
     let listsDisplay = document.createElement('div');
     listsDisplay.classList.add('lists', 'display');

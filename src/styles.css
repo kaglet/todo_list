@@ -194,12 +194,13 @@ button:not(.list.display.wrapper button, .todo.display.wrapper button):active {
 
 .list.addition.wrapper {
     display: grid;
-    grid-template: 1fr 1fr / repeat(2, var(--button-size));
+    grid-template: auto 1fr 1fr / repeat(2, var(--button-size));
+    align-items: center;
     gap: 0.5rem;
     padding: 1rem;
 }
 
-.addition.list.wrapper>input {
+.addition.list.wrapper>input, .addition.list.wrapper>label {
     grid-column: 1 / span 2;
 }
 
@@ -241,7 +242,8 @@ section.todo.pane {
 .todo.addition.wrapper {
     gap: 1rem;
     display: grid;
-    grid-template: 1fr / 4fr repeat(2, var(--button-size));
+    grid-template: 1fr / auto 4fr repeat(2, var(--button-size));
+    align-items: center;
 }
 
 .schedule.date.display {
@@ -334,13 +336,13 @@ select {
 dialog button,
 input,
 select,
-.todo.display.wrapper .todo.name,
-label {
+.todo.display.wrapper .todo.name {
     font-size: var(--text-size-labels);
 }
 
 label {
     font-weight: 800;
+    font-size: calc(var(--text-size-labels) + 0.25rem);
 }
 
 .sidebar button,
