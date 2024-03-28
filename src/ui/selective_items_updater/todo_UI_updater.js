@@ -24,7 +24,13 @@ let selectiveTodosUpdater = function() {
 
         completedCheckbox.addEventListener('change', () => {
             cancelledBar.classList.toggle('visible');
+            newTodo.toggleComplete();
         });
+
+        if (newTodo.getCompletionStatus() === true) {
+            cancelledBar.classList.toggle('visible');
+            completedCheckbox.checked = true;
+        }
 
         let todoItem = document.createElement('div');
         todoItem.setAttribute('data-id', newTodoIndex);

@@ -2,6 +2,7 @@ let createTodo = function(name) {
     let todo = Object.create(createTodo.proto);
     todo.setName(name);
     todo.subtasks = [];
+    todo.complete = false;
     
     return todo;
 };
@@ -39,11 +40,8 @@ createTodo.proto = {
     setDescription(desc) {
         this.description = desc;
     },
-    setAsCompleted() {
-        this.complete = true;
-    },
-    setAsNotComplete() {
-        this.complete = false;
+    toggleComplete() {
+        this.complete = this.complete === true ? false : true; 
     },
     getCompletionStatus() {
         return this.complete;
