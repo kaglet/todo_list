@@ -483,8 +483,13 @@ div.cancel {
     height: 2px;
     position: absolute;
     background-color: black;
+    display: none;
 }
 
 .todo.display.wrapper {
     position: relative;
+}
+
+div.cancel.visible {
+    display: block;
 }

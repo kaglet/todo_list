@@ -14,13 +14,17 @@ let selectiveTodosUpdater = function() {
     const addTodoDisplay = (newTodo, newTodoIndex) => {
         let wrapper = document.createElement('div');
 
-        let completedCheckbox = document.createElement('input');
-        completedCheckbox.setAttribute('type', 'checkbox');
-
         let cancelledBar = document.createElement('div');
         cancelledBar.classList.add('cancel');
 
         wrapper.append(cancelledBar);
+
+        let completedCheckbox = document.createElement('input');
+        completedCheckbox.setAttribute('type', 'checkbox');
+
+        completedCheckbox.addEventListener('change', () => {
+            cancelledBar.classList.toggle('visible');
+        });
 
         let todoItem = document.createElement('div');
         todoItem.setAttribute('data-id', newTodoIndex);
