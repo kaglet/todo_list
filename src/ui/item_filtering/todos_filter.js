@@ -1,4 +1,4 @@
-import { isToday, differenceInCalendarDays, endOfDay, addDays } from "date-fns";
+import { isToday, differenceInCalendarDays, endOfDay, isPast } from "date-fns";
 import createTodoPane from "../layout_component_outlines/todo_pane";
 import selectionTracker from "../../application_state_logic/selection_tracker/selection_tracker";
 import selectiveTodosUpdater from "../selective_items_updater/todo_UI_updater";
@@ -16,7 +16,7 @@ let todosFilter = function () {
         let todaysDate = endOfDay(new Date());
         const daysDifference = 7;
 
-        let filteredList = todosList.filter(todo => differenceInCalendarDays(todo.getScheduleDate(), todaysDate) <= daysDifference);
+        let filteredList = todosList.filter(todo => differenceInCalendarDays(todo.getScheduleDate(), todaysDate) <= daysDifference && !isPast(todo.getScheduleDate()));
         console.log("Before and after filter");
         console.log(todosList);
         console.log(filteredList);
@@ -28,7 +28,7 @@ let todosFilter = function () {
         let todaysDate = endOfDay(new Date());
         const daysDifference = 30;
 
-        let filteredList = todosList.filter(todo => differenceInCalendarDays(todo.getScheduleDate(), todaysDate) <= daysDifference);
+        let filteredList = todosList.filter(todo => differenceInCalendarDays(todo.getScheduleDate(), todaysDate) <= daysDifference && !isPast(todo.getScheduleDate()));
 
         return filteredList;
     };
@@ -39,7 +39,8 @@ let todosFilter = function () {
     };
 
     const getOverdueTodos = (todosList) => {
-        let filteredList = todosList.filter(todo => differenceInCalendarDays(todaysDate, todo.getScheduleDate()) <= 0);
+        let todaysDate = endOfDay(new Date());
+        let filteredList = todosList.filter(todo => isPast(todo.getScheduleDate()));
         return filteredList;
     };
 
